@@ -1,6 +1,8 @@
 #include <iostream>
+#include "player.h"
 
 int main(int argc, char **argv) {
-    std::cout << "Hello, world!" << std::endl;
+    Player p("Humba", "Täterä");
+    std::cout << p.name << std::endl;
     return 0;
 }

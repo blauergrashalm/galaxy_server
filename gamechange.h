@@ -4,9 +4,7 @@
 #include "player.h"
 #include "field.h"
 #include "dot.h"
-/**
- * @todo write docs
- */
+
 class GameChange
 {
 private: 

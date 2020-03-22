@@ -11,8 +11,6 @@ class Player
 {
 
 private:
-    std::string name;
-    std::string passphrase;
     
     std::weak_ptr<websocketpp::connection_hdl> websocket_handle;
     
@@ -26,6 +24,9 @@ public:
      * Destructor
      */
     ~Player();
+    
+    std::string name;
+    std::string passphrase;
     
     bool isActive(){
         return websocket_handle.use_count() > 0;
