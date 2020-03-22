@@ -5,7 +5,7 @@
 
 #include <memory>
 
-// Forward declarations:
+class GameChange;
 class Dot;
 
 class Field
@@ -14,6 +14,7 @@ private:
     pos_type position;
     std::weak_ptr<Dot> asigned_dot;
     std::weak_ptr<GameChange> last_change;
+    
     
 public:
    
