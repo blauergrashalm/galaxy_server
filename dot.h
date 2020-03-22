@@ -1,22 +1,17 @@
 #ifndef DOT_H
 #define DOT_H
 
+#include "position_type.h"
+
 /**
  * @todo write docs
  */
 class Dot
 {
+
+
 public:
-    /**
-     * @todo write docs
-     */
-    void ();
-
-    /**
-     * @todo write docs
-     */
-    void ();
-
+    pos_type position;
 };
 
 #endif // DOT_H
