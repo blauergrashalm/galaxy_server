@@ -1,13 +1,30 @@
 #include <iostream>
 #include "gamestate.h"
+#include "galaxy.h"
+#include <signal.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
+Galaxy g;
+
+void my_handler(int s){
+    std::cout<< "Signal erhalten" << std::endl;
+           g.stop();
+}
 
 int main(int argc, char **argv) {
-    std::cout << "Humba" << std::endl;
-    GameState state(10,10);
-    std::cout << state.toJson().dump(4) << std::endl;
     
-//     std::shared_ptr<Field> f;
-//     f.reset(new Field(0,0));
+    struct sigaction sigIntHandler;
+
+    sigIntHandler.sa_handler = my_handler;
+    sigemptyset(&sigIntHandler.sa_mask);
+    sigIntHandler.sa_flags = 0;
+
+    sigaction(SIGINT, &sigIntHandler, NULL);
+    
+    std::cout << "Starte Galaxy" << std::endl;
+    g.run();
+    std::cout << "Programm endet" << std::endl; 
     return 0;
 }

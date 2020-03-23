@@ -12,13 +12,13 @@ class Player
 
 private:
     
-    std::weak_ptr<websocketpp::connection_hdl> websocket_handle;
+    websocketpp::connection_hdl websocket_handle;
     
 public:
     /**
      * Default constructor
      */
-    Player(std::string name, std::string passphrase): name{name}, passphrase{passphrase}{};
+    Player(websocketpp::connection_hdl hdl):websocket_handle{hdl}{};
 
     /**
      * Destructor
@@ -31,7 +31,7 @@ public:
     bool isActive(){
         return websocket_handle.use_count() > 0;
     };
-
+    
 };
 
 #endif // PLAYER_H
