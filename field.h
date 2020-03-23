@@ -3,7 +3,11 @@
 
 #include "position_type.h"
 
+#include "nlohmann/json.hpp"
+
 #include <memory>
+
+using json = nlohmann::json;
 
 class GameChange;
 class Dot;
@@ -19,9 +23,8 @@ private:
 public:
    
     Field(unsigned int x, unsigned int y) : position{x,y} {};
-    
-    ~Field();
 
+    json toJson();
 };
 
 #endif // FIELD_H

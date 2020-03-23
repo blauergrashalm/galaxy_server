@@ -6,7 +6,9 @@
 #include <set>
 #include <map>
 #include <memory>
+#include "nlohmann/json.hpp"
 
+using json = nlohmann::json;
 //forward declarations:
 class Field;
 
@@ -28,6 +30,8 @@ public:
     
     void registerField(field_ptr_t);
     void removeField(field_ptr_t);
+    
+    json toJson();
 };
 
 #endif // DOT_H

@@ -10,7 +10,7 @@ class GameChange
 private: 
     std::shared_ptr<Player> player;
     std::shared_ptr<Field> affected_field;
-    std::shared_ptr<Dot> new_assoziation
+    std::shared_ptr<Dot> new_assoziation;
     
 public:
     /**

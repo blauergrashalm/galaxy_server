@@ -8,6 +8,7 @@ player.cpp
 dot.cpp
 field.cpp
 gamechange.cpp
+gamestate.cpp
 )
 
 add_executable(galaxy_server ${src})
