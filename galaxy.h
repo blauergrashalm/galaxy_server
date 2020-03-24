@@ -3,15 +3,18 @@
 
 #include <condition_variable>
 #include "player.h"
+#include "network.h"
 
 /**
  * @todo write docs
+
  */
 class Galaxy
 {
 private:
     std::condition_variable exit_condition;
     std::mutex exit_mutex;
+    std::unique_ptr<Network> net;
     
     std::map<websocketpp::connection_hdl, std::shared_ptr<Player>, std::owner_less<websocketpp::connection_hdl> > players;
     

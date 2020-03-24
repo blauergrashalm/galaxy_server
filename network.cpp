@@ -36,6 +36,7 @@ void Network::run(uint16_t port)
 {
     process_thread = std::thread(std::bind(&Network::processMessages, this));
     server.listen(port);
+    server.start_accept();
     server.run();
 }
 
@@ -52,5 +53,5 @@ void Network::stop(){
 void Network::on_open(websocketpp::connection_hdl con)
 {
     galaxy->registerNewPlayer(con);
-    std::cout << "Neuen Mitspieler erstellt" << endl; 
+    std::cout << "Neuen Mitspieler erstellt" << std::endl; 
 }
