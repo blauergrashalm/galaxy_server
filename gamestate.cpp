@@ -17,6 +17,8 @@ GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size},
 json GameState::toJson()
 {
     json game_state;
+    game_state["size_x"] = x_size;
+    game_state["size_y"] = y_size;
     for(int i = 0; i < fields.size(); i++){
         for(int j = 0; j < fields[i].size();j++){
             game_state["fields"].push_back(fields[i][j]->toJson());

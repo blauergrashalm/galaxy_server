@@ -7,19 +7,21 @@
 /**
  * @todo write docs
  */
+static unsigned int p_id = 0;
 class Player
 {
 
 private:
     
-    websocketpp::connection_hdl websocket_handle;
-    
 public:
+    const unsigned int id;
+    websocketpp::connection_hdl websocket_handle;
     /**
      * Default constructor
      */
-    Player(websocketpp::connection_hdl hdl):websocket_handle{hdl}{};
-
+    Player(websocketpp::connection_hdl hdl):id{p_id++},websocket_handle{hdl}{};
+    
+    
     /**
      * Destructor
      */

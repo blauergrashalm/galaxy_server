@@ -1,6 +1,10 @@
 #include "galaxy.h"
 #include "network.h"
 
+Galaxy::Galaxy()
+{
+    current_state.reset(new GameState(10,10));
+}
 
 void Galaxy::run()
 {
@@ -18,10 +22,30 @@ void Galaxy::stop()
 
 void Galaxy::registerNewPlayer(websocketpp::connection_hdl connection)
 {
-    players.insert( std::pair<websocketpp::connection_hdl, std::shared_ptr<Player> >(connection, new Player(connection)) );
+    players.insert( std::pair<websocketpp::connection_hdl, std::shared_ptr<Player> >(connection, std::make_shared<Player>(connection)));
 }
 
 void Galaxy::deletePlayer(websocketpp::connection_hdl connection)
 {
     players.erase(connection);
 }
+
+void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command, nlohmann::json payload)
+{
+    if(command == "player_register"){
+        auto p = *players[con];
+        p.name = payload["name"];
+        net->send(p, toJson());
+    }else{
+        stop();
+    }
+}
+
+nlohmann::json Galaxy::toJson()
+{
+    nlohmann::json galaxy;
+    galaxy["state"] = current_state->toJson();
+    galaxy["type"] = "galaxy";
+    return galaxy;
+}
+

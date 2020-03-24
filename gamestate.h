@@ -8,6 +8,7 @@
 #include "dot.h"
 #include "position_type.h"
 #include "nlohmann/json.hpp"
+#include "gamechange.h"
 
 using json = nlohmann::json;
 
@@ -25,6 +26,9 @@ private:
 public:
     GameState(unsigned int x_size, unsigned int y_size);
     json toJson();
+    
+    void applyGameChange(const GameChange &change);
+    
 };
 
 #endif // GAMESTATE_H

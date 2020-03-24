@@ -15,21 +15,23 @@ class Field;
 // typedefs
 typedef std::shared_ptr<Field> field_ptr_t;
 
+static unsigned int dot_id = 0;
 class Dot
 {
-
 private:
     std::set< field_ptr_t> fields;
     pos_type position;
     
 public:
-    Dot(unsigned int x, unsigned int y) : position{x,y} {};
+    Dot(unsigned int x, unsigned int y) : position{x,y}, id{dot_id++} {};
     
     bool areFieldsSymetrical();
     bool isValid();
     
     void registerField(field_ptr_t);
     void removeField(field_ptr_t);
+    
+    const unsigned int id;
     
     json toJson();
 };

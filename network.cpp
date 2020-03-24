@@ -1,6 +1,7 @@
 #include "network.h"
 #include "galaxy.h"
 
+
 Network::Network(Galaxy *parent) : galaxy{parent}
 {
     server.init_asio();
@@ -19,11 +20,26 @@ void Network::processMessages(){
         while(to_process.empty() && !shutdown){
             messages_available.wait(lock);
         }
-        if(!to_process.empty()){
-            message_t current = to_process.front();
-            to_process.pop();
+        if (shutdown) return;
+        message_t current = to_process.front();
+        to_process.pop();
+        lock.unlock();
+        json msg;
+        
+        switch(current.type){
+            case SUBSCRIBE:
+                std::cout << "Subscribe verarbeiten"<< std::endl;
+                galaxy->registerNewPlayer(current.connection);
+            break;
+            case MESSAGE:
+                std::cout << "Message verarbeiten: " << current.mesage->get_payload() << std::endl; 
+                msg = json::parse(current.mesage->get_payload());
+                galaxy->executeCommand(current.connection,msg["command"], msg["payload"]);
+            break;
+            case UNSUBSCRIBE:
+                galaxy->deletePlayer(current.connection);
+            break;
         }
-        if (!shutdown) lock.unlock();
         
         // do processing
 //         galaxy->stop();
@@ -38,20 +54,40 @@ void Network::run(uint16_t port)
     server.listen(port);
     server.start_accept();
     server.run();
+    process_thread.join();
 }
-
 
 void Network::stop(){
     std::cout << "Netzwerk soll gestoppt werden" << std::endl;
     server.stop();
     shutdown = true;
     messages_available.notify_all();
-    process_thread.join();
     std::cout << "Thread ist gejoint" << std::endl;
 }
 
 void Network::on_open(websocketpp::connection_hdl con)
 {
-    galaxy->registerNewPlayer(con);
-    std::cout << "Neuen Mitspieler erstellt" << std::endl; 
+    std::lock_guard<std::mutex> g(message_mutex);
+    to_process.push({con, SUBSCRIBE, nullptr});
+    messages_available.notify_one();
 }
+
+void Network::on_message(websocketpp::connection_hdl con, server_t::message_ptr msg)
+{
+    std::lock_guard<std::mutex> g(message_mutex);
+    to_process.push({con, MESSAGE, msg});
+    messages_available.notify_one();
+}
+
+void Network::on_close(websocketpp::connection_hdl con)
+{
+    std::lock_guard<std::mutex> g(message_mutex);
+    to_process.push({con, UNSUBSCRIBE, nullptr});
+    messages_available.notify_one();
+}
+
+void Network::send(Player& p, nlohmann::json data)
+{
+    server.send(p.websocket_handle, data.dump(), websocketpp::frame::opcode::TEXT);
+}
+

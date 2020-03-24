@@ -1,9 +1,10 @@
 #ifndef NETWORK_H
 #define NETWORK_H
-
+#include "nlohmann/json.hpp"
 #include "websocketpp/config/asio_no_tls.hpp"
 
 #include "websocketpp/server.hpp"
+#include "player.h"
 
 #include <queue>
 typedef websocketpp::server<websocketpp::config::asio> server_t;
@@ -40,8 +41,8 @@ private:
     bool shutdown = false;
     
     void on_open(websocketpp::connection_hdl);
-    void on_close(websocketpp::connection_hdl){};
-    void on_message(websocketpp::connection_hdl, server_t::message_ptr){};
+    void on_close(websocketpp::connection_hdl con);
+    void on_message(websocketpp::connection_hdl, server_t::message_ptr);
     
     
 public:
@@ -56,6 +57,7 @@ public:
     
     void stop();
     
+    void send(Player &p, nlohmann::json data);
 };
 
 #endif // NETWORK_H
