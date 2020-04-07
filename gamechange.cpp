@@ -7,7 +7,8 @@ GameChange::~GameChange()
 
 void GameChange::apply(std::shared_ptr<GameChange> self)
 {
-    if(auto dot = affected_field->assigned_dot.lock()){
+    if (auto dot = affected_field->assigned_dot.lock())
+    {
         old_assoziation = dot;
         dot->removeField(affected_field);
     }
@@ -23,11 +24,10 @@ void GameChange::revert()
 
 nlohmann::json GameChange::toJson()
 {
-    nlohmann:json result;
+    nlohmann::json result;
     result["type"] = "game_change";
     result["player"] = player->id;
     result["field"] = affected_field->id;
     result["dot"] = new_assoziation->id;
     return result;
 }
-

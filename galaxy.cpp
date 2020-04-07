@@ -1,9 +1,10 @@
 #include "galaxy.h"
 #include "network.h"
 #include <memory>
+
 Galaxy::Galaxy()
 {
-    current_state.reset(new GameState(10,10));
+    current_state.reset(new GameState(10, 10));
 }
 
 void Galaxy::run()
@@ -17,14 +18,15 @@ void Galaxy::run()
 void Galaxy::stop()
 {
     net->stop();
-    for(auto it = players.begin(); it != players.end(); it++){
+    for (auto it = players.begin(); it != players.end(); it++)
+    {
         net->closeCon(it->first);
     }
 }
 
 void Galaxy::registerNewPlayer(websocketpp::connection_hdl connection)
 {
-    players.insert( std::pair<websocketpp::connection_hdl, std::shared_ptr<Player> >(connection, std::make_shared<Player>(connection)));
+    players.insert(std::pair<websocketpp::connection_hdl, std::shared_ptr<Player>>(connection, std::make_shared<Player>(connection)));
 }
 
 void Galaxy::deletePlayer(websocketpp::connection_hdl connection)
@@ -35,24 +37,31 @@ void Galaxy::deletePlayer(websocketpp::connection_hdl connection)
 void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command, nlohmann::json payload)
 {
     auto p = players[con];
-    if(command == "player_register"){
+    if (command == "player_register")
+    {
         p->name = payload["name"];
         net->send(*p, toJson());
-    }else if( command == "game_change"){
-        makeGameChange(p,payload);
-    }else{
+    }
+    else if (command == "game_change")
+    {
+        makeGameChange(p, payload);
+    }
+    else
+    {
         stop();
     }
 }
 
-void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload){
-        auto field = (*current_state)[payload["field"]];
-        auto dot = (*current_state)(payload["dot"]);
-        auto change = std::make_shared<GameChange>(p,field,dot);
-        change->apply(change);
-        net->broadcast(players, change->toJson());
-        history.push(change);
-        while(history.size()>5) history.pop();
+void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
+{
+    auto field = (*current_state)[payload["field"]];
+    auto dot = (*current_state)(payload["dot"]);
+    auto change = std::make_shared<GameChange>(p, field, dot);
+    change->apply(change);
+    net->broadcast(players, change->toJson());
+    history.push(change);
+    while (history.size() > 5)
+        history.pop();
 }
 
 nlohmann::json Galaxy::toJson()
@@ -62,4 +71,3 @@ nlohmann::json Galaxy::toJson()
     galaxy["type"] = "galaxy";
     return galaxy;
 }
-

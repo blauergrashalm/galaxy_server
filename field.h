@@ -18,13 +18,13 @@ class Field
 {
 private:
     pos_type position;
+
 public:
-    
     std::weak_ptr<GameChange> last_change;
     std::weak_ptr<Dot> assigned_dot;
     const unsigned int id;
-   
-    Field(unsigned int x, unsigned int y): position{x,y},id{f_id++}{};
+
+    Field(unsigned int x, unsigned int y) : position{x, y}, id{f_id++} {};
 
     json toJson();
 };

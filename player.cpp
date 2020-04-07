@@ -3,5 +3,5 @@
 
 Player::~Player()
 {
-    std::cout << "Player " << id <<" wurde gelöscht" << std::endl;
+    std::cout << "Player " << id << " wurde gelöscht" << std::endl;
 }

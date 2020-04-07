@@ -19,20 +19,20 @@ static unsigned int dot_id = 0;
 class Dot
 {
 private:
-    std::set< field_ptr_t> fields;
+    std::set<field_ptr_t> fields;
     pos_type position;
-    
+
 public:
-    Dot(unsigned int x, unsigned int y) : position{x,y}, id{dot_id++} {};
-    
+    Dot(unsigned int x, unsigned int y) : position{x, y}, id{dot_id++} {};
+
     bool areFieldsSymetrical();
     bool isValid();
-    
-    void registerField(field_ptr_t f){fields.insert(f);};
-    void removeField(field_ptr_t f){fields.erase(f);};
-    
+
+    void registerField(field_ptr_t f) { fields.insert(f); };
+    void removeField(field_ptr_t f) { fields.erase(f); };
+
     const unsigned int id;
-    
+
     json toJson();
 };
 

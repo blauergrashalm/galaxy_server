@@ -8,13 +8,14 @@
 
 Galaxy g;
 
-void my_handler(int s){
-    std::cout<< "Signal erhalten" << std::endl;
-           g.stop();
+void my_handler(int s)
+{
+    std::cout << "Signal erhalten" << std::endl;
+    g.stop();
 }
 
-int main(int argc, char **argv) {
-    
+int main(int argc, char **argv)
+{
     struct sigaction sigIntHandler;
 
     sigIntHandler.sa_handler = my_handler;
@@ -22,9 +23,9 @@ int main(int argc, char **argv) {
     sigIntHandler.sa_flags = 0;
 
     sigaction(SIGINT, &sigIntHandler, NULL);
-    
+
     std::cout << "Starte Galaxy" << std::endl;
     g.run();
-    std::cout << "Programm endet" << std::endl; 
+    std::cout << "Programm endet" << std::endl;
     return 0;
 }

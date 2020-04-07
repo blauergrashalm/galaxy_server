@@ -32,9 +32,9 @@ void GameState::generateRandomDots()
     std::default_random_engine gen(rd());
     std::uniform_int_distribution<unsigned int> dist_x(0, x_size*2-1);
     std::uniform_int_distribution<unsigned int> dist_y(0, y_size*2-1);
-    
+
     int count = (x_size * y_size) / 12;
-    
+
     for(int i = 0; i < count; i++){
         pos_type p{dist_x(gen), dist_y(gen)};
         addDot(p);
