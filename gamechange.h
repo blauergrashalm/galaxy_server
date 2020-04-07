@@ -5,23 +5,34 @@
 #include "field.h"
 #include "dot.h"
 
+typedef std::shared_ptr<Player> p_ptr;
+typedef std::shared_ptr<Field> f_ptr;
+typedef std::shared_ptr<Dot> d_ptr;
+
+
 class GameChange
 {
 private: 
-    std::shared_ptr<Player> player;
-    std::shared_ptr<Field> affected_field;
-    std::shared_ptr<Dot> new_assoziation;
+    p_ptr player;
+    f_ptr affected_field;
+    d_ptr new_assoziation;
+    d_ptr old_assoziation;
     
 public:
     /**
      * Default constructor
      */
-    GameChange();
+    GameChange(p_ptr p, f_ptr f, d_ptr d):player{p},affected_field{f},new_assoziation{d}{};
 
     /**
      * Destructor
      */
     ~GameChange();
+    
+    void apply(std::shared_ptr<GameChange> self);
+    void revert();
+    
+    nlohmann::json toJson();
 
 };
 

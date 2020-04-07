@@ -58,6 +58,10 @@ public:
     void stop();
     
     void send(Player &p, nlohmann::json data);
+    
+    void broadcast( const std::map<websocketpp::connection_hdl, std::shared_ptr<Player>, std::owner_less<websocketpp::connection_hdl> > &players, nlohmann::json data);
+    
+    void closeCon(websocketpp::connection_hdl);
 };
 
 #endif // NETWORK_H

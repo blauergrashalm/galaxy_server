@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include <iostream>
 #include "websocketpp/server.hpp"
 
 /**
@@ -19,8 +20,11 @@ public:
     /**
      * Default constructor
      */
-    Player(websocketpp::connection_hdl hdl):id{p_id++},websocket_handle{hdl}{};
+    Player(websocketpp::connection_hdl hdl):id{p_id++},websocket_handle{hdl}{
+        std::cout << "Player " << id << " erstellt" << std::endl;
+    };
     
+    Player(const Player&) = delete;
     
     /**
      * Destructor

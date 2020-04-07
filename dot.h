@@ -28,8 +28,8 @@ public:
     bool areFieldsSymetrical();
     bool isValid();
     
-    void registerField(field_ptr_t);
-    void removeField(field_ptr_t);
+    void registerField(field_ptr_t f){fields.insert(f);};
+    void removeField(field_ptr_t f){fields.erase(f);};
     
     const unsigned int id;
     

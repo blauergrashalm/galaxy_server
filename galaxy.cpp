@@ -1,6 +1,6 @@
 #include "galaxy.h"
 #include "network.h"
-
+#include <memory>
 Galaxy::Galaxy()
 {
     current_state.reset(new GameState(10,10));
@@ -16,8 +16,10 @@ void Galaxy::run()
 
 void Galaxy::stop()
 {
-    std::cout<< "Galaxie soll gestoppt werden" << std::endl;
     net->stop();
+    for(auto it = players.begin(); it != players.end(); it++){
+        net->closeCon(it->first);
+    }
 }
 
 void Galaxy::registerNewPlayer(websocketpp::connection_hdl connection)
@@ -32,13 +34,25 @@ void Galaxy::deletePlayer(websocketpp::connection_hdl connection)
 
 void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command, nlohmann::json payload)
 {
+    auto p = players[con];
     if(command == "player_register"){
-        auto p = *players[con];
-        p.name = payload["name"];
-        net->send(p, toJson());
+        p->name = payload["name"];
+        net->send(*p, toJson());
+    }else if( command == "game_change"){
+        makeGameChange(p,payload);
     }else{
         stop();
     }
+}
+
+void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload){
+        auto field = (*current_state)[payload["field"]];
+        auto dot = (*current_state)(payload["dot"]);
+        auto change = std::make_shared<GameChange>(p,field,dot);
+        change->apply(change);
+        net->broadcast(players, change->toJson());
+        history.push(change);
+        while(history.size()>5) history.pop();
 }
 
 nlohmann::json Galaxy::toJson()

@@ -59,10 +59,9 @@ void Network::run(uint16_t port)
 
 void Network::stop(){
     std::cout << "Netzwerk soll gestoppt werden" << std::endl;
-    server.stop();
+    server.stop_listening();
     shutdown = true;
     messages_available.notify_all();
-    std::cout << "Thread ist gejoint" << std::endl;
 }
 
 void Network::on_open(websocketpp::connection_hdl con)
@@ -90,4 +89,19 @@ void Network::send(Player& p, nlohmann::json data)
 {
     server.send(p.websocket_handle, data.dump(), websocketpp::frame::opcode::TEXT);
 }
+
+void Network::broadcast (const std::map<websocketpp::connection_hdl, std::shared_ptr<Player>, std::owner_less<websocketpp::connection_hdl> >& players, nlohmann::json data )
+{
+    for(auto &&pair:players){
+        server.send(pair.first, data.dump(), websocketpp::frame::opcode::TEXT);
+        
+    }
+}
+
+
+void Network::closeCon(websocketpp::connection_hdl con)
+{
+    server.close(con, websocketpp::close::status::normal, "server goes to sleep");
+}
+
 
