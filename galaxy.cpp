@@ -54,8 +54,8 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
 
 void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
 {
-    auto field = (*current_state)[payload["field"]];
-    auto dot = (*current_state)(payload["dot"]);
+    auto field = (*current_state)[(unsigned int)payload["field"]];
+    auto dot = (*current_state)((unsigned int)payload["dot"]);
     auto change = std::make_shared<GameChange>(p, field, dot);
     change->apply(change);
     net->broadcast(players, change->toJson());
