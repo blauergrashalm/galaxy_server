@@ -12,8 +12,6 @@ jobs:
       run: sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get -y install libboost-all-dev libwebsocketpp-dev ninja-build nlohmann-json3-dev
-    - name: Define compiler to use
-      run: export CC=/usr/bin/gcc-8 && export CXX=/usr/bin/g++-8
     - uses: actions/checkout@v1
       with:
         fetch-depth: 1
