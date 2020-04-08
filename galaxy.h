@@ -7,7 +7,7 @@
 #include "nlohmann/json.hpp"
 #include "gamechange.h"
 #include "gamestate.h"
-#include <queue>
+#include <list>
 
 /**
  * @todo write docs
@@ -21,7 +21,7 @@ private:
 
     std::map<websocketpp::connection_hdl, std::shared_ptr<Player>, std::owner_less<websocketpp::connection_hdl>> players;
     std::unique_ptr<GameState> current_state;
-    std::queue<std::shared_ptr<GameChange>> history;
+    std::list<std::shared_ptr<GameChange>> history;
 
     void setPlayerName(std::string name);
     void makeAMove();

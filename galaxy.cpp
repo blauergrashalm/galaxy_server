@@ -48,7 +48,8 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
     }
     else if (command == "new_game")
     {
-        current_state->renew();
+        history.clear();
+        current_state.reset(new GameState((int)payload["width"], (int)payload["height"]));
         net->broadcast(players, toJson());
     }
     else
@@ -64,9 +65,9 @@ void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
     auto change = std::make_shared<GameChange>(p, field, dot);
     change->apply(change);
     net->broadcast(players, change->toJson());
-    history.push(change);
+    history.push_back(change);
     while (history.size() > 5)
-        history.pop();
+        history.pop_front();
 }
 
 nlohmann::json Galaxy::toJson()
