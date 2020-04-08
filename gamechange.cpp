@@ -31,7 +31,7 @@ nlohmann::json GameChange::toJson()
     result["type"] = "game_change";
     result["player"] = player->id;
     result["field"] = affected_field->id;
-    if (new_assoziation)
+    if (!new_assoziation)
     {
         result["dot"] = nullptr;
     }

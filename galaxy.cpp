@@ -69,7 +69,7 @@ void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
     else
     {
         auto dot = (*current_state)((unsigned int)payload["dot"]);
-        auto change = std::make_shared<GameChange>(p, field, dot);
+        change = std::make_shared<GameChange>(p, field, dot);
     }
     change->apply(change);
     net->broadcast(players, change->toJson());
