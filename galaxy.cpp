@@ -4,7 +4,7 @@
 
 Galaxy::Galaxy()
 {
-    current_state.reset(new GameState(10, 10));
+    current_state.reset(new GameState(5, 5));
 }
 
 void Galaxy::run()
