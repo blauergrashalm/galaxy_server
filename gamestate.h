@@ -35,15 +35,15 @@ private:
     unsigned int getEmptySpacesFromSpace(DotSpace space);
     std::pair<DotSpace, UIntPair> generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
     DotSpace regenerateSpaceWithDot(DotSpace space, UIntPair dot, std::default_random_engine gen);
-    DotSpace AddFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen);
-    DotSpace MarkAsOccupied(DotSpace space, UIntPair dot);
+    DotSpace addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen);
+    DotSpace markAsOccupied(DotSpace space, UIntPair dot);
     void generateSpace();
     void generateRandomDots();
     void printDotSpace(DotSpace space);
 
 public:
     GameState(unsigned int x_size, unsigned int y_size);
-    void Renew();
+    void renew();
     json toJson();
 
     void applyGameChange(const GameChange &change);

@@ -10,11 +10,10 @@ GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size},
             addField({i, j});
         }
     }
-    //generateRandomDots();
     generateSpace();
 }
 
-void GameState::Renew()
+void GameState::renew()
 {
     for (unsigned int i = 0; i < fields_by_id.size(); i++)
     {
@@ -41,48 +40,52 @@ json GameState::toJson()
     return game_state;
 }
 
-std::pair<DotSpace, std::pair<unsigned int, unsigned int>> GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
+std::pair<DotSpace, UIntPair> GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
 {
-    auto empty_spaces = getEmptySpacesFromSpace(space);
+    // Determine possible candidates
+    std::vector<UIntPair> candidates;
 
-    // Generate a random position in the empty space
-    // TODO: think about more complex stuff to increase the propability e.g. in the
-    // TODO: middle to create bigger galaxies
-    std::uniform_int_distribution<unsigned int> gen_pos_index(0, empty_spaces - 1);
-    auto new_dot_pos_index = gen_pos_index(gen);
-
-    unsigned int dot_x;
-    unsigned int dot_y;
-
-    // Determine which position was generated
-    auto current_index = 0;
     auto x_size = space.size();
-    for (unsigned int x = 0; x < x_size; x++)
+    for (auto x = 0; x < x_size; x++)
     {
         auto y_size = space[x].size();
-        // Simply counts the empty spaces
-        for (unsigned int y = 0; y < y_size; y++)
+        for (auto y = 0; y < y_size; y++)
         {
+            // Check how many neighbors are filled
+            int filled_neighbors = 0;
+            filled_neighbors += x <= 0 || space[x - 1][y] == 1 ? 1 : 0;                                 // left
+            filled_neighbors += x + 1 >= x_size || space[x + 1][y] == 1 ? 1 : 0;                        // right
+            filled_neighbors += y <= 0 || space[x][y - 1] == 1 ? 1 : 0;                                 // top
+            filled_neighbors += y + 1 >= y_size || space[x][y + 1] == 1 ? 1 : 0;                        // bottom
+            filled_neighbors += x <= 0 || y <= 0 || space[x - 1][y - 1] == 1 ? 1 : 0;                   // top-left
+            filled_neighbors += x + 1 >= x_size || y <= 0 || space[x + 1][y - 1] == 1 ? 1 : 0;          // top-right
+            filled_neighbors += x <= 0 || y + 1 >= y_size || space[x - 1][y + 1] == 1 ? 1 : 0;          // bottom-left
+            filled_neighbors += x + 1 >= x_size || y + 1 >= y_size || space[x + 1][y + 1] == 1 ? 1 : 0; // bottom-right
+
+            auto neighbor_score = std::max(6 - filled_neighbors, 1);
+
             if (space[x][y] == 0)
             {
-                if (current_index == new_dot_pos_index)
+                // Give candidates with few filled neighbors a higher weight
+                for (int i = 0; i < pow(neighbor_score, 2); i++)
                 {
-                    dot_x = x;
-                    dot_y = y;
-                    pos_type new_dot_pos{dot_x, dot_y};
-                    addDot(new_dot_pos);
-                    goto finishedPosSearch; // break 2
-                }
-                else
-                {
-                    ++current_index;
+                    candidates.push_back(UIntPair(x, y));
                 }
             }
         }
     }
-finishedPosSearch:
 
-    return std::pair<DotSpace, std::pair<unsigned int, unsigned int>>(space, std::pair<unsigned int, unsigned int>(dot_x, dot_y));
+    // Choose one candidate randomly
+    // Assert: There MUST be candidates if this function is called
+    std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
+    auto new_dot_index = gen_pos_index(gen);
+
+    auto winner = candidates[new_dot_index];
+
+    pos_type new_dot_pos{winner.first, winner.second};
+    addDot(new_dot_pos);
+
+    return std::pair<DotSpace, UIntPair>(space, winner);
 }
 
 unsigned int GameState::getEmptySpacesFromSpace(DotSpace space)
@@ -110,12 +113,24 @@ unsigned int GameState::getEmptySpacesFromSpace(DotSpace space)
 
 DotSpace GameState::regenerateSpaceWithDot(DotSpace space, std::pair<unsigned int, unsigned int> dot, std::default_random_engine gen)
 {
-    space = MarkAsOccupied(space, dot);
+    space = markAsOccupied(space, dot);
 
-    // Add fields to galaxy
-    space = AddFieldToGalaxy(space, dot, gen);
-    space = AddFieldToGalaxy(space, dot, gen);
-    space = AddFieldToGalaxy(space, dot, gen);
+    // Add fields to galaxy/
+    auto field = 0;
+    std::uniform_int_distribution<unsigned int> gen_pos_index(1, 100);
+    double probability;
+    unsigned int dice;
+    auto mid_of_bell = 7;
+    auto steepness = 10;
+
+    do
+    {
+        space = addFieldToGalaxy(space, dot, gen);
+        ++field;
+
+        probability = -50 * (field - mid_of_bell) / (sqrt(steepness + pow(field - mid_of_bell, 2))) + 50;
+        dice = gen_pos_index(gen);
+    } while (dice <= probability);
 
     // Normalize entries in space
     auto x_size = space.size();
@@ -134,7 +149,7 @@ DotSpace GameState::regenerateSpaceWithDot(DotSpace space, std::pair<unsigned in
     return space;
 }
 
-DotSpace GameState::AddFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen)
+DotSpace GameState::addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen)
 {
     // Determine possible candidates
     std::vector<UIntPair> candidates;
@@ -172,21 +187,21 @@ DotSpace GameState::AddFieldToGalaxy(DotSpace space, UIntPair dot, std::default_
 
         auto winner = candidates[new_field_index];
 
-        space = MarkAsOccupied(space, winner);
+        space = markAsOccupied(space, winner);
 
         // Mark corresponding field as well
         auto x2 = 2 * dot.first - winner.first;
         auto y2 = 2 * dot.second - winner.second;
         if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < space[x2].size())
         {
-            space = MarkAsOccupied(space, UIntPair(x2, y2));
+            space = markAsOccupied(space, UIntPair(x2, y2));
         }
     }
 
     return space;
 }
 
-DotSpace GameState::MarkAsOccupied(DotSpace space, UIntPair dot)
+DotSpace GameState::markAsOccupied(DotSpace space, UIntPair dot)
 {
     auto x_size = space.size();
     auto y_size = space[0].size();

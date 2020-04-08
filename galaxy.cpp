@@ -4,7 +4,7 @@
 
 Galaxy::Galaxy()
 {
-    current_state.reset(new GameState(5, 5));
+    current_state.reset(new GameState(10, 10));
 }
 
 void Galaxy::run()
@@ -48,7 +48,7 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
     }
     else if (command == "new_game")
     {
-        current_state->Renew();
+        current_state->renew();
         net->broadcast(players, toJson());
     }
     else
