@@ -12,8 +12,11 @@ void GameChange::apply(std::shared_ptr<GameChange> self)
         old_assoziation = dot;
         dot->removeField(affected_field);
     }
-    affected_field->assigned_dot = new_assoziation;
-    new_assoziation->registerField(affected_field);
+    if (new_assoziation)
+    {
+        affected_field->assigned_dot = new_assoziation;
+        new_assoziation->registerField(affected_field);
+    }
     affected_field->last_change = self;
 }
 
