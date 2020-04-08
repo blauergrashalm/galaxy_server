@@ -61,8 +61,16 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
 void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
 {
     auto field = (*current_state)[(unsigned int)payload["field"]];
-    auto dot = (*current_state)((unsigned int)payload["dot"]);
-    auto change = std::make_shared<GameChange>(p, field, dot);
+    std::shared_ptr<GameChange> change;
+    if (payload["dot"] == nullptr)
+    {
+        change = std::make_shared<GameChange>(p, field, nullptr);
+    }
+    else
+    {
+        auto dot = (*current_state)((unsigned int)payload["dot"]);
+        auto change = std::make_shared<GameChange>(p, field, dot);
+    }
     change->apply(change);
     net->broadcast(players, change->toJson());
     history.push_back(change);
