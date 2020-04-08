@@ -1,5 +1,4 @@
 {
-    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
     "cmake.generator": "Ninja",
     "[cpp]":{
         "editor.formatOnSave": true

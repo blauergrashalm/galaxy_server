@@ -43,7 +43,6 @@ private:
 
 public:
     GameState(unsigned int x_size, unsigned int y_size);
-    void renew();
     json toJson();
 
     void applyGameChange(const GameChange &change);

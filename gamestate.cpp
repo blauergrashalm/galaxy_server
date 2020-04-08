@@ -13,17 +13,6 @@ GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size},
     generateSpace();
 }
 
-void GameState::renew()
-{
-    for (unsigned int i = 0; i < fields_by_id.size(); i++)
-    {
-        fields_by_id.at(i)->assigned_dot.reset();
-    }
-    dots_by_id.clear();
-    dots.clear();
-    generateSpace();
-}
-
 json GameState::toJson()
 {
     json game_state;
