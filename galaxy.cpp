@@ -46,6 +46,11 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
     {
         makeGameChange(p, payload);
     }
+    else if (command == "new_game")
+    {
+        current_state->Renew();
+        net->broadcast(players, toJson());
+    }
     else
     {
         stop();

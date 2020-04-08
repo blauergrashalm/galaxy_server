@@ -14,6 +14,17 @@ GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size},
     generateSpace();
 }
 
+void GameState::Renew()
+{
+    for (unsigned int i = 0; i < fields_by_id.size(); i++)
+    {
+        fields_by_id.at(i)->assigned_dot.reset();
+    }
+    dots_by_id.clear();
+    dots.clear();
+    generateSpace();
+}
+
 json GameState::toJson()
 {
     json game_state;
@@ -30,7 +41,7 @@ json GameState::toJson()
     return game_state;
 }
 
-DotSpace GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
+std::pair<DotSpace, std::pair<unsigned int, unsigned int>> GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
 {
     auto empty_spaces = getEmptySpacesFromSpace(space);
 
@@ -71,8 +82,7 @@ DotSpace GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_r
     }
 finishedPosSearch:
 
-    // Regenerate space
-    return regenerateSpaceWithDot(space, dot_x, dot_y);
+    return std::pair<DotSpace, std::pair<unsigned int, unsigned int>>(space, std::pair<unsigned int, unsigned int>(dot_x, dot_y));
 }
 
 unsigned int GameState::getEmptySpacesFromSpace(DotSpace space)
@@ -98,10 +108,91 @@ unsigned int GameState::getEmptySpacesFromSpace(DotSpace space)
     return empty_spaces_total;
 }
 
-DotSpace GameState::regenerateSpaceWithDot(DotSpace space, unsigned int dot_x, unsigned int dot_y)
+DotSpace GameState::regenerateSpaceWithDot(DotSpace space, std::pair<unsigned int, unsigned int> dot, std::default_random_engine gen)
+{
+    space = MarkAsOccupied(space, dot);
+
+    // Add fields to galaxy
+    space = AddFieldToGalaxy(space, dot, gen);
+    space = AddFieldToGalaxy(space, dot, gen);
+    space = AddFieldToGalaxy(space, dot, gen);
+
+    // Normalize entries in space
+    auto x_size = space.size();
+    for (auto x = 0; x < x_size; x++)
+    {
+        auto y_size = space[x].size();
+        for (auto y = 0; y < y_size; y++)
+        {
+            if (space[x][y] == 2)
+            {
+                space[x][y] = 1;
+            }
+        }
+    }
+
+    return space;
+}
+
+DotSpace GameState::AddFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen)
+{
+    // Determine possible candidates
+    std::vector<UIntPair> candidates;
+
+    auto x_size = space.size();
+    for (auto x = 0; x < x_size; x += 2)
+    {
+        auto y_size = space[x].size();
+        for (auto y = 0; y < y_size; y += 2)
+        {
+            // Check if field is adjacent
+            auto left = x > 0 && space[x - 1][y] == 2;
+            auto right = x + 1 < x_size && space[x + 1][y] == 2;
+            auto top = y > 0 && space[x][y - 1] == 2;
+            auto bottom = y + 1 < y_size && space[x][y + 1] == 2;
+
+            if (space[x][y] == 0 && (left || right || top || bottom))
+            {
+                // Check if corresponding field is free too
+                auto x2 = 2 * dot.first - x;
+                auto y2 = 2 * dot.second - y;
+                if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < y_size && space[x2][y2] == 0)
+                {
+                    candidates.push_back(UIntPair(x, y));
+                }
+            }
+        }
+    }
+
+    // Choose one candidate randomly
+    if (candidates.size() > 0)
+    {
+        std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
+        auto new_field_index = gen_pos_index(gen);
+
+        auto winner = candidates[new_field_index];
+
+        space = MarkAsOccupied(space, winner);
+
+        // Mark corresponding field as well
+        auto x2 = 2 * dot.first - winner.first;
+        auto y2 = 2 * dot.second - winner.second;
+        if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < space[x2].size())
+        {
+            space = MarkAsOccupied(space, UIntPair(x2, y2));
+        }
+    }
+
+    return space;
+}
+
+DotSpace GameState::MarkAsOccupied(DotSpace space, UIntPair dot)
 {
     auto x_size = space.size();
     auto y_size = space[0].size();
+
+    auto dot_x = dot.first;
+    auto dot_y = dot.second;
 
     // Is a dot on an edge or corner even more places are not available anymore
     auto x_diff = dot_x % 2 == 1 ? 2 : 1;
@@ -115,9 +206,9 @@ DotSpace GameState::regenerateSpaceWithDot(DotSpace space, unsigned int dot_x, u
             auto x = dot_x + i;
             auto y = dot_y + j;
 
-            if (x >= 0 && y >= 0 && x < x_size && y < y_size)
+            if (x >= 0 && y >= 0 && x < x_size && y < y_size && space[x][y] == 0)
             {
-                space[x][y] = 1;
+                space[x][y] = 2;
             }
         }
     }
@@ -171,8 +262,13 @@ void GameState::generateSpace()
     std::default_random_engine gen(rd());
     do
     {
-        space = generateRandomDotInEmptySpace(space, gen);
+        std::pair<DotSpace, std::pair<unsigned int, unsigned int>> result = generateRandomDotInEmptySpace(space, gen);
+        space = result.first;
+        space = regenerateSpaceWithDot(space, result.second, gen);
         empty_spaces = getEmptySpacesFromSpace(space);
+        // Debugging statements
+        printDotSpace(space);
+        std::cout << std::endl;
     } while (empty_spaces > 0);
 }
 

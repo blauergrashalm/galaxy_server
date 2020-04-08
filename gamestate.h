@@ -15,6 +15,7 @@
 // If the place in the grid is a valid place for a new dot to be in, it is marked with 0
 // Otherwise it is marked with 1
 typedef std::vector<std::vector<unsigned int>> DotSpace;
+typedef std::pair<unsigned int, unsigned int> UIntPair;
 
 using json = nlohmann::json;
 
@@ -32,14 +33,17 @@ private:
     void addDot(pos_type position);
 
     unsigned int getEmptySpacesFromSpace(DotSpace space);
-    DotSpace generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
-    DotSpace regenerateSpaceWithDot(DotSpace space, unsigned int dot_x, unsigned int dot_y);
+    std::pair<DotSpace, UIntPair> generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
+    DotSpace regenerateSpaceWithDot(DotSpace space, UIntPair dot, std::default_random_engine gen);
+    DotSpace AddFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen);
+    DotSpace MarkAsOccupied(DotSpace space, UIntPair dot);
     void generateSpace();
     void generateRandomDots();
     void printDotSpace(DotSpace space);
 
 public:
     GameState(unsigned int x_size, unsigned int y_size);
+    void Renew();
     json toJson();
 
     void applyGameChange(const GameChange &change);
