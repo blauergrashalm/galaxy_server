@@ -9,7 +9,7 @@ typedef std::shared_ptr<Player> p_ptr;
 typedef std::shared_ptr<Field> f_ptr;
 typedef std::shared_ptr<Dot> d_ptr;
 
-class GameChange
+class GameChange : public std::enable_shared_from_this<GameChange>
 {
 private:
     p_ptr player;
@@ -28,7 +28,7 @@ public:
      */
     ~GameChange();
 
-    void apply(std::shared_ptr<GameChange> self);
+    void apply();
     void revert();
 
     nlohmann::json toJson();
