@@ -5,7 +5,7 @@
 #include "field.h"
 #include "dot.h"
 
-typedef std::shared_ptr<Player> p_ptr;
+typedef std::weak_ptr<Player> p_ptr;
 typedef std::shared_ptr<Field> f_ptr;
 typedef std::shared_ptr<Dot> d_ptr;
 
