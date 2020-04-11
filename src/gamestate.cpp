@@ -1,4 +1,4 @@
-#include "gamegen.h"
+#include "gamegen.hpp"
 #include "gamestate.hpp"
 #include <iostream>
 #include <iomanip>
