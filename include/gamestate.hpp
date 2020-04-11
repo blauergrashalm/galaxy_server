@@ -34,7 +34,8 @@ private:
 
     unsigned int getEmptySpacesFromSpace(DotSpace space);
     int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size);
-    std::pair<DotSpace, UIntPair> generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
+    UIntPair GameState::generateNextDot(DotSpace space, std::default_random_engine gen);
+    UIntPair GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
     DotSpace regenerateSpaceWithDot(DotSpace space, UIntPair dot, std::default_random_engine gen);
     DotSpace addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen);
     DotSpace markAsOccupied(DotSpace space, UIntPair dot);

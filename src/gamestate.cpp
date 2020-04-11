@@ -59,14 +59,23 @@ int GameState::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size
     return neighbor_penalty;
 }
 
-std::pair<DotSpace, UIntPair> GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
+UIntPair GameState::generateNextDot(DotSpace space, std::default_random_engine gen)
 {
     printDotSpace(space);
     std::cout << std::endl;
 
+    auto winner = generateRandomDotInEmptySpace(space, gen);
+
+    pos_type new_dot_pos{winner.first, winner.second};
+    addDot(new_dot_pos);
+
+    return winner;
+}
+
+UIntPair GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
+{
     // Determine possible candidates
     std::vector<UIntPair> candidates;
-
     auto x_size = space.size();
     for (int x = 0; x < x_size; x++)
     {
@@ -102,10 +111,7 @@ std::pair<DotSpace, UIntPair> GameState::generateRandomDotInEmptySpace(DotSpace 
     std::cout << "Winner: " << winner.first << " " << winner.second << std::endl
               << std::endl;
 
-    pos_type new_dot_pos{winner.first, winner.second};
-    addDot(new_dot_pos);
-
-    return std::pair<DotSpace, UIntPair>(space, winner);
+    return winner;
 }
 
 unsigned int GameState::getEmptySpacesFromSpace(DotSpace space)
@@ -332,9 +338,8 @@ void GameState::generateSpace()
     std::default_random_engine gen(rd());
     do
     {
-        std::pair<DotSpace, std::pair<unsigned int, unsigned int>> result = generateRandomDotInEmptySpace(space, gen);
-        space = result.first;
-        space = regenerateSpaceWithDot(space, result.second, gen);
+        auto new_dot = generateNextDot(space, gen);
+        space = regenerateSpaceWithDot(space, new_dot, gen);
         empty_spaces = getEmptySpacesFromSpace(space);
         // Debugging statements
         //printDotSpace(space);
