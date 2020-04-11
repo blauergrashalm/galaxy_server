@@ -1,5 +1,6 @@
 #include "gamestate.hpp"
 #include <iostream>
+#include <iomanip>
 
 GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size}, y_size{y_size}
 {
@@ -29,34 +30,58 @@ json GameState::toJson()
     return game_state;
 }
 
+// Calculates for a field in DotSpace a weight for the choosing algorithm
+int GameState::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size)
+{
+    auto neighbor_span = 5; // Has to be positive
+
+    auto neighbor_penalty = 0;
+    for (int i = 1; i <= neighbor_span; i++)
+    {
+        auto factor = pow(neighbor_span - i + 1, 2);
+
+        for (int j = -i; j <= i; j++)
+        {
+            auto x2 = x + j;
+            auto y2_1 = y - (i - abs(j));
+            auto y2_2 = y + (i - abs(j));
+
+            // First y
+            neighbor_penalty += factor * (x2 < 0 || x2 >= x_size || y2_1 < 0 || y2_1 >= y_size || space[x2][y2_1] == 1 ? 1 : 0);
+            // Second y, if existing
+            if (y2_1 != y2_2)
+            {
+                neighbor_penalty += factor * (x2 < 0 || x2 >= x_size || y2_2 < 0 || y2_2 >= y_size || space[x2][y2_2] == 1 ? 1 : 0);
+            }
+        }
+    }
+
+    return neighbor_penalty;
+}
+
 std::pair<DotSpace, UIntPair> GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
 {
+    printDotSpace(space);
+    std::cout << std::endl;
+
     // Determine possible candidates
     std::vector<UIntPair> candidates;
 
     auto x_size = space.size();
-    for (auto x = 0; x < x_size; x++)
+    for (int x = 0; x < x_size; x++)
     {
         auto y_size = space[x].size();
-        for (auto y = 0; y < y_size; y++)
+        for (int y = 0; y < y_size; y++)
         {
-            // Check how many neighbors are filled
-            int filled_neighbors = 0;
-            filled_neighbors += x <= 0 || space[x - 1][y] == 1 ? 1 : 0;                                 // left
-            filled_neighbors += x + 1 >= x_size || space[x + 1][y] == 1 ? 1 : 0;                        // right
-            filled_neighbors += y <= 0 || space[x][y - 1] == 1 ? 1 : 0;                                 // top
-            filled_neighbors += y + 1 >= y_size || space[x][y + 1] == 1 ? 1 : 0;                        // bottom
-            filled_neighbors += x <= 0 || y <= 0 || space[x - 1][y - 1] == 1 ? 1 : 0;                   // top-left
-            filled_neighbors += x + 1 >= x_size || y <= 0 || space[x + 1][y - 1] == 1 ? 1 : 0;          // top-right
-            filled_neighbors += x <= 0 || y + 1 >= y_size || space[x - 1][y + 1] == 1 ? 1 : 0;          // bottom-left
-            filled_neighbors += x + 1 >= x_size || y + 1 >= y_size || space[x + 1][y + 1] == 1 ? 1 : 0; // bottom-right
-
-            auto neighbor_score = std::max(6 - filled_neighbors, 1);
+            // Calculate neighbor score
+            auto penalty = calculateNeighborPenalty(space, x, y, x_size, y_size);
+            // Depends on neighbor_span
+            auto neighbor_score = std::max(261 - penalty, 1);
 
             if (space[x][y] == 0)
             {
                 // Give candidates with few filled neighbors a higher weight
-                for (int i = 0; i < pow(neighbor_score, 2); i++)
+                for (int i = 0; i < neighbor_score; i++)
                 {
                     candidates.push_back(UIntPair(x, y));
                 }
@@ -64,12 +89,18 @@ std::pair<DotSpace, UIntPair> GameState::generateRandomDotInEmptySpace(DotSpace 
         }
     }
 
+    printDotSpaceCandidates(space, candidates);
+    std::cout << std::endl;
+
     // Choose one candidate randomly
     // Assert: There MUST be candidates if this function is called
-    std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
+    std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size());
     auto new_dot_index = gen_pos_index(gen);
 
     auto winner = candidates[new_dot_index];
+
+    std::cout << "Winner: " << winner.first << " " << winner.second << std::endl
+              << std::endl;
 
     pos_type new_dot_pos{winner.first, winner.second};
     addDot(new_dot_pos);
@@ -227,20 +258,55 @@ void GameState::printDotSpace(DotSpace space)
     auto y_size = space[0].size();
 
     // Print Header
-    std::cout << " ";
+    std::cout << "   ";
     for (int i = 0; i < x_size; i++)
     {
-        std::cout << " " << i;
+        std::cout << std::setw(2) << std::setfill('0') << i << " ";
     }
     std::cout << std::endl;
 
     // Every place around the dot is not available anymore
     for (auto i = 0; i < y_size; i++)
     {
-        std::cout << i << " ";
+        std::cout << std::setw(2) << std::setfill('0') << i << " ";
         for (auto j = 0; j < x_size; j++)
         {
-            std::cout << space[j][i] << " ";
+            std::cout << " " << space[j][i] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+// Helper for debugging purposes
+void GameState::printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> candidates)
+{
+    auto x_size = space.size();
+    auto y_size = space[0].size();
+
+    // Print Header
+    std::cout << "    ";
+    for (int i = 0; i < x_size; i++)
+    {
+        std::cout << std::setw(3) << std::setfill('0') << i << " ";
+    }
+    std::cout << std::endl;
+
+    // Every place around the dot is not available anymore
+    for (auto i = 0; i < y_size; i++)
+    {
+        std::cout << std::setw(3) << std::setfill('0') << i << " ";
+        for (auto j = 0; j < x_size; j++)
+        {
+            auto amount = 0;
+            for (int k = 0; k < candidates.size(); k++)
+            {
+                auto candidate = candidates[k];
+                if (candidate.first == j && candidate.second == i)
+                {
+                    ++amount;
+                }
+            }
+            std::cout << std::setw(3) << std::setfill(' ') << amount << " ";
         }
         std::cout << std::endl;
     }
@@ -271,8 +337,8 @@ void GameState::generateSpace()
         space = regenerateSpaceWithDot(space, result.second, gen);
         empty_spaces = getEmptySpacesFromSpace(space);
         // Debugging statements
-        printDotSpace(space);
-        std::cout << std::endl;
+        //printDotSpace(space);
+        //std::cout << std::endl;
     } while (empty_spaces > 0);
 }
 
