@@ -1,6 +1,6 @@
 #include <iostream>
-#include "gamestate.h"
-#include "galaxy.h"
+#include "gamestate.hpp"
+#include "galaxy.hpp"
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>

@@ -1,7 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
-#include "position_type.h"
+#include "position_type.hpp"
 
 #include "nlohmann/json.hpp"
 

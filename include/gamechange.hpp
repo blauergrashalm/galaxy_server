@@ -1,9 +1,9 @@
 #ifndef GAMECHANGE_H
 #define GAMECHANGE_H
 
-#include "player.h"
-#include "field.h"
-#include "dot.h"
+#include "player.hpp"
+#include "field.hpp"
+#include "dot.hpp"
 
 typedef std::weak_ptr<Player> p_ptr;
 typedef std::shared_ptr<Field> f_ptr;

@@ -2,11 +2,11 @@
 #define GALAXY_H
 
 #include <condition_variable>
-#include "player.h"
-#include "network.h"
+#include "player.hpp"
+#include "network.hpp"
 #include "nlohmann/json.hpp"
-#include "gamechange.h"
-#include "gamestate.h"
+#include "gamechange.hpp"
+#include "gamestate.hpp"
 #include <list>
 
 /**

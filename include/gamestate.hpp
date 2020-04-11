@@ -5,11 +5,11 @@
 #include <map>
 #include <memory>
 #include <random>
-#include "field.h"
-#include "dot.h"
-#include "position_type.h"
+#include "field.hpp"
+#include "dot.hpp"
+#include "position_type.hpp"
 #include "nlohmann/json.hpp"
-#include "gamechange.h"
+#include "gamechange.hpp"
 
 // This is type is in dot grid coordinates to simplify the generation algorithm
 // If the place in the grid is a valid place for a new dot to be in, it is marked with 0

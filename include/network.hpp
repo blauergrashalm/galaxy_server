@@ -4,7 +4,7 @@
 #include "websocketpp/config/asio_no_tls.hpp"
 
 #include "websocketpp/server.hpp"
-#include "player.h"
+#include "player.hpp"
 
 #include <queue>
 typedef websocketpp::server<websocketpp::config::asio> server_t;
