@@ -1,0 +1,386 @@
+\hypertarget{classGameGen}{}\doxysection{Game\+Gen Class Reference}
+\label{classGameGen}\index{GameGen@{GameGen}}
+
+
+{\ttfamily \#include $<$gamegen.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} \mbox{\hyperlink{classGameGen_a0ce6a9241bfbb198b0ba80ed8ea306eb}{generate\+Dots}} (int x\+\_\+size, int y\+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classGameGen_a089409f51b983de8bb697d1fe0654f52}{count\+Empty\+Spots}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space)
+\item 
+int \mbox{\hyperlink{classGameGen_ad685427ae4d27abc31a7ea674dc46767}{calculate\+Neighbor\+Penalty}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, int x, int y, int x\+\_\+size, int y\+\_\+size, int neighbor\+\_\+span)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ \mbox{\hyperlink{classGameGen_a34c1e2fa651f615a03de47e2d51243d9}{get\+Patterns}} ()
+\item 
+\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} \mbox{\hyperlink{classGameGen_a63a2ff5e0ad3f88436c8ee9584ddeb40}{add\+Border}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, int filler)
+\item 
+\mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} \mbox{\hyperlink{classGameGen_aadd8ef21319cbd62abfb20303783641a}{get\+Random\+Dot\+Candidates}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, int min\+\_\+distance\+\_\+to\+\_\+filled)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}}, \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ \mbox{\hyperlink{classGameGen_a0ac01e2e7044e85842deff2d1925138f}{generate\+Next\+Dots\+By\+Pattern}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, std\+::vector$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ pattern\+\_\+list)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}}, \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ \mbox{\hyperlink{classGameGen_a60f3a45a60360c377d1868fbbbed27ff}{generate\+Next\+Dots}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, std\+::default\+\_\+random\+\_\+engine gen)
+\item 
+\mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}} \mbox{\hyperlink{classGameGen_a79ecced48a44e20cb7ebfb96b8d89648}{generate\+Random\+Dot\+In\+Empty\+Spot}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, std\+::default\+\_\+random\+\_\+engine gen)
+\item 
+\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} \mbox{\hyperlink{classGameGen_a7f1de577fbe021ce42b1851ce313a53c}{generate\+Galaxy\+From\+Dot}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, \mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}} dot, std\+::default\+\_\+random\+\_\+engine gen)
+\item 
+std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}, bool $>$ \mbox{\hyperlink{classGameGen_a4d7754bc07fc51f98c7d1855f242cb6d}{add\+Field\+To\+Galaxy}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, \mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}} dot, std\+::default\+\_\+random\+\_\+engine gen)
+\item 
+\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} \mbox{\hyperlink{classGameGen_ae65dd677544a65013b8a1e42ea0f6a4f}{mark\+As\+Occupied}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, \mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}} dot, int filler)
+\item 
+void \mbox{\hyperlink{classGameGen_ac0bebf96b2d23f9d06cd8ca1c8b80e55}{print\+Dot\+Space}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space)
+\item 
+void \mbox{\hyperlink{classGameGen_a02490de53b4901bde30c6600dadf33c0}{print\+Dot\+Space\+Candidates}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} candidates)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 16 of file gamegen.\+hpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGameGen_a63a2ff5e0ad3f88436c8ee9584ddeb40}\label{classGameGen_a63a2ff5e0ad3f88436c8ee9584ddeb40}} 
+\index{GameGen@{GameGen}!addBorder@{addBorder}}
+\index{addBorder@{addBorder}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{addBorder()}{addBorder()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} Game\+Gen\+::add\+Border (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{int}]{filler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 332 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a63a2ff5e0ad3f88436c8ee9584ddeb40_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a4d7754bc07fc51f98c7d1855f242cb6d}\label{classGameGen_a4d7754bc07fc51f98c7d1855f242cb6d}} 
+\index{GameGen@{GameGen}!addFieldToGalaxy@{addFieldToGalaxy}}
+\index{addFieldToGalaxy@{addFieldToGalaxy}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{addFieldToGalaxy()}{addFieldToGalaxy()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}, bool $>$ Game\+Gen\+::add\+Field\+To\+Galaxy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{\mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}}}]{dot,  }\item[{std\+::default\+\_\+random\+\_\+engine}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Takes a Dot\+Space with 2s where the current galaxy is generated and the center of the galaxy and tries to add another field to this galaxy.
+
+\begin{DoxyReturn}{Returns}
+Dot\+Space after addition of field 
+\end{DoxyReturn}
+
+
+Definition at line 592 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a4d7754bc07fc51f98c7d1855f242cb6d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a4d7754bc07fc51f98c7d1855f242cb6d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_ad685427ae4d27abc31a7ea674dc46767}\label{classGameGen_ad685427ae4d27abc31a7ea674dc46767}} 
+\index{GameGen@{GameGen}!calculateNeighborPenalty@{calculateNeighborPenalty}}
+\index{calculateNeighborPenalty@{calculateNeighborPenalty}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{calculateNeighborPenalty()}{calculateNeighborPenalty()}}
+{\footnotesize\ttfamily int Game\+Gen\+::calculate\+Neighbor\+Penalty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{x\+\_\+size,  }\item[{int}]{y\+\_\+size,  }\item[{int}]{neighbor\+\_\+span }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 6 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_ad685427ae4d27abc31a7ea674dc46767_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a089409f51b983de8bb697d1fe0654f52}\label{classGameGen_a089409f51b983de8bb697d1fe0654f52}} 
+\index{GameGen@{GameGen}!countEmptySpots@{countEmptySpots}}
+\index{countEmptySpots@{countEmptySpots}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{countEmptySpots()}{countEmptySpots()}}
+{\footnotesize\ttfamily unsigned int Game\+Gen\+::count\+Empty\+Spots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Helper function which counts the empty spots in a Dot\+Space.
+
+\begin{DoxyReturn}{Returns}
+number of empty spots 
+\end{DoxyReturn}
+
+
+Definition at line 514 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a089409f51b983de8bb697d1fe0654f52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a0ce6a9241bfbb198b0ba80ed8ea306eb}\label{classGameGen_a0ce6a9241bfbb198b0ba80ed8ea306eb}} 
+\index{GameGen@{GameGen}!generateDots@{generateDots}}
+\index{generateDots@{generateDots}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{generateDots()}{generateDots()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} Game\+Gen\+::generate\+Dots (\begin{DoxyParamCaption}\item[{int}]{x\+\_\+size,  }\item[{int}]{y\+\_\+size }\end{DoxyParamCaption})}
+
+Entrypoint into dot generation. Takes the size of the field and generates dots in it which are then returned.
+
+\begin{DoxyReturn}{Returns}
+List of generated dots 
+\end{DoxyReturn}
+
+
+Definition at line 762 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a0ce6a9241bfbb198b0ba80ed8ea306eb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a7f1de577fbe021ce42b1851ce313a53c}\label{classGameGen_a7f1de577fbe021ce42b1851ce313a53c}} 
+\index{GameGen@{GameGen}!generateGalaxyFromDot@{generateGalaxyFromDot}}
+\index{generateGalaxyFromDot@{generateGalaxyFromDot}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{generateGalaxyFromDot()}{generateGalaxyFromDot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} Game\+Gen\+::generate\+Galaxy\+From\+Dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{\mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}}}]{dot,  }\item[{std\+::default\+\_\+random\+\_\+engine}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Takes a space and a dot and places the dot in the space. For this dot a randomised galaxy is created and the space for that gets occupied.
+
+\begin{DoxyReturn}{Returns}
+Dot\+Space after adding dot 
+\end{DoxyReturn}
+
+
+Definition at line 544 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a7f1de577fbe021ce42b1851ce313a53c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a7f1de577fbe021ce42b1851ce313a53c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a60f3a45a60360c377d1868fbbbed27ff}\label{classGameGen_a60f3a45a60360c377d1868fbbbed27ff}} 
+\index{GameGen@{GameGen}!generateNextDots@{generateNextDots}}
+\index{generateNextDots@{generateNextDots}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{generateNextDots()}{generateNextDots()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}}, \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ Game\+Gen\+::generate\+Next\+Dots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{std\+::default\+\_\+random\+\_\+engine}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 435 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a60f3a45a60360c377d1868fbbbed27ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a60f3a45a60360c377d1868fbbbed27ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a0ac01e2e7044e85842deff2d1925138f}\label{classGameGen_a0ac01e2e7044e85842deff2d1925138f}} 
+\index{GameGen@{GameGen}!generateNextDotsByPattern@{generateNextDotsByPattern}}
+\index{generateNextDotsByPattern@{generateNextDotsByPattern}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{generateNextDotsByPattern()}{generateNextDotsByPattern()}}
+{\footnotesize\ttfamily std\+::pair$<$ \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}}, \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ Game\+Gen\+::generate\+Next\+Dots\+By\+Pattern (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{std\+::vector$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$}]{pattern\+\_\+list }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 363 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a0ac01e2e7044e85842deff2d1925138f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a0ac01e2e7044e85842deff2d1925138f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a79ecced48a44e20cb7ebfb96b8d89648}\label{classGameGen_a79ecced48a44e20cb7ebfb96b8d89648}} 
+\index{GameGen@{GameGen}!generateRandomDotInEmptySpot@{generateRandomDotInEmptySpot}}
+\index{generateRandomDotInEmptySpot@{generateRandomDotInEmptySpot}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{generateRandomDotInEmptySpot()}{generateRandomDotInEmptySpot()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}} Game\+Gen\+::generate\+Random\+Dot\+In\+Empty\+Spot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{std\+::default\+\_\+random\+\_\+engine}]{gen }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Generates a random dot in the empty spots. Tries to use a weight function to prefer spaces which allow bigger galaxies.
+
+\begin{DoxyReturn}{Returns}
+generated\+Dot 
+\end{DoxyReturn}
+
+
+Definition at line 485 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a79ecced48a44e20cb7ebfb96b8d89648_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a79ecced48a44e20cb7ebfb96b8d89648_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a34c1e2fa651f615a03de47e2d51243d9}\label{classGameGen_a34c1e2fa651f615a03de47e2d51243d9}} 
+\index{GameGen@{GameGen}!getPatterns@{getPatterns}}
+\index{getPatterns@{getPatterns}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{getPatterns()}{getPatterns()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} $>$ Game\+Gen\+::get\+Patterns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a34c1e2fa651f615a03de47e2d51243d9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_aadd8ef21319cbd62abfb20303783641a}\label{classGameGen_aadd8ef21319cbd62abfb20303783641a}} 
+\index{GameGen@{GameGen}!getRandomDotCandidates@{getRandomDotCandidates}}
+\index{getRandomDotCandidates@{getRandomDotCandidates}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{getRandomDotCandidates()}{getRandomDotCandidates()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} Game\+Gen\+::get\+Random\+Dot\+Candidates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{int}]{min\+\_\+distance\+\_\+to\+\_\+filled }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 455 of file gamegen.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_aadd8ef21319cbd62abfb20303783641a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_aadd8ef21319cbd62abfb20303783641a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_ae65dd677544a65013b8a1e42ea0f6a4f}\label{classGameGen_ae65dd677544a65013b8a1e42ea0f6a4f}} 
+\index{GameGen@{GameGen}!markAsOccupied@{markAsOccupied}}
+\index{markAsOccupied@{markAsOccupied}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{markAsOccupied()}{markAsOccupied()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} Game\+Gen\+::mark\+As\+Occupied (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{\mbox{\hyperlink{gamegen_8hpp_a0e233e80fb72e40c901a7484832a1b74}{Dot\+Position}}}]{dot,  }\item[{int}]{filler }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Marks a field in Dot\+Space as occupied and marks all newly not possible spots as occupied as well.
+
+\begin{DoxyReturn}{Returns}
+Dot\+Space after occupation 
+\end{DoxyReturn}
+
+
+Definition at line 659 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_ae65dd677544a65013b8a1e42ea0f6a4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_ac0bebf96b2d23f9d06cd8ca1c8b80e55}\label{classGameGen_ac0bebf96b2d23f9d06cd8ca1c8b80e55}} 
+\index{GameGen@{GameGen}!printDotSpace@{printDotSpace}}
+\index{printDotSpace@{printDotSpace}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{printDotSpace()}{printDotSpace()}}
+{\footnotesize\ttfamily void Game\+Gen\+::print\+Dot\+Space (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Helper for debugging purposes. Prints out a Dot\+Space. 
+
+Definition at line 693 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_ac0bebf96b2d23f9d06cd8ca1c8b80e55_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameGen_a02490de53b4901bde30c6600dadf33c0}\label{classGameGen_a02490de53b4901bde30c6600dadf33c0}} 
+\index{GameGen@{GameGen}!printDotSpaceCandidates@{printDotSpaceCandidates}}
+\index{printDotSpaceCandidates@{printDotSpaceCandidates}!GameGen@{GameGen}}
+\doxysubsubsection{\texorpdfstring{printDotSpaceCandidates()}{printDotSpaceCandidates()}}
+{\footnotesize\ttfamily void Game\+Gen\+::print\+Dot\+Space\+Candidates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space,  }\item[{\mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}}}]{candidates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Helper for debugging purposes. Prints out a Dot\+Space and the amount of candidates for a single spot. 
+
+Definition at line 722 of file gamegen.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameGen_a02490de53b4901bde30c6600dadf33c0_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{gamegen_8hpp}{gamegen.\+hpp}}\item 
+src/\mbox{\hyperlink{gamegen_8cpp}{gamegen.\+cpp}}\end{DoxyCompactItemize}

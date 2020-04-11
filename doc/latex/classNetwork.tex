@@ -1,0 +1,382 @@
+\hypertarget{classNetwork}{}\doxysection{Network Class Reference}
+\label{classNetwork}\index{Network@{Network}}
+
+
+{\ttfamily \#include $<$network.\+hpp$>$}
+
+
+
+Collaboration diagram for Network\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNetwork_af54923029ae7eeeeb576bf26fcbb36b1}{Network}} ()=delete
+\item 
+\mbox{\hyperlink{classNetwork_a4b25ebe6a0349a607938c9cd46ab5828}{Network}} (\mbox{\hyperlink{classGalaxy}{Galaxy}} \&)
+\item 
+void \mbox{\hyperlink{classNetwork_a7d9b412cc58237783bd431544374e11a}{run}} (uint16\+\_\+t port)
+\item 
+void \mbox{\hyperlink{classNetwork_a356c8c0ec32e2795bd754b067838fd89}{process\+Messages}} ()
+\item 
+void \mbox{\hyperlink{classNetwork_a223d8aca05065fb5a5c80b119c077831}{stop}} ()
+\item 
+void \mbox{\hyperlink{classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a}{send}} (\mbox{\hyperlink{classPlayer}{Player}} \&p, \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} data)
+\item 
+void \mbox{\hyperlink{classNetwork_a57f3c2d8b53d214d26822a52b899d69f}{broadcast}} (const std\+::map$<$ websocketpp\+::connection\+\_\+hdl, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPlayer}{Player}} $>$, std\+::owner\+\_\+less$<$ websocketpp\+::connection\+\_\+hdl $>$$>$ \&players, \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} data)
+\item 
+void \mbox{\hyperlink{classNetwork_a14eee72429fc77613fb20692b2101836}{close\+Con}} (websocketpp\+::connection\+\_\+hdl)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classNetwork_aa1de731b09c151abed537edbc6b3de66}{active}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNetwork_a35cefbfda5c19624fa53fa270f18ae1c}{on\+\_\+open}} (websocketpp\+::connection\+\_\+hdl)
+\item 
+void \mbox{\hyperlink{classNetwork_addc06f1f9079e067ee2ee63227f4fba4}{on\+\_\+close}} (websocketpp\+::connection\+\_\+hdl con)
+\item 
+void \mbox{\hyperlink{classNetwork_a62eb103c73f18195abcc2f450f1fcebb}{on\+\_\+message}} (websocketpp\+::connection\+\_\+hdl, server\+\_\+t\+::message\+\_\+ptr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}{Galaxy}}
+\item 
+\mbox{\hyperlink{classGalaxy}{Galaxy}} \& \mbox{\hyperlink{classNetwork_aa32d15139a5f36308ed2880662294883}{galaxy}}
+\item 
+std\+::queue$<$ \mbox{\hyperlink{structmessage__t}{message\+\_\+t}} $>$ \mbox{\hyperlink{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}{to\+\_\+process}}
+\item 
+std\+::thread \mbox{\hyperlink{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}{process\+\_\+thread}}
+\item 
+std\+::mutex \mbox{\hyperlink{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}{message\+\_\+mutex}}
+\item 
+std\+::condition\+\_\+variable \mbox{\hyperlink{classNetwork_a63066b7548b5181c71790f3ec50a112f}{messages\+\_\+available}}
+\item 
+\mbox{\hyperlink{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}{server\+\_\+t}} \mbox{\hyperlink{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}{server}}
+\item 
+bool \mbox{\hyperlink{classNetwork_a0036e03d2987b1813026d9b91eb329d2}{shutdown}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 28 of file network.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNetwork_af54923029ae7eeeeb576bf26fcbb36b1}\label{classNetwork_af54923029ae7eeeeb576bf26fcbb36b1}} 
+\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{Network()}{Network()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Network\+::\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classNetwork_a4b25ebe6a0349a607938c9cd46ab5828}\label{classNetwork_a4b25ebe6a0349a607938c9cd46ab5828}} 
+\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{Network()}{Network()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Network\+::\+Network (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classGalaxy}{Galaxy}} \&}]{g }\end{DoxyParamCaption})}
+
+
+
+Definition at line 4 of file network.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classNetwork_a4b25ebe6a0349a607938c9cd46ab5828_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classNetwork_a57f3c2d8b53d214d26822a52b899d69f}\label{classNetwork_a57f3c2d8b53d214d26822a52b899d69f}} 
+\index{Network@{Network}!broadcast@{broadcast}}
+\index{broadcast@{broadcast}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{broadcast()}{broadcast()}}
+{\footnotesize\ttfamily void Network\+::broadcast (\begin{DoxyParamCaption}\item[{const std\+::map$<$ websocketpp\+::connection\+\_\+hdl, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPlayer}{Player}} $>$, std\+::owner\+\_\+less$<$ websocketpp\+::connection\+\_\+hdl $>$$>$ \&}]{players,  }\item[{\mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 97 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a57f3c2d8b53d214d26822a52b899d69f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a14eee72429fc77613fb20692b2101836}\label{classNetwork_a14eee72429fc77613fb20692b2101836}} 
+\index{Network@{Network}!closeCon@{closeCon}}
+\index{closeCon@{closeCon}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{closeCon()}{closeCon()}}
+{\footnotesize\ttfamily void Network\+::close\+Con (\begin{DoxyParamCaption}\item[{websocketpp\+::connection\+\_\+hdl}]{con }\end{DoxyParamCaption})}
+
+
+
+Definition at line 105 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a14eee72429fc77613fb20692b2101836_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_addc06f1f9079e067ee2ee63227f4fba4}\label{classNetwork_addc06f1f9079e067ee2ee63227f4fba4}} 
+\index{Network@{Network}!on\_close@{on\_close}}
+\index{on\_close@{on\_close}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{on\_close()}{on\_close()}}
+{\footnotesize\ttfamily void Network\+::on\+\_\+close (\begin{DoxyParamCaption}\item[{websocketpp\+::connection\+\_\+hdl}]{con }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 85 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classNetwork_addc06f1f9079e067ee2ee63227f4fba4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a62eb103c73f18195abcc2f450f1fcebb}\label{classNetwork_a62eb103c73f18195abcc2f450f1fcebb}} 
+\index{Network@{Network}!on\_message@{on\_message}}
+\index{on\_message@{on\_message}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{on\_message()}{on\_message()}}
+{\footnotesize\ttfamily void Network\+::on\+\_\+message (\begin{DoxyParamCaption}\item[{websocketpp\+::connection\+\_\+hdl}]{con,  }\item[{server\+\_\+t\+::message\+\_\+ptr}]{msg }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 78 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{classNetwork_a62eb103c73f18195abcc2f450f1fcebb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a35cefbfda5c19624fa53fa270f18ae1c}\label{classNetwork_a35cefbfda5c19624fa53fa270f18ae1c}} 
+\index{Network@{Network}!on\_open@{on\_open}}
+\index{on\_open@{on\_open}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{on\_open()}{on\_open()}}
+{\footnotesize\ttfamily void Network\+::on\+\_\+open (\begin{DoxyParamCaption}\item[{websocketpp\+::connection\+\_\+hdl}]{con }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 71 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classNetwork_a35cefbfda5c19624fa53fa270f18ae1c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a356c8c0ec32e2795bd754b067838fd89}\label{classNetwork_a356c8c0ec32e2795bd754b067838fd89}} 
+\index{Network@{Network}!processMessages@{processMessages}}
+\index{processMessages@{processMessages}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{processMessages()}{processMessages()}}
+{\footnotesize\ttfamily void Network\+::process\+Messages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file network.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a356c8c0ec32e2795bd754b067838fd89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a356c8c0ec32e2795bd754b067838fd89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a7d9b412cc58237783bd431544374e11a}\label{classNetwork_a7d9b412cc58237783bd431544374e11a}} 
+\index{Network@{Network}!run@{run}}
+\index{run@{run}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Network\+::run (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file network.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a7d9b412cc58237783bd431544374e11a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classNetwork_a7d9b412cc58237783bd431544374e11a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a}\label{classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a}} 
+\index{Network@{Network}!send@{send}}
+\index{send@{send}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily void Network\+::send (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} \&}]{p,  }\item[{\mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classNetwork_a223d8aca05065fb5a5c80b119c077831}\label{classNetwork_a223d8aca05065fb5a5c80b119c077831}} 
+\index{Network@{Network}!stop@{stop}}
+\index{stop@{stop}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily void Network\+::stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file network.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classNetwork_a223d8aca05065fb5a5c80b119c077831_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classNetwork_aa1de731b09c151abed537edbc6b3de66}\label{classNetwork_aa1de731b09c151abed537edbc6b3de66}} 
+\index{Network@{Network}!active@{active}}
+\index{active@{active}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{active}{active}}
+{\footnotesize\ttfamily bool Network\+::active = true}
+
+
+
+Definition at line 55 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}\label{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}} 
+\index{Network@{Network}!Galaxy@{Galaxy}}
+\index{Galaxy@{Galaxy}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{Galaxy}{Galaxy}}
+{\footnotesize\ttfamily friend Network\+::\+Galaxy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 31 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_aa32d15139a5f36308ed2880662294883}\label{classNetwork_aa32d15139a5f36308ed2880662294883}} 
+\index{Network@{Network}!galaxy@{galaxy}}
+\index{galaxy@{galaxy}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{galaxy}{galaxy}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGalaxy}{Galaxy}}\& Network\+::galaxy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 34 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}\label{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}} 
+\index{Network@{Network}!message\_mutex@{message\_mutex}}
+\index{message\_mutex@{message\_mutex}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{message\_mutex}{message\_mutex}}
+{\footnotesize\ttfamily std\+::mutex Network\+::message\+\_\+mutex\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 39 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_a63066b7548b5181c71790f3ec50a112f}\label{classNetwork_a63066b7548b5181c71790f3ec50a112f}} 
+\index{Network@{Network}!messages\_available@{messages\_available}}
+\index{messages\_available@{messages\_available}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{messages\_available}{messages\_available}}
+{\footnotesize\ttfamily std\+::condition\+\_\+variable Network\+::messages\+\_\+available\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 40 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}\label{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}} 
+\index{Network@{Network}!process\_thread@{process\_thread}}
+\index{process\_thread@{process\_thread}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{process\_thread}{process\_thread}}
+{\footnotesize\ttfamily std\+::thread Network\+::process\+\_\+thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 37 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}\label{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}} 
+\index{Network@{Network}!server@{server}}
+\index{server@{server}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{server}{server}}
+{\footnotesize\ttfamily \mbox{\hyperlink{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}{server\+\_\+t}} Network\+::server\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 42 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_a0036e03d2987b1813026d9b91eb329d2}\label{classNetwork_a0036e03d2987b1813026d9b91eb329d2}} 
+\index{Network@{Network}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{shutdown}{shutdown}}
+{\footnotesize\ttfamily bool Network\+::shutdown = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 44 of file network.\+hpp.
+
+\mbox{\Hypertarget{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}\label{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}} 
+\index{Network@{Network}!to\_process@{to\_process}}
+\index{to\_process@{to\_process}!Network@{Network}}
+\doxysubsubsection{\texorpdfstring{to\_process}{to\_process}}
+{\footnotesize\ttfamily std\+::queue$<$\mbox{\hyperlink{structmessage__t}{message\+\_\+t}}$>$ Network\+::to\+\_\+process\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 35 of file network.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{network_8hpp}{network.\+hpp}}\item 
+src/\mbox{\hyperlink{network_8cpp}{network.\+cpp}}\end{DoxyCompactItemize}

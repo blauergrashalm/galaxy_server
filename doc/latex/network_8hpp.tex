@@ -1,0 +1,83 @@
+\hypertarget{network_8hpp}{}\doxysection{include/network.hpp File Reference}
+\label{network_8hpp}\index{include/network.hpp@{include/network.hpp}}
+{\ttfamily \#include \char`\"{}nlohmann/json.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}websocketpp/config/asio\+\_\+no\+\_\+tls.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}websocketpp/server.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$queue$>$}\newline
+Include dependency graph for network.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{network_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{network_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structmessage__t}{message\+\_\+t}}
+\item 
+class \mbox{\hyperlink{classNetwork}{Network}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef websocketpp\+::server$<$ websocketpp\+::config\+::asio $>$ \mbox{\hyperlink{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}{server\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{network_8hpp_a864de25b94a13d8c17e790b2e1638687}{action\+\_\+type}} \{ \mbox{\hyperlink{network_8hpp_a864de25b94a13d8c17e790b2e1638687abc6f919ff681f5f552b2f7d1f0fba832}{S\+U\+B\+S\+C\+R\+I\+BE}}, 
+\mbox{\hyperlink{network_8hpp_a864de25b94a13d8c17e790b2e1638687a8395e5981c15d813c588c86988fd4aea}{U\+N\+S\+U\+B\+S\+C\+R\+I\+BE}}, 
+\mbox{\hyperlink{network_8hpp_a864de25b94a13d8c17e790b2e1638687ab3e6d7e18839259526a01001f558200f}{M\+E\+S\+S\+A\+GE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}\label{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}} 
+\index{network.hpp@{network.hpp}!server\_t@{server\_t}}
+\index{server\_t@{server\_t}!network.hpp@{network.hpp}}
+\doxysubsubsection{\texorpdfstring{server\_t}{server\_t}}
+{\footnotesize\ttfamily typedef websocketpp\+::server$<$websocketpp\+::config\+::asio$>$ \mbox{\hyperlink{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}{server\+\_\+t}}}
+
+
+
+Definition at line 10 of file network.\+hpp.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{network_8hpp_a864de25b94a13d8c17e790b2e1638687}\label{network_8hpp_a864de25b94a13d8c17e790b2e1638687}} 
+\index{network.hpp@{network.hpp}!action\_type@{action\_type}}
+\index{action\_type@{action\_type}!network.hpp@{network.hpp}}
+\doxysubsubsection{\texorpdfstring{action\_type}{action\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{network_8hpp_a864de25b94a13d8c17e790b2e1638687}{action\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUBSCRIBE@{SUBSCRIBE}!network.hpp@{network.hpp}}\index{network.hpp@{network.hpp}!SUBSCRIBE@{SUBSCRIBE}}}\mbox{\Hypertarget{network_8hpp_a864de25b94a13d8c17e790b2e1638687abc6f919ff681f5f552b2f7d1f0fba832}\label{network_8hpp_a864de25b94a13d8c17e790b2e1638687abc6f919ff681f5f552b2f7d1f0fba832}} 
+S\+U\+B\+S\+C\+R\+I\+BE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNSUBSCRIBE@{UNSUBSCRIBE}!network.hpp@{network.hpp}}\index{network.hpp@{network.hpp}!UNSUBSCRIBE@{UNSUBSCRIBE}}}\mbox{\Hypertarget{network_8hpp_a864de25b94a13d8c17e790b2e1638687a8395e5981c15d813c588c86988fd4aea}\label{network_8hpp_a864de25b94a13d8c17e790b2e1638687a8395e5981c15d813c588c86988fd4aea}} 
+U\+N\+S\+U\+B\+S\+C\+R\+I\+BE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MESSAGE@{MESSAGE}!network.hpp@{network.hpp}}\index{network.hpp@{network.hpp}!MESSAGE@{MESSAGE}}}\mbox{\Hypertarget{network_8hpp_a864de25b94a13d8c17e790b2e1638687ab3e6d7e18839259526a01001f558200f}\label{network_8hpp_a864de25b94a13d8c17e790b2e1638687ab3e6d7e18839259526a01001f558200f}} 
+M\+E\+S\+S\+A\+GE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 12 of file network.\+hpp.
+
