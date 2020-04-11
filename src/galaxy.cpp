@@ -1,5 +1,5 @@
-#include "galaxy.h"
-#include "network.h"
+#include "galaxy.hpp"
+#include "network.hpp"
 #include <memory>
 
 Galaxy::Galaxy()

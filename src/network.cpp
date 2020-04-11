@@ -1,5 +1,5 @@
-#include "network.h"
-#include "galaxy.h"
+#include "network.hpp"
+#include "galaxy.hpp"
 
 Network::Network(Galaxy *parent) : galaxy{parent}
 {

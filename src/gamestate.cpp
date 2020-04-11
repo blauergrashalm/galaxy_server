@@ -1,4 +1,4 @@
-#include "gamestate.h"
+#include "gamestate.hpp"
 #include <iostream>
 
 GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size}, y_size{y_size}

@@ -1,4 +1,4 @@
-#include "gamechange.h"
+#include "gamechange.hpp"
 
 GameChange::~GameChange()
 {

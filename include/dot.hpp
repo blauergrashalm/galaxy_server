@@ -1,7 +1,7 @@
 #ifndef DOT_H
 #define DOT_H
 
-#include "position_type.h"
+#include "position_type.hpp"
 
 #include <set>
 #include <map>
