@@ -21,13 +21,18 @@ public:
     /**
      * Default constructor
      */
-    GameChange(p_ptr p, f_ptr f, d_ptr d) : player{p}, affected_field{f}, new_assoziation{d} {};
+    GameChange(p_ptr p, f_ptr f) : player{p}, affected_field{f} {};
 
+    GameChange(const GameChange &) = delete;
+    GameChange &operator=(const GameChange &) = delete;
+    GameChange(GameChange &&);
+    GameChange &operator=(GameChange &&);
     /**
      * Destructor
      */
     ~GameChange();
 
+    void set_dot(const d_ptr &);
     void apply();
     void revert();
 

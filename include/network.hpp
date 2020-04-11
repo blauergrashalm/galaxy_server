@@ -28,8 +28,10 @@ class Galaxy;
 class Network
 {
 
+    friend Galaxy;
+
 private:
-    Galaxy *galaxy;
+    Galaxy &galaxy;
     std::queue<message_t> to_process;
 
     std::thread process_thread;
@@ -46,7 +48,9 @@ private:
     void on_message(websocketpp::connection_hdl, server_t::message_ptr);
 
 public:
-    Network(Galaxy *parent);
+    Network() = delete;
+
+    Network(Galaxy&);
 
     bool active = true;
 

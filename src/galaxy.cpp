@@ -2,45 +2,46 @@
 #include "network.hpp"
 #include <memory>
 
-Galaxy::Galaxy()
+Galaxy::Galaxy() : net(*this), current_state(10, 10)
 {
-    current_state.reset(new GameState(10, 10));
+}
+
+Galaxy::~Galaxy()
+{
 }
 
 void Galaxy::run()
 {
     std::cout << "Galaxy wurde gestartet" << std::endl;
-    net.reset(new Network(this));
-    std::cout << "Netzwerk erstellt" << std::endl;
-    net->run(9000);
+    net.run(9000);
 }
 
 void Galaxy::stop()
 {
-    net->stop();
+    net.stop();
     for (auto it = players.begin(); it != players.end(); it++)
     {
-        net->closeCon(it->first);
+        net.closeCon(it->first);
     }
 }
 
-void Galaxy::registerNewPlayer(websocketpp::connection_hdl connection)
+void Galaxy::registerNewPlayer(web_con connection)
 {
-    players.insert(std::pair<websocketpp::connection_hdl, std::shared_ptr<Player>>(connection, std::make_shared<Player>(connection)));
+    players.insert(std::pair<web_con, shared_player>(connection, std::make_shared<Player>(connection)));
 }
 
-void Galaxy::deletePlayer(websocketpp::connection_hdl connection)
+void Galaxy::deletePlayer(web_con connection)
 {
     players.erase(connection);
 }
 
-void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command, nlohmann::json payload)
+void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json payload)
 {
     auto p = players[con];
     if (command == "player_register")
     {
         p->name = payload["name"];
-        net->send(*p, toJson());
+        net.send(*p, toJson());
     }
     else if (command == "game_change")
     {
@@ -49,8 +50,8 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
     else if (command == "new_game")
     {
         history.clear();
-        current_state.reset(new GameState((int)payload["width"], (int)payload["height"]));
-        net->broadcast(players, toJson());
+        current_state = GameState((int)payload["width"], (int)payload["height"]);
+        net.broadcast(players, toJson());
     }
     else
     {
@@ -60,20 +61,15 @@ void Galaxy::executeCommand(websocketpp::connection_hdl con, std::string command
 
 void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
 {
-    auto field = (*current_state)[(unsigned int)payload["field"]];
-    std::shared_ptr<GameChange> change;
-    if (payload["dot"] == nullptr)
+    auto field = current_state[(unsigned int)payload["field"]];
+    GameChange change(p, field);
+    if (payload["dot"] != nullptr)
     {
-        change = std::make_shared<GameChange>(p, field, nullptr);
+        change.set_dot(current_state((unsigned int)payload["dot"]));
     }
-    else
-    {
-        auto dot = (*current_state)((unsigned int)payload["dot"]);
-        change = std::make_shared<GameChange>(p, field, dot);
-    }
-    change->apply();
-    net->broadcast(players, change->toJson());
-    history.push_back(change);
+    change.apply();
+    net.broadcast(players, change.toJson());
+    history.push_back(std::move(change));
     while (history.size() > 5)
         history.pop_front();
 }
@@ -81,7 +77,7 @@ void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
 nlohmann::json Galaxy::toJson()
 {
     nlohmann::json galaxy;
-    galaxy["state"] = current_state->toJson();
+    galaxy["state"] = current_state.toJson();
     galaxy["type"] = "galaxy";
     return galaxy;
 }

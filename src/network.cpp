@@ -1,7 +1,7 @@
 #include "network.hpp"
 #include "galaxy.hpp"
 
-Network::Network(Galaxy *parent) : galaxy{parent}
+Network::Network(Galaxy &g) : galaxy(g)
 {
     server.init_asio();
 
@@ -33,15 +33,15 @@ void Network::processMessages()
         {
         case SUBSCRIBE:
             std::cout << "Subscribe verarbeiten" << std::endl;
-            galaxy->registerNewPlayer(current.connection);
+            galaxy.registerNewPlayer(current.connection);
             break;
         case MESSAGE:
             std::cout << "Message verarbeiten: " << current.mesage->get_payload() << std::endl;
             msg = json::parse(current.mesage->get_payload());
-            galaxy->executeCommand(current.connection, msg["command"], msg["payload"]);
+            galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
             break;
         case UNSUBSCRIBE:
-            galaxy->deletePlayer(current.connection);
+            galaxy.deletePlayer(current.connection);
             break;
         }
 
