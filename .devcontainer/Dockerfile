@@ -37,6 +37,9 @@ RUN apt-get update \
     # Install dependencies
     && apt-get -y install libwebsocketpp-dev ninja-build libboost-all-dev \
     #
+    # Install tools
+    && apt-get -y install nano \
+    #
     # Clean up
     && apt-get autoremove -y \
     && apt-get clean -y \
