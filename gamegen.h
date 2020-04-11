@@ -17,14 +17,15 @@ class GameGen
 {
 private:
     unsigned int countEmptySpots(DotSpace space);
-    int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size);
+    int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span);
     std::vector<DotSpace> getPatterns();
     DotSpace addBorder(DotSpace space, int filler);
+    DotPositionList getRandomDotCandidates(DotSpace space, int min_distance_to_filled);
     std::pair<DotPositionList, DotSpace> generateNextDotsByPattern(DotSpace space, std::vector<DotSpace> pattern_list);
     std::pair<DotPositionList, DotSpace> generateNextDots(DotSpace space, std::default_random_engine gen);
     DotPosition generateRandomDotInEmptySpot(DotSpace space, std::default_random_engine gen);
     DotSpace generateGalaxyFromDot(DotSpace space, DotPosition dot, std::default_random_engine gen);
-    DotSpace addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen);
+    std::pair<DotSpace, bool> addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen);
     DotSpace markAsOccupied(DotSpace space, DotPosition dot, int filler);
     void printDotSpace(DotSpace space);
     void printDotSpaceCandidates(DotSpace space, DotPositionList candidates);

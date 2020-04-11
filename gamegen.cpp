@@ -3,15 +3,10 @@
 #include <iomanip>
 
 // Calculates for a field in DotSpace a weight for the choosing algorithm
-int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size)
+int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span)
 {
-    auto neighbor_span = 5; // Has to be positive
-
-    auto neighbor_penalty = 0;
     for (int i = 1; i <= neighbor_span; i++)
     {
-        auto factor = pow(neighbor_span - i + 1, 2);
-
         for (int j = -i; j <= i; j++)
         {
             auto x2 = x + j;
@@ -19,16 +14,24 @@ int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, 
             auto y2_2 = y + (i - abs(j));
 
             // First y
-            neighbor_penalty += factor * (x2 < 0 || x2 >= x_size || y2_1 < 0 || y2_1 >= y_size || space[x2][y2_1] == 1 ? 1 : 0);
-            // Second y, if existing
-            if (y2_1 != y2_2)
+            if (x2 < 0 || x2 >= x_size ||
+                y2_1 < 0 || y2_1 >= y_size ||
+                space[x2][y2_1] == 1)
             {
-                neighbor_penalty += factor * (x2 < 0 || x2 >= x_size || y2_2 < 0 || y2_2 >= y_size || space[x2][y2_2] == 1 ? 1 : 0);
+                return 1;
+            };
+            // Second y, if existing
+            if (y2_1 != y2_2 &&
+                (x2 < 0 || x2 >= x_size ||
+                 y2_2 < 0 || y2_2 >= y_size ||
+                 space[x2][y2_2] == 1))
+            {
+                return 1;
             }
         }
     }
 
-    return neighbor_penalty;
+    return 0;
 }
 
 std::vector<DotSpace> GameGen::getPatterns()
@@ -53,6 +56,36 @@ std::vector<DotSpace> GameGen::getPatterns()
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    // □ ▣ □
+    //   □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 1, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    //   □ □
+    // □ ▣ □
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
         pattern_list.push_back(pattern);
     }
 
@@ -284,6 +317,15 @@ std::vector<DotSpace> GameGen::getPatterns()
         pattern_list.push_back(pattern);
     }
 
+    // ▣
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 3, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
     return pattern_list;
 }
 
@@ -356,7 +398,7 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace
                         {
                             if (pattern[px][py] == 3)
                             {
-                                new_dot_list.push_back(DotPosition(x, y));
+                                new_dot_list.push_back(DotPosition(x2 - 1, y2 - 1));
                             }
                         }
                         else
@@ -378,7 +420,7 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace
                             x2 < x_size - 2 && y2 < y_size - 2 &&
                             pattern[px][py] > 1)
                         {
-                            space = markAsOccupied(space, DotPosition(x, y), 1);
+                            space = markAsOccupied(space, DotPosition(x2, y2), 1);
                         }
                     }
                 }
@@ -392,9 +434,6 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace
 
 std::pair<DotPositionList, DotSpace> GameGen::generateNextDots(DotSpace space, std::default_random_engine gen)
 {
-    printDotSpace(space);
-    std::cout << std::endl;
-
     // First try pattern matching
     auto pattern_list = getPatterns();
 
@@ -413,13 +452,7 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDots(DotSpace space, s
     }
 }
 
-/**
- * Generates a random dot in the empty spots. Tries to use a weight function
- * to prefer spaces which allow bigger galaxies.
- *
- * @return generatedDot
- */
-DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_random_engine gen)
+DotPositionList GameGen::getRandomDotCandidates(DotSpace space, int min_distance_to_filled)
 {
     // Determine possible candidates
     DotPositionList candidates;
@@ -430,24 +463,40 @@ DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_r
         for (int y = 0; y < y_size; y++)
         {
             // Calculate neighbor score
-            auto penalty = calculateNeighborPenalty(space, x, y, x_size, y_size);
-            // Depends on neighbor_span
-            auto neighbor_score = std::max(261 - penalty, 1);
+            auto penalty = calculateNeighborPenalty(space, x, y, x_size, y_size, min_distance_to_filled);
+            auto neighbor_score = 1 - penalty;
 
-            if (space[x][y] == 0)
+            if (space[x][y] == 0 && neighbor_score > 0)
             {
                 auto dotPos = DotPosition(x, y);
-                // Give candidates with few filled neighbors a higher weight
-                for (int i = 0; i < neighbor_score; i++)
-                {
-                    candidates.push_back(dotPos);
-                }
+                candidates.push_back(dotPos);
             }
         }
     }
+    return candidates;
+}
 
-    //printDotSpaceCandidates(space, candidates);
-    //std::cout << std::endl;
+/**
+ * Generates a random dot in the empty spots. Tries to use a weight function
+ * to prefer spaces which allow bigger galaxies.
+ *
+ * @return generatedDot
+ */
+DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_random_engine gen)
+{
+    DotPositionList candidates;
+    auto search_radius = 3;
+    for (int i = search_radius; i >= 0; i--)
+    {
+        candidates = getRandomDotCandidates(space, i);
+        if (candidates.size() > 0)
+        {
+            break;
+        }
+    }
+
+    printDotSpaceCandidates(space, candidates);
+    std::cout << std::endl;
 
     // Choose one candidate randomly
     // Assert: There MUST be candidates if this function is called
@@ -498,18 +547,22 @@ DotSpace GameGen::generateGalaxyFromDot(DotSpace space, DotPosition dot, std::de
 
     // Add fields to galaxy/
     auto field = 0;
-    std::uniform_int_distribution<unsigned int> gen_pos_index(1, 100);
-    double probability;
+    std::uniform_int_distribution<unsigned int> gen_pos_index(1, 101);
+    int probability;
     unsigned int dice;
-    auto mid_of_bell = 7;
+    int mid_of_bell = (space.size() * space[0].size()) / 40 - 1;
     auto steepness = 10;
 
     do
     {
-        space = addFieldToGalaxy(space, dot, gen);
+        auto result = addFieldToGalaxy(space, dot, gen);
+        space = result.first;
         ++field;
+        // There are no fields to add anymore... :(
+        if (!result.second)
+            break;
 
-        probability = -50 * (field - mid_of_bell) / (sqrt(steepness + pow(field - mid_of_bell, 2))) + 50;
+        probability = (-50 * (field - mid_of_bell)) / (sqrt(steepness + pow(field - mid_of_bell, 2))) + 50;
         dice = gen_pos_index(gen);
     } while (dice <= probability);
 
@@ -536,7 +589,7 @@ DotSpace GameGen::generateGalaxyFromDot(DotSpace space, DotPosition dot, std::de
  *
  * @return DotSpace after addition of field
  */
-DotSpace GameGen::addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen)
+std::pair<DotSpace, bool> GameGen::addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen)
 {
     // Determine possible candidates
     DotPositionList candidates;
@@ -560,16 +613,25 @@ DotSpace GameGen::addFieldToGalaxy(DotSpace space, DotPosition dot, std::default
                 auto y2 = 2 * dot.second - y;
                 if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < y_size && space[x2][y2] == 0)
                 {
-                    candidates.push_back(DotPosition(x, y));
+                    auto dot_pos = DotPosition(x, y);
+                    auto penalty1 = 4 * calculateNeighborPenalty(space, x, y, x_size, y_size, 2) + 1;
+                    auto penalty2 = 4 * calculateNeighborPenalty(space, x2, y2, x_size, y_size, 2) + 1;
+                    for (int i = 0; i < std::max(penalty1, penalty2); i++)
+                    {
+                        candidates.push_back(dot_pos);
+                    }
                 }
             }
         }
     }
 
+    printDotSpaceCandidates(space, candidates);
+    std::cout << std::endl;
+
     // Choose one candidate randomly
     if (candidates.size() > 0)
     {
-        std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
+        std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size());
         auto new_field_index = gen_pos_index(gen);
 
         auto winner = candidates[new_field_index];
@@ -585,7 +647,7 @@ DotSpace GameGen::addFieldToGalaxy(DotSpace space, DotPosition dot, std::default
         }
     }
 
-    return space;
+    return std::pair<DotSpace, bool>(space, candidates.size() > 0);
 }
 
 /**
@@ -726,8 +788,8 @@ DotPositionList GameGen::generateDots(int x_size, int y_size)
         space = result.second;
         empty_spaces = countEmptySpots(space);
         // Debugging statements
-        //printDotSpace(space);
-        //std::cout << std::endl;
+        printDotSpace(space);
+        std::cout << std::endl;
     } while (empty_spaces > 0);
 
     return new_dot_list;
