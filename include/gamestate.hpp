@@ -11,12 +11,6 @@
 #include "nlohmann/json.hpp"
 #include "gamechange.hpp"
 
-// This is type is in dot grid coordinates to simplify the generation algorithm
-// If the place in the grid is a valid place for a new dot to be in, it is marked with 0
-// Otherwise it is marked with 1
-typedef std::vector<std::vector<unsigned int>> DotSpace;
-typedef std::pair<unsigned int, unsigned int> UIntPair;
-
 using json = nlohmann::json;
 
 class GameState
@@ -32,17 +26,7 @@ private:
     void addField(pos_type position);
     void addDot(pos_type position);
 
-    unsigned int getEmptySpacesFromSpace(DotSpace space);
-    int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size);
-    UIntPair GameState::generateNextDot(DotSpace space, std::default_random_engine gen);
-    UIntPair GameState::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen);
-    DotSpace regenerateSpaceWithDot(DotSpace space, UIntPair dot, std::default_random_engine gen);
-    DotSpace addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen);
-    DotSpace markAsOccupied(DotSpace space, UIntPair dot);
-    void generateSpace();
     void generateRandomDots();
-    void printDotSpace(DotSpace space);
-    void printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> candidates);
 
 public:
     GameState(unsigned int x_size, unsigned int y_size);
