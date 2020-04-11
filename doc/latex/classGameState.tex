@@ -1,0 +1,259 @@
+\hypertarget{classGameState}{}\doxysection{Game\+State Class Reference}
+\label{classGameState}\index{GameState@{GameState}}
+
+
+{\ttfamily \#include $<$gamestate.\+hpp$>$}
+
+
+
+Collaboration diagram for Game\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGameState_a2b1db52798480692adbd6658fc9128f6}{Game\+State}} (unsigned int \mbox{\hyperlink{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}{x\+\_\+size}}, unsigned int \mbox{\hyperlink{classGameState_a2031e605826df42da332677df63b28b7}{y\+\_\+size}})
+\item 
+\mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}{to\+Json}} ()
+\item 
+void \mbox{\hyperlink{classGameState_ab62ea98ecd4f9312cbc3d0e8d3d51556}{apply\+Game\+Change}} (const \mbox{\hyperlink{classGameChange}{Game\+Change}} \&change)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ \mbox{\hyperlink{classGameState_a417ccae98a77e36911886d9e407e01eb}{operator()}} (const unsigned int \&i)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ \mbox{\hyperlink{classGameState_af736654ecce8c555c419d6f05c4fee81}{operator()}} (const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&p)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ \mbox{\hyperlink{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}{operator\mbox{[}$\,$\mbox{]}}} (const unsigned int \&i)
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ \mbox{\hyperlink{classGameState_aef737a1e7840c48c109d990197ba28df}{operator\mbox{[}$\,$\mbox{]}}} (const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classGameState_aa79c333dbb483a7f4037e3c5c0dab137}{add\+Field}} (\mbox{\hyperlink{structpos__type}{pos\+\_\+type}} position)
+\item 
+void \mbox{\hyperlink{classGameState_aedbbb2e7c5fda5eb2ee9bbb9d6d3e720}{add\+Dot}} (\mbox{\hyperlink{structpos__type}{pos\+\_\+type}} position)
+\item 
+void \mbox{\hyperlink{classGameState_ac2b2496090f728a63032ad0ab30b7194}{generate\+Random\+Dots}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}{x\+\_\+size}}
+\item 
+unsigned int \mbox{\hyperlink{classGameState_a2031e605826df42da332677df63b28b7}{y\+\_\+size}}
+\item 
+std\+::map$<$ \mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ $>$ \mbox{\hyperlink{classGameState_af137ebbe20ec0c4534a2e6330e889e16}{fields}}
+\item 
+std\+::map$<$ \mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ $>$ \mbox{\hyperlink{classGameState_abdeeaf893bbd9477240a9ede9ae318a8}{dots}}
+\item 
+std\+::map$<$ unsigned int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ $>$ \mbox{\hyperlink{classGameState_a6dc7d21498cd08c4f5342b16909214bd}{dots\+\_\+by\+\_\+id}}
+\item 
+std\+::map$<$ unsigned int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ $>$ \mbox{\hyperlink{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}{fields\+\_\+by\+\_\+id}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 16 of file gamestate.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGameState_a2b1db52798480692adbd6658fc9128f6}\label{classGameState_a2b1db52798480692adbd6658fc9128f6}} 
+\index{GameState@{GameState}!GameState@{GameState}}
+\index{GameState@{GameState}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{GameState()}{GameState()}}
+{\footnotesize\ttfamily Game\+State\+::\+Game\+State (\begin{DoxyParamCaption}\item[{unsigned int}]{x\+\_\+size,  }\item[{unsigned int}]{y\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 6 of file gamestate.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGameState_aedbbb2e7c5fda5eb2ee9bbb9d6d3e720}\label{classGameState_aedbbb2e7c5fda5eb2ee9bbb9d6d3e720}} 
+\index{GameState@{GameState}!addDot@{addDot}}
+\index{addDot@{addDot}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{addDot()}{addDot()}}
+{\footnotesize\ttfamily void Game\+State\+::add\+Dot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpos__type}{pos\+\_\+type}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 57 of file gamestate.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameState_aedbbb2e7c5fda5eb2ee9bbb9d6d3e720_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameState_aa79c333dbb483a7f4037e3c5c0dab137}\label{classGameState_aa79c333dbb483a7f4037e3c5c0dab137}} 
+\index{GameState@{GameState}!addField@{addField}}
+\index{addField@{addField}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{addField()}{addField()}}
+{\footnotesize\ttfamily void Game\+State\+::add\+Field (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpos__type}{pos\+\_\+type}}}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 64 of file gamestate.\+cpp.
+
+\mbox{\Hypertarget{classGameState_ab62ea98ecd4f9312cbc3d0e8d3d51556}\label{classGameState_ab62ea98ecd4f9312cbc3d0e8d3d51556}} 
+\index{GameState@{GameState}!applyGameChange@{applyGameChange}}
+\index{applyGameChange@{applyGameChange}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{applyGameChange()}{applyGameChange()}}
+{\footnotesize\ttfamily void Game\+State\+::apply\+Game\+Change (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameChange}{Game\+Change}} \&}]{change }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classGameState_ac2b2496090f728a63032ad0ab30b7194}\label{classGameState_ac2b2496090f728a63032ad0ab30b7194}} 
+\index{GameState@{GameState}!generateRandomDots@{generateRandomDots}}
+\index{generateRandomDots@{generateRandomDots}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{generateRandomDots()}{generateRandomDots()}}
+{\footnotesize\ttfamily void Game\+State\+::generate\+Random\+Dots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 41 of file gamestate.\+cpp.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameState_ac2b2496090f728a63032ad0ab30b7194_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classGameState_af736654ecce8c555c419d6f05c4fee81}\label{classGameState_af736654ecce8c555c419d6f05c4fee81}} 
+\index{GameState@{GameState}!operator()@{operator()}}
+\index{operator()@{operator()}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classDot}{Dot}}$>$ Game\+State\+::operator() (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 41 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_a417ccae98a77e36911886d9e407e01eb}\label{classGameState_a417ccae98a77e36911886d9e407e01eb}} 
+\index{GameState@{GameState}!operator()@{operator()}}
+\index{operator()@{operator()}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classDot}{Dot}}$>$ Game\+State\+::operator() (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 36 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_aef737a1e7840c48c109d990197ba28df}\label{classGameState_aef737a1e7840c48c109d990197ba28df}} 
+\index{GameState@{GameState}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classField}{Field}}$>$ Game\+State\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&}]{p }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 51 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}\label{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}} 
+\index{GameState@{GameState}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classField}{Field}}$>$ Game\+State\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{const unsigned int \&}]{i }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 46 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}\label{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}} 
+\index{GameState@{GameState}!toJson@{toJson}}
+\index{toJson@{toJson}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{toJson()}{toJson()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Game\+State\+::to\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file gamestate.\+cpp.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classGameState_a77597717c0d0b6d4e93c7f299cf3f315_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGameState_abdeeaf893bbd9477240a9ede9ae318a8}\label{classGameState_abdeeaf893bbd9477240a9ede9ae318a8}} 
+\index{GameState@{GameState}!dots@{dots}}
+\index{dots@{dots}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{dots}{dots}}
+{\footnotesize\ttfamily std\+::map$<$\mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classDot}{Dot}}$>$ $>$ Game\+State\+::dots\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 22 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_a6dc7d21498cd08c4f5342b16909214bd}\label{classGameState_a6dc7d21498cd08c4f5342b16909214bd}} 
+\index{GameState@{GameState}!dots\_by\_id@{dots\_by\_id}}
+\index{dots\_by\_id@{dots\_by\_id}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{dots\_by\_id}{dots\_by\_id}}
+{\footnotesize\ttfamily std\+::map$<$unsigned int, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classDot}{Dot}}$>$ $>$ Game\+State\+::dots\+\_\+by\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 23 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_af137ebbe20ec0c4534a2e6330e889e16}\label{classGameState_af137ebbe20ec0c4534a2e6330e889e16}} 
+\index{GameState@{GameState}!fields@{fields}}
+\index{fields@{fields}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily std\+::map$<$\mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classField}{Field}}$>$ $>$ Game\+State\+::fields\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 21 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}\label{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}} 
+\index{GameState@{GameState}!fields\_by\_id@{fields\_by\_id}}
+\index{fields\_by\_id@{fields\_by\_id}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{fields\_by\_id}{fields\_by\_id}}
+{\footnotesize\ttfamily std\+::map$<$unsigned int, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classField}{Field}}$>$ $>$ Game\+State\+::fields\+\_\+by\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 24 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}\label{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}} 
+\index{GameState@{GameState}!x\_size@{x\_size}}
+\index{x\_size@{x\_size}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{x\_size}{x\_size}}
+{\footnotesize\ttfamily unsigned int Game\+State\+::x\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file gamestate.\+hpp.
+
+\mbox{\Hypertarget{classGameState_a2031e605826df42da332677df63b28b7}\label{classGameState_a2031e605826df42da332677df63b28b7}} 
+\index{GameState@{GameState}!y\_size@{y\_size}}
+\index{y\_size@{y\_size}!GameState@{GameState}}
+\doxysubsubsection{\texorpdfstring{y\_size}{y\_size}}
+{\footnotesize\ttfamily unsigned int Game\+State\+::y\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line 19 of file gamestate.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{gamestate_8hpp}{gamestate.\+hpp}}\item 
+src/\mbox{\hyperlink{gamestate_8cpp}{gamestate.\+cpp}}\end{DoxyCompactItemize}
