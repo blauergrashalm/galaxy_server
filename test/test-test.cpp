@@ -1,11 +1,31 @@
 #include "gtest/gtest.h"
+#include "../src/gamegen.hpp"
 
-TEST(blaTest, test1)
+TEST(GameGen, countEmptySpots)
 {
-    //arrange
-    //act
-    //assert
-    EXPECT_EQ(0, 0);
-    EXPECT_EQ(10, 20);
-    EXPECT_EQ(100, 100);
+    auto game_gen = new GameGen();
+
+    {
+        DotSpace space;
+        space.push_back(DotSpaceColumn{0, 0, 0});
+        space.push_back(DotSpaceColumn{0, 0, 0});
+        space.push_back(DotSpaceColumn{0, 0, 0});
+        EXPECT_EQ(game_gen->countEmptySpots(space), 9);
+    }
+
+    {
+        DotSpace space;
+        space.push_back(DotSpaceColumn{1, 1, 1});
+        space.push_back(DotSpaceColumn{1, 1, 1});
+        space.push_back(DotSpaceColumn{1, 1, 1});
+        EXPECT_EQ(game_gen->countEmptySpots(space), 0);
+    }
+
+    {
+        DotSpace space;
+        space.push_back(DotSpaceColumn{1, 0, 1});
+        space.push_back(DotSpaceColumn{0, 1, 1});
+        space.push_back(DotSpaceColumn{1, 1, 0});
+        EXPECT_EQ(game_gen->countEmptySpots(space), 3);
+    }
 }
