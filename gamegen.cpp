@@ -31,22 +31,398 @@ int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, 
     return neighbor_penalty;
 }
 
-UIntPair GameGen::generateNextDot(DotSpace space, std::default_random_engine gen)
+std::vector<DotSpace> GameGen::getPatterns()
+{
+    // Patterns
+    // 0: content irrelevant
+    // 1: occupied
+    // 2: free
+    // 3: free / center of a new galaxy
+    std::vector<DotSpace> pattern_list;
+
+    // Most important pattern has to be first in pattern list
+    // □ □ □
+    // □ ▣ □
+    // □ □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □ □
+    //   ▣
+    // □ □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 3, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □   □
+    // □ ▣ □
+    // □   □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    // □ □
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □ □
+    // □ □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    //   □ □
+    //   ▣
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 3, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    //   ▣
+    //   □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 3, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □
+    // □ ▣ □
+    //     □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    //     □
+    // □ ▣ □
+    // □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 0, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 0, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    //   □ □
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 3, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    //   □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 3, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □
+    // □ □
+    //   □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    //   □
+    // □ □
+    // □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 0, 1, 0});
+        pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 0, 0, 0});
+        pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 0, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ ▣ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □
+    // ▣
+    // □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 3, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □ □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    // □
+    // □
+    {
+        DotSpace pattern;
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{1, 3, 1});
+        pattern.push_back(DotSpaceColumn{1, 2, 1});
+        pattern.push_back(DotSpaceColumn{0, 1, 0});
+        pattern_list.push_back(pattern);
+    }
+
+    return pattern_list;
+}
+
+DotSpace GameGen::addBorder(DotSpace space, int filler)
+{
+    auto x_size = space.size();
+    auto y_size = space[0].size();
+
+    DotSpace newSpace;
+    // Create border line
+    DotSpaceColumn occupiedLine;
+    for (int i = 0; i < y_size + 2; i++)
+    {
+        occupiedLine.push_back(filler);
+    }
+
+    // Create space
+    newSpace.push_back(occupiedLine);
+    for (int x = 0; x < x_size; x++)
+    {
+        DotSpaceColumn line;
+        line.push_back(filler);
+        for (int y = 0; y < y_size; y++)
+        {
+            line.push_back(space[x][y]);
+        }
+        line.push_back(filler);
+        newSpace.push_back(line);
+    }
+    newSpace.push_back(occupiedLine);
+
+    return newSpace;
+}
+
+std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace space, std::vector<DotSpace> pattern_list)
+{
+    // Prepare patterns and space by adding occupied border
+    auto tmpSpace = addBorder(space, 1);
+
+    auto x_size = tmpSpace.size();
+    for (int x = 0; x < x_size; x++)
+    {
+        auto y_size = tmpSpace[x].size();
+        for (int y = 0; y < y_size; y++)
+        {
+            auto value = tmpSpace[x][y];
+
+            // Iterate through all patterns
+            auto pattern_size = pattern_list.size();
+            for (int i = 0; i < pattern_size; i++)
+            {
+                auto pattern = pattern_list[i];
+
+                DotPositionList new_dot_list;
+
+                // Check if pattern matches
+                auto px_size = pattern.size();
+                auto py_size = pattern[0].size();
+                for (int px = 0; px < px_size; px++)
+                {
+                    for (int py = 0; py < py_size; py++)
+                    {
+                        auto x2 = x + px;
+                        auto y2 = y + py;
+
+                        if (x2 < x_size && y2 < y_size &&
+                            (pattern[px][py] == 0 ||
+                             tmpSpace[x2][y2] == 1 && pattern[px][py] == 1 ||
+                             tmpSpace[x2][y2] == 0 && pattern[px][py] > 1))
+                        {
+                            if (pattern[px][py] == 3)
+                            {
+                                new_dot_list.push_back(DotPosition(x, y));
+                            }
+                        }
+                        else
+                        {
+                            goto nextPattern; // continue 3
+                        }
+                    }
+                }
+
+                // Found a matching pattern! Occupy space
+                for (int px = 0; px < px_size; px++)
+                {
+                    for (int py = 0; py < py_size; py++)
+                    {
+                        auto x2 = x - 1 + px;
+                        auto y2 = y - 1 + py;
+                        if (x2 % 2 == 0 && y2 % 2 == 0 &&
+                            x2 >= 0 && y2 >= 0 &&
+                            x2 < x_size - 2 && y2 < y_size - 2 &&
+                            pattern[px][py] > 1)
+                        {
+                            space = markAsOccupied(space, DotPosition(x, y), 1);
+                        }
+                    }
+                }
+                return std::pair<DotPositionList, DotSpace>(new_dot_list, space);
+            nextPattern:;
+            }
+        }
+    }
+    throw "No pattern found :(";
+}
+
+std::pair<DotPositionList, DotSpace> GameGen::generateNextDots(DotSpace space, std::default_random_engine gen)
 {
     printDotSpace(space);
     std::cout << std::endl;
 
-    auto winner = generateRandomDotInEmptySpace(space, gen);
+    // First try pattern matching
+    auto pattern_list = getPatterns();
 
-    // Add Dot?
+    try
+    {
+        return generateNextDotsByPattern(space, pattern_list);
+    }
+    catch (...)
+    {
+        auto new_dot = generateRandomDotInEmptySpot(space, gen);
+        space = generateGalaxyFromDot(space, new_dot, gen);
 
-    return winner;
+        DotPositionList new_dot_list;
+        new_dot_list.push_back(new_dot);
+        return std::pair<DotPositionList, DotSpace>(new_dot_list, space);
+    }
 }
 
-UIntPair GameGen::generateRandomDotInEmptySpace(DotSpace space, std::default_random_engine gen)
+/**
+ * Generates a random dot in the empty spots. Tries to use a weight function
+ * to prefer spaces which allow bigger galaxies.
+ *
+ * @return generatedDot
+ */
+DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_random_engine gen)
 {
     // Determine possible candidates
-    std::vector<UIntPair> candidates;
+    DotPositionList candidates;
     auto x_size = space.size();
     for (int x = 0; x < x_size; x++)
     {
@@ -60,32 +436,33 @@ UIntPair GameGen::generateRandomDotInEmptySpace(DotSpace space, std::default_ran
 
             if (space[x][y] == 0)
             {
+                auto dotPos = DotPosition(x, y);
                 // Give candidates with few filled neighbors a higher weight
                 for (int i = 0; i < neighbor_score; i++)
                 {
-                    candidates.push_back(UIntPair(x, y));
+                    candidates.push_back(dotPos);
                 }
             }
         }
     }
 
-    printDotSpaceCandidates(space, candidates);
-    std::cout << std::endl;
+    //printDotSpaceCandidates(space, candidates);
+    //std::cout << std::endl;
 
     // Choose one candidate randomly
     // Assert: There MUST be candidates if this function is called
     std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size());
     auto new_dot_index = gen_pos_index(gen);
 
-    auto winner = candidates[new_dot_index];
-
-    std::cout << "Winner: " << winner.first << " " << winner.second << std::endl
-              << std::endl;
-
-    return winner;
+    return candidates[new_dot_index];
 }
 
-unsigned int GameGen::getEmptySpacesFromSpace(DotSpace space)
+/**
+ * Helper function which counts the empty spots in a DotSpace.
+ *
+ * @return number of empty spots
+ */
+unsigned int GameGen::countEmptySpots(DotSpace space)
 {
     auto x_size = space.size();
     unsigned int empty_spaces_total = 0;
@@ -108,9 +485,16 @@ unsigned int GameGen::getEmptySpacesFromSpace(DotSpace space)
     return empty_spaces_total;
 }
 
-DotSpace GameGen::regenerateSpaceWithDot(DotSpace space, std::pair<unsigned int, unsigned int> dot, std::default_random_engine gen)
+/**
+ * Takes a space and a dot and places the dot in the space.
+ * For this dot a randomised galaxy is created and the space for that gets
+ * occupied.
+ *
+ * @return DotSpace after adding dot
+ */
+DotSpace GameGen::generateGalaxyFromDot(DotSpace space, DotPosition dot, std::default_random_engine gen)
 {
-    space = markAsOccupied(space, dot);
+    space = markAsOccupied(space, dot, 2);
 
     // Add fields to galaxy/
     auto field = 0;
@@ -146,10 +530,16 @@ DotSpace GameGen::regenerateSpaceWithDot(DotSpace space, std::pair<unsigned int,
     return space;
 }
 
-DotSpace GameGen::addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_random_engine gen)
+/**
+ * Takes a DotSpace with 2s where the current galaxy is generated and the
+ * center of the galaxy and tries to add another field to this galaxy.
+ *
+ * @return DotSpace after addition of field
+ */
+DotSpace GameGen::addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen)
 {
     // Determine possible candidates
-    std::vector<UIntPair> candidates;
+    DotPositionList candidates;
 
     auto x_size = space.size();
     for (auto x = 0; x < x_size; x += 2)
@@ -170,7 +560,7 @@ DotSpace GameGen::addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_ra
                 auto y2 = 2 * dot.second - y;
                 if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < y_size && space[x2][y2] == 0)
                 {
-                    candidates.push_back(UIntPair(x, y));
+                    candidates.push_back(DotPosition(x, y));
                 }
             }
         }
@@ -184,21 +574,27 @@ DotSpace GameGen::addFieldToGalaxy(DotSpace space, UIntPair dot, std::default_ra
 
         auto winner = candidates[new_field_index];
 
-        space = markAsOccupied(space, winner);
+        space = markAsOccupied(space, winner, 2);
 
         // Mark corresponding field as well
         auto x2 = 2 * dot.first - winner.first;
         auto y2 = 2 * dot.second - winner.second;
         if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < space[x2].size())
         {
-            space = markAsOccupied(space, UIntPair(x2, y2));
+            space = markAsOccupied(space, DotPosition(x2, y2), 2);
         }
     }
 
     return space;
 }
 
-DotSpace GameGen::markAsOccupied(DotSpace space, UIntPair dot)
+/**
+ * Marks a field in DotSpace as occupied and marks all newly not possible
+ * spots as occupied as well.
+ *
+ * @return DotSpace after occupation
+ */
+DotSpace GameGen::markAsOccupied(DotSpace space, DotPosition dot, int filler)
 {
     auto x_size = space.size();
     auto y_size = space[0].size();
@@ -220,7 +616,7 @@ DotSpace GameGen::markAsOccupied(DotSpace space, UIntPair dot)
 
             if (x >= 0 && y >= 0 && x < x_size && y < y_size && space[x][y] == 0)
             {
-                space[x][y] = 2;
+                space[x][y] = filler;
             }
         }
     }
@@ -228,7 +624,10 @@ DotSpace GameGen::markAsOccupied(DotSpace space, UIntPair dot)
     return space;
 }
 
-// Helper for debugging purposes
+/**
+ * Helper for debugging purposes.
+ * Prints out a DotSpace.
+ */
 void GameGen::printDotSpace(DotSpace space)
 {
     auto x_size = space.size();
@@ -254,8 +653,11 @@ void GameGen::printDotSpace(DotSpace space)
     }
 }
 
-// Helper for debugging purposes
-void GameGen::printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> candidates)
+/**
+ * Helper for debugging purposes.
+ * Prints out a DotSpace and the amount of candidates for a single spot.
+ */
+void GameGen::printDotSpaceCandidates(DotSpace space, DotPositionList candidates)
 {
     auto x_size = space.size();
     auto y_size = space[0].size();
@@ -289,13 +691,19 @@ void GameGen::printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> cand
     }
 }
 
-std::vector<UIntPair> GameGen::generateDots(int x_size, int y_size)
+/**
+ * Entrypoint into dot generation.
+ * Takes the size of the field and generates dots in it which are then returned.
+ *
+ * @return List of generated dots
+ */
+DotPositionList GameGen::generateDots(int x_size, int y_size)
 {
     // Generate empty space
-    std::vector<std::vector<unsigned int>> space;
+    DotSpace space;
     for (auto i = 0; i < x_size * 2 - 1; i++)
     {
-        std::vector<unsigned int> column;
+        DotSpaceColumn column;
         for (auto j = 0; j < y_size * 2 - 1; j++)
         {
             column.push_back(0);
@@ -304,16 +712,19 @@ std::vector<UIntPair> GameGen::generateDots(int x_size, int y_size)
     }
 
     // Generate dots in space
-    std::vector<UIntPair> new_dot_list;
+    DotPositionList new_dot_list;
     unsigned int empty_spaces;
     std::random_device rd;
     std::default_random_engine gen(rd());
     do
     {
-        auto new_dot = generateNextDot(space, gen);
-        new_dot_list.push_back(new_dot);
-        space = regenerateSpaceWithDot(space, new_dot, gen);
-        empty_spaces = getEmptySpacesFromSpace(space);
+        auto result = generateNextDots(space, gen);
+        for (int i = 0; i < result.first.size(); i++)
+        {
+            new_dot_list.push_back(result.first[i]);
+        }
+        space = result.second;
+        empty_spaces = countEmptySpots(space);
         // Debugging statements
         //printDotSpace(space);
         //std::cout << std::endl;
