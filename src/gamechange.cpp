@@ -5,6 +5,23 @@ GameChange::~GameChange()
     std::cout << "Game Change gelöscht" << std::endl;
 }
 
+GameChange::GameChange(GameChange &&other)
+{
+    new_assoziation = std::move(other.new_assoziation);
+    old_assoziation = std::move(other.old_assoziation);
+    player = std::move(other.player);
+    affected_field = std::move(other.affected_field);
+}
+
+GameChange &GameChange::operator=(GameChange &&other)
+{
+    new_assoziation = std::move(other.new_assoziation);
+    old_assoziation = std::move(other.old_assoziation);
+    player = std::move(other.player);
+    affected_field = std::move(other.affected_field);
+    return *this;
+}
+
 void GameChange::apply()
 {
     if (auto dot = affected_field->assigned_dot.lock())
@@ -23,6 +40,11 @@ void GameChange::apply()
 void GameChange::revert()
 {
     affected_field->assigned_dot = old_assoziation;
+}
+
+void GameChange::set_dot(const d_ptr &d)
+{
+    new_assoziation = d;
 }
 
 nlohmann::json GameChange::toJson()
