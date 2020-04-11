@@ -289,7 +289,7 @@ void GameGen::printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> cand
     }
 }
 
-void GameGen::generateSpace(int x_size, int y_size)
+std::vector<UIntPair> GameGen::generateDots(int x_size, int y_size)
 {
     // Generate empty space
     std::vector<std::vector<unsigned int>> space;
@@ -304,16 +304,20 @@ void GameGen::generateSpace(int x_size, int y_size)
     }
 
     // Generate dots in space
+    std::vector<UIntPair> new_dot_list;
     unsigned int empty_spaces;
     std::random_device rd;
     std::default_random_engine gen(rd());
     do
     {
         auto new_dot = generateNextDot(space, gen);
+        new_dot_list.push_back(new_dot);
         space = regenerateSpaceWithDot(space, new_dot, gen);
         empty_spaces = getEmptySpacesFromSpace(space);
         // Debugging statements
         //printDotSpace(space);
         //std::cout << std::endl;
     } while (empty_spaces > 0);
+
+    return new_dot_list;
 }

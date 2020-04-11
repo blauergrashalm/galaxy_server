@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(galaxy_server)
 
-AUX_SOURCE_DIRECTORY(src src) 
+AUX_SOURCE_DIRECTORY(src src)
 
 find_package (Threads)
 find_package(Boost 1.55.0 REQUIRED COMPONENTS system filesystem)

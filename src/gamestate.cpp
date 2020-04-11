@@ -12,7 +12,14 @@ GameState::GameState(unsigned int x_size, unsigned int y_size) : x_size{x_size},
             addField({i, j});
         }
     }
-    GameGen().generateSpace(x_size, y_size);
+    auto new_dot_list = GameGen().generateDots(x_size, y_size);
+    for (int i = 0; i < new_dot_list.size(); i++)
+    {
+        auto new_dot = new_dot_list[i];
+
+        pos_type dot_pos = {new_dot.first, new_dot.second};
+        addDot(dot_pos);
+    }
 }
 
 json GameState::toJson()

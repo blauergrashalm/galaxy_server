@@ -24,7 +24,7 @@ private:
     void printDotSpaceCandidates(DotSpace space, std::vector<UIntPair> candidates);
 
 public:
-    void generateSpace(int x_size, int y_size);
+    std::vector<UIntPair> generateDots(int x_size, int y_size);
 };
 
 #endif // GAMEGEN_H
