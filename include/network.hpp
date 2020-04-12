@@ -6,7 +6,7 @@
 #include "websocketpp/server.hpp"
 #include "player.hpp"
 
-#include <queue>
+#include <list>
 typedef websocketpp::server<websocketpp::config::asio> server_t;
 
 /**
@@ -29,6 +29,7 @@ struct message_t
     websocketpp::connection_hdl connection;
     action_type type;
     server_t::message_ptr mesage;
+    std::chrono::high_resolution_clock::time_point entry_time;
 };
 
 class Galaxy;
@@ -53,7 +54,7 @@ private:
      * @brief input buffer, gets filled on message receive, gets emptied on another thread
      *
      */
-    std::queue<message_t> to_process;
+    std::list<message_t> to_process;
 
     /**
      * @brief dedicated processing thread to eliminate race conditions
@@ -61,11 +62,6 @@ private:
      */
     std::thread process_thread;
 
-    /**
-     * @brief mutex for protecting the to_process list.
-     *
-     */
-    std::mutex message_mutex;
     /**
      * @brief varible to notify prozessing thread
      *
@@ -84,9 +80,21 @@ private:
      */
     bool shutdown = false;
 
+    /**
+     * @brief timepoint after which messages are valid
+     * 
+     */
+    std::chrono::high_resolution_clock::time_point discarding_time;
+
     void on_open(websocketpp::connection_hdl);
     void on_close(websocketpp::connection_hdl con);
     void on_message(websocketpp::connection_hdl, server_t::message_ptr);
+
+    /**
+     * @brief set time before which messages should be discarded
+     * 
+     */
+    void setDiscardingTime() { discarding_time = std::chrono::high_resolution_clock().now(); };
 
 public:
     Network() = delete;
@@ -94,6 +102,11 @@ public:
     Network(Galaxy &);
 
     bool active = true;
+    /**
+     * @brief mutex for protecting the to_process list.
+     *
+     */
+    std::mutex message_mutex;
 
     /**
      * @brief starts server and prozessing thread
@@ -113,6 +126,12 @@ public:
      *
      */
     void stop();
+
+    /**
+     * @brief deletes messages (not subscribe and unsubscribe)
+     * 
+     */
+    void purgePendingMessages();
 
     /**
      * @brief send a message to a player

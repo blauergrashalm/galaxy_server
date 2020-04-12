@@ -26,10 +26,10 @@ void Network::processMessages()
             return;
         DBG_LOG(MEDIUM, "prozessing Message");
         message_t current = to_process.front();
-        to_process.pop();
+        to_process.pop_front();
         lock.unlock();
+        galaxy.my_mutex.lock(); // galaxy now belongs to us;
         json msg;
-
         switch (current.type)
         {
         case SUBSCRIBE:
@@ -39,13 +39,22 @@ void Network::processMessages()
         case MESSAGE:
             DBG_LOG(MEDIUM, "Message verarbeiten: " + current.mesage->get_payload());
             msg = json::parse(current.mesage->get_payload());
-            galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
+            if (msg["command"] == "player_register" || current.entry_time > discarding_time)
+            {
+                std::cout << "Message verarbeiten: " << current.mesage->get_payload() << std::endl;
+                galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
+            }
+            else
+            {
+                //TODO Debug Message
+            }
             break;
         case UNSUBSCRIBE:
             DBG_LOG(MEDIUM, "Player unsubscribe");
             galaxy.deletePlayer(current.connection);
             break;
         }
+        galaxy.my_mutex.unlock();
 
         // do processing
         //         galaxy->stop();
@@ -62,6 +71,13 @@ void Network::run(uint16_t port)
     process_thread.join();
 }
 
+void Network::purgePendingMessages()
+{
+    to_process.remove_if([](const message_t &msg) {
+        return msg.type == MESSAGE;
+    });
+}
+
 void Network::stop()
 {
     server.stop_listening();
@@ -72,21 +88,22 @@ void Network::stop()
 void Network::on_open(websocketpp::connection_hdl con)
 {
     std::lock_guard<std::mutex> g(message_mutex);
-    to_process.push({con, SUBSCRIBE, nullptr});
+    to_process.push_back({con, SUBSCRIBE, nullptr});
     messages_available.notify_one();
 }
 
 void Network::on_message(websocketpp::connection_hdl con, server_t::message_ptr msg)
 {
+    auto entry = std::chrono::high_resolution_clock().now();
     std::lock_guard<std::mutex> g(message_mutex);
-    to_process.push({con, MESSAGE, msg});
+    to_process.push_back({con, MESSAGE, msg, entry});
     messages_available.notify_one();
 }
 
 void Network::on_close(websocketpp::connection_hdl con)
 {
     std::lock_guard<std::mutex> g(message_mutex);
-    to_process.push({con, UNSUBSCRIBE, nullptr});
+    to_process.push_back({con, UNSUBSCRIBE, nullptr});
     messages_available.notify_one();
 }
 
