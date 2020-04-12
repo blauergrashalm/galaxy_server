@@ -2,6 +2,11 @@
 \label{classGalaxy}\index{Galaxy@{Galaxy}}
 
 
+Main class of this project. Manages all ressources.  
+
+
+
+
 {\ttfamily \#include $<$galaxy.\+hpp$>$}
 
 
@@ -54,16 +59,18 @@ void \mbox{\hyperlink{classGalaxy_a92134e9c556eca12536abf89edbff577}{make\+Game\
 \item 
 std\+::map$<$ \mbox{\hyperlink{galaxy_8hpp_a2d35f1f9976c311ded9a2700cc4b3862}{web\+\_\+con}}, \mbox{\hyperlink{galaxy_8hpp_a665d68e3f4960c0d423e169f912158cb}{shared\+\_\+player}}, std\+::owner\+\_\+less$<$ \mbox{\hyperlink{galaxy_8hpp_a2d35f1f9976c311ded9a2700cc4b3862}{web\+\_\+con}} $>$ $>$ \mbox{\hyperlink{classGalaxy_acb58fc92122bd1a25677e6bd2c662772}{players}}
 \begin{DoxyCompactList}\small\item\em manages all active players with their websocket connection \end{DoxyCompactList}\item 
-std\+::list$<$ \mbox{\hyperlink{classGameChange}{Game\+Change}} $>$ \mbox{\hyperlink{classGalaxy_ad1cedc2c43108c40ad8dd4797f1d2491}{history}}
+std\+::list$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classGameChange}{Game\+Change}} $>$ $>$ \mbox{\hyperlink{classGalaxy_afaa77e175aaf4f0221576569a819bb04}{history}}
 \begin{DoxyCompactList}\small\item\em History of the latest Game changes, as done from the players. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classGameState}{Game\+State}} \mbox{\hyperlink{classGalaxy_a5d10d2543eb98f008d69601543f6d81c}{current\+\_\+state}}
 \begin{DoxyCompactList}\small\item\em represents the current State of the Game \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Main class of this project. Manages all ressources. 
 
 
-Definition at line 16 of file galaxy.\+hpp.
+
+Definition at line 20 of file galaxy.\+hpp.
 
 
 
@@ -126,8 +133,7 @@ needs to be called when \mbox{\hyperlink{classPlayer}{Player}} disconnects from 
 
 Definition at line 33 of file galaxy.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -157,16 +163,14 @@ central method that manages incomming messages from clients
 
 Definition at line 38 of file galaxy.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classGalaxy_a13dbcec35a2b7615acb153d7ca33bce3_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -194,16 +198,14 @@ converts data from the client into a \mbox{\hyperlink{classGameChange}{Game\+Cha
 
 Definition at line 62 of file galaxy.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classGalaxy_a92134e9c556eca12536abf89edbff577_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -242,7 +244,7 @@ gets the \mbox{\hyperlink{classPlayer}{Player}} to the corresponding connection
 \end{DoxyReturn}
 
 
-Definition at line 61 of file galaxy.\+hpp.
+Definition at line 65 of file galaxy.\+hpp.
 
 \mbox{\Hypertarget{classGalaxy_ab70919238d14bc1c16435f477966e159}\label{classGalaxy_ab70919238d14bc1c16435f477966e159}} 
 \index{Galaxy@{Galaxy}!registerNewPlayer@{registerNewPlayer}}
@@ -263,8 +265,7 @@ needs to be called when a new \mbox{\hyperlink{classPlayer}{Player}} connects to
 
 Definition at line 28 of file galaxy.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -285,16 +286,14 @@ starts the \char`\"{}game loop\char`\"{}. this blocks the thread until server st
 
 Definition at line 13 of file galaxy.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classGalaxy_a06c64a89d3bd684797c725c8419c10ca_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -315,16 +314,14 @@ starts notifing all components to shutdown.
 
 Definition at line 19 of file galaxy.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=301pt]{classGalaxy_a58d3ec1dd980cd3adfc1eeb83c41f8e4_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -348,16 +345,14 @@ nlohmann\+::json json object containing type, players and game\+\_\+state
 
 Definition at line 77 of file galaxy.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=309pt]{classGalaxy_ad74f8049b46bdd7c1aafbc0225eaaae1_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -379,13 +374,13 @@ represents the current State of the Game
 
 
 
-Definition at line 37 of file galaxy.\+hpp.
+Definition at line 41 of file galaxy.\+hpp.
 
-\mbox{\Hypertarget{classGalaxy_ad1cedc2c43108c40ad8dd4797f1d2491}\label{classGalaxy_ad1cedc2c43108c40ad8dd4797f1d2491}} 
+\mbox{\Hypertarget{classGalaxy_afaa77e175aaf4f0221576569a819bb04}\label{classGalaxy_afaa77e175aaf4f0221576569a819bb04}} 
 \index{Galaxy@{Galaxy}!history@{history}}
 \index{history@{history}!Galaxy@{Galaxy}}
 \doxysubsubsection{\texorpdfstring{history}{history}}
-{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{classGameChange}{Game\+Change}}$>$ Galaxy\+::history\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::list$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classGameChange}{Game\+Change}}$>$ $>$ Galaxy\+::history\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -393,7 +388,7 @@ History of the latest Game changes, as done from the players.
 
 
 
-Definition at line 31 of file galaxy.\+hpp.
+Definition at line 35 of file galaxy.\+hpp.
 
 \mbox{\Hypertarget{classGalaxy_affb6bdfa41aef60d1668ebf3fff765a2}\label{classGalaxy_affb6bdfa41aef60d1668ebf3fff765a2}} 
 \index{Galaxy@{Galaxy}!net@{net}}
@@ -403,7 +398,7 @@ Definition at line 31 of file galaxy.\+hpp.
 
 
 
-Definition at line 19 of file galaxy.\+hpp.
+Definition at line 23 of file galaxy.\+hpp.
 
 \mbox{\Hypertarget{classGalaxy_acb58fc92122bd1a25677e6bd2c662772}\label{classGalaxy_acb58fc92122bd1a25677e6bd2c662772}} 
 \index{Galaxy@{Galaxy}!players@{players}}
@@ -417,7 +412,7 @@ manages all active players with their websocket connection
 
 
 
-Definition at line 25 of file galaxy.\+hpp.
+Definition at line 29 of file galaxy.\+hpp.
 
 
 

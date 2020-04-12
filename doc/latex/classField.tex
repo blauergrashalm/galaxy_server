@@ -2,6 +2,11 @@
 \label{classField}\index{Field@{Field}}
 
 
+represents a \mbox{\hyperlink{classField}{Field}} in the game  
+
+
+
+
 {\ttfamily \#include $<$field.\+hpp$>$}
 
 
@@ -17,29 +22,31 @@ Collaboration diagram for Field\+:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classField_a78b0ec4cf2a39d3c6a716943e24fbfa6}{Field}} (unsigned int x, unsigned int y)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classField}{Field}} object at coordinates x, y. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{classField_ad2737383b799aa6d4875660aef8b8e06}{to\+Json}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em builds the J\+S\+ON representation of a field \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classGameChange}{Game\+Change}} $>$ \mbox{\hyperlink{classField_a9aa60630de1a5773401a48b63459e727}{last\+\_\+change}}
-\item 
+\begin{DoxyCompactList}\small\item\em the last change that was made to the field \end{DoxyCompactList}\item 
 std\+::weak\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ \mbox{\hyperlink{classField_af1368450f4d1203390e2d298a1fd1866}{assigned\+\_\+dot}}
-\item 
+\begin{DoxyCompactList}\small\item\em the dot that field belongs to \end{DoxyCompactList}\item 
 const unsigned int \mbox{\hyperlink{classField_ae5e284bb9e9e413573fcb05680d4a9a6}{id}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em unique id of this field \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \mbox{\hyperlink{classField_acf5ff1962864201a6b8da3a88a19dbe7}{position}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em position of the field in field coordinated \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+represents a \mbox{\hyperlink{classField}{Field}} in the game 
 
 
-Definition at line 17 of file field.\+hpp.
+
+Definition at line 21 of file field.\+hpp.
 
 
 
@@ -52,7 +59,18 @@ Definition at line 17 of file field.\+hpp.
 
 
 
-Definition at line 27 of file field.\+hpp.
+Construct a new \mbox{\hyperlink{classField}{Field}} object at coordinates x, y. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file field.\+hpp.
 
 
 
@@ -63,6 +81,13 @@ Definition at line 27 of file field.\+hpp.
 \doxysubsubsection{\texorpdfstring{toJson()}{toJson()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Field\+::to\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+builds the J\+S\+ON representation of a field 
+
+\begin{DoxyReturn}{Returns}
+json 
+\end{DoxyReturn}
 
 
 Definition at line 4 of file field.\+cpp.
@@ -78,7 +103,11 @@ Definition at line 4 of file field.\+cpp.
 
 
 
-Definition at line 24 of file field.\+hpp.
+the dot that field belongs to 
+
+
+
+Definition at line 40 of file field.\+hpp.
 
 \mbox{\Hypertarget{classField_ae5e284bb9e9e413573fcb05680d4a9a6}\label{classField_ae5e284bb9e9e413573fcb05680d4a9a6}} 
 \index{Field@{Field}!id@{id}}
@@ -88,7 +117,11 @@ Definition at line 24 of file field.\+hpp.
 
 
 
-Definition at line 25 of file field.\+hpp.
+unique id of this field 
+
+
+
+Definition at line 45 of file field.\+hpp.
 
 \mbox{\Hypertarget{classField_a9aa60630de1a5773401a48b63459e727}\label{classField_a9aa60630de1a5773401a48b63459e727}} 
 \index{Field@{Field}!last\_change@{last\_change}}
@@ -98,7 +131,11 @@ Definition at line 25 of file field.\+hpp.
 
 
 
-Definition at line 23 of file field.\+hpp.
+the last change that was made to the field 
+
+
+
+Definition at line 35 of file field.\+hpp.
 
 \mbox{\Hypertarget{classField_acf5ff1962864201a6b8da3a88a19dbe7}\label{classField_acf5ff1962864201a6b8da3a88a19dbe7}} 
 \index{Field@{Field}!position@{position}}
@@ -108,7 +145,11 @@ Definition at line 23 of file field.\+hpp.
 
 
 
-Definition at line 20 of file field.\+hpp.
+position of the field in field coordinated 
+
+
+
+Definition at line 28 of file field.\+hpp.
 
 
 

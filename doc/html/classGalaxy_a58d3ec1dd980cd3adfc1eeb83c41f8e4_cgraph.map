@@ -1,5 +1,5 @@
 <map id="Galaxy::stop" name="Galaxy::stop">
 <area shape="rect" id="node1" title="starts notifing all components to shutdown." alt="" coords="5,31,108,57"/>
-<area shape="rect" id="node2" href="$classNetwork.html#a14eee72429fc77613fb20692b2101836" title=" " alt="" coords="156,5,300,32"/>
-<area shape="rect" id="node3" href="$classNetwork.html#a223d8aca05065fb5a5c80b119c077831" title=" " alt="" coords="171,56,285,83"/>
+<area shape="rect" id="node2" href="$classNetwork.html#a14eee72429fc77613fb20692b2101836" title="closes a specific connection" alt="" coords="156,5,300,32"/>
+<area shape="rect" id="node3" href="$classNetwork.html#a223d8aca05065fb5a5c80b119c077831" title="starts the shutdown mechanism of the network operations" alt="" coords="171,56,285,83"/>
 </map>

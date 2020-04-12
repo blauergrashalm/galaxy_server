@@ -58,7 +58,7 @@ var sectionId = 'dynsection-7';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="prozesses all incoming messages">
 <polygon fill="#bfbfbf" stroke="black" points="0,-76.5 0,-95.5 150,-95.5 150,-76.5 0,-76.5"/>
 <text text-anchor="middle" x="75" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::processMessages</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-7';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" target="_top" xlink:title="broadcast to all players">
 <polygon fill="white" stroke="black" points="553,-133.5 553,-152.5 665,-152.5 665,-133.5 553,-133.5"/>
 <text text-anchor="middle" x="609" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::broadcast</text>
 </a>
@@ -142,7 +142,7 @@ var sectionId = 'dynsection-7';
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" target="_top" xlink:title="send a message to a player">
 <polygon fill="white" stroke="black" points="399,-76.5 399,-95.5 486,-95.5 486,-76.5 399,-76.5"/>
 <text text-anchor="middle" x="442.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::send</text>
 </a>
@@ -193,7 +193,7 @@ var sectionId = 'dynsection-7';
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="classNetwork.html#a14eee72429fc77613fb20692b2101836" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classNetwork.html#a14eee72429fc77613fb20692b2101836" target="_top" xlink:title="closes a specific connection">
 <polygon fill="white" stroke="black" points="555,-76.5 555,-95.5 663,-95.5 663,-76.5 555,-76.5"/>
 <text text-anchor="middle" x="609" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::closeCon</text>
 </a>
@@ -208,7 +208,7 @@ var sectionId = 'dynsection-7';
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831" target="_top" xlink:title="starts the shutdown mechanism of the network operations">
 <polygon fill="white" stroke="black" points="566.5,-38.5 566.5,-57.5 651.5,-57.5 651.5,-38.5 566.5,-38.5"/>
 <text text-anchor="middle" x="609" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::stop</text>
 </a>

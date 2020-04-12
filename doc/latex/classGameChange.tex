@@ -2,6 +2,11 @@
 \label{classGameChange}\index{GameChange@{GameChange}}
 
 
+Represents an atomic change to the gamestate. Can be reverted, once applied.  
+
+
+
+
 {\ttfamily \#include $<$gamechange.\+hpp$>$}
 
 
@@ -38,13 +43,13 @@ Collaboration diagram for Game\+Change\+:\nopagebreak
 \mbox{\hyperlink{classGameChange_a09d12ba6f71c11d786019fe832bd76cf}{$\sim$\+Game\+Change}} ()
 \item 
 void \mbox{\hyperlink{classGameChange_a3967d72c89f9b3e110c264082d08d31e}{set\+\_\+dot}} (const \mbox{\hyperlink{gamechange_8hpp_a4fbc5a3ab637c0c2329e8ab108e99899}{d\+\_\+ptr}} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Set the new assigned dot. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGameChange_a7f816ec15ef9f150fadb3e195454ac80}{apply}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em apply this change \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGameChange_a450b65527f44748e37bdc71c648224f5}{revert}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em revert this change \end{DoxyCompactList}\item 
 \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} \mbox{\hyperlink{classGameChange_a5f3f690d50b0ae0a4e3f2edcf5f41e2f}{to\+Json}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em serialization of the change \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,15 +58,17 @@ void \mbox{\hyperlink{classGameChange_a450b65527f44748e37bdc71c648224f5}{revert}
 \mbox{\hyperlink{gamechange_8hpp_a165b0bb7469b0871dc8e6b6eb5342886}{f\+\_\+ptr}} \mbox{\hyperlink{classGameChange_a532d54f842d01f794d7ac97860e7f4e6}{affected\+\_\+field}}
 \item 
 \mbox{\hyperlink{gamechange_8hpp_a4fbc5a3ab637c0c2329e8ab108e99899}{d\+\_\+ptr}} \mbox{\hyperlink{classGameChange_a0dcfb544299e67aedb5bd91e4f5f259f}{new\+\_\+assoziation}}
-\item 
+\begin{DoxyCompactList}\small\item\em the new dot the affected field belongs to \end{DoxyCompactList}\item 
 \mbox{\hyperlink{gamechange_8hpp_a4fbc5a3ab637c0c2329e8ab108e99899}{d\+\_\+ptr}} \mbox{\hyperlink{classGameChange_adbd11b51b0f7f82bc8e1719ea16a7a21}{old\+\_\+assoziation}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em if field was attached to a different dot before this dot gets stored here. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Represents an atomic change to the gamestate. Can be reverted, once applied. 
 
 
-Definition at line 12 of file gamechange.\+hpp.
+
+Definition at line 16 of file gamechange.\+hpp.
 
 
 
@@ -74,7 +81,7 @@ Definition at line 12 of file gamechange.\+hpp.
 
 Default constructor 
 
-Definition at line 24 of file gamechange.\+hpp.
+Definition at line 36 of file gamechange.\+hpp.
 
 \mbox{\Hypertarget{classGameChange_af1cc224bb709200d0c5ef3fc4e701230}\label{classGameChange_af1cc224bb709200d0c5ef3fc4e701230}} 
 \index{GameChange@{GameChange}!GameChange@{GameChange}}
@@ -113,6 +120,10 @@ Definition at line 3 of file gamechange.\+cpp.
 
 
 
+apply this change 
+
+
+
 Definition at line 25 of file gamechange.\+cpp.
 
 \mbox{\Hypertarget{classGameChange_ad7bfd7fbdf90ada7e22af57ae541440f}\label{classGameChange_ad7bfd7fbdf90ada7e22af57ae541440f}} 
@@ -139,6 +150,10 @@ Definition at line 16 of file gamechange.\+cpp.
 
 
 
+revert this change 
+
+
+
 Definition at line 40 of file gamechange.\+cpp.
 
 \mbox{\Hypertarget{classGameChange_a3967d72c89f9b3e110c264082d08d31e}\label{classGameChange_a3967d72c89f9b3e110c264082d08d31e}} 
@@ -146,6 +161,10 @@ Definition at line 40 of file gamechange.\+cpp.
 \index{set\_dot@{set\_dot}!GameChange@{GameChange}}
 \doxysubsubsection{\texorpdfstring{set\_dot()}{set\_dot()}}
 {\footnotesize\ttfamily void Game\+Change\+::set\+\_\+dot (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{gamechange_8hpp_a4fbc5a3ab637c0c2329e8ab108e99899}{d\+\_\+ptr}} \&}]{d }\end{DoxyParamCaption})}
+
+
+
+Set the new assigned dot. 
 
 
 
@@ -157,6 +176,13 @@ Definition at line 45 of file gamechange.\+cpp.
 \doxysubsubsection{\texorpdfstring{toJson()}{toJson()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} Game\+Change\+::to\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+serialization of the change 
+
+\begin{DoxyReturn}{Returns}
+nlohmann\+::json 
+\end{DoxyReturn}
 
 
 Definition at line 50 of file gamechange.\+cpp.
@@ -172,7 +198,7 @@ Definition at line 50 of file gamechange.\+cpp.
 
 
 
-Definition at line 16 of file gamechange.\+hpp.
+Definition at line 20 of file gamechange.\+hpp.
 
 \mbox{\Hypertarget{classGameChange_a0dcfb544299e67aedb5bd91e4f5f259f}\label{classGameChange_a0dcfb544299e67aedb5bd91e4f5f259f}} 
 \index{GameChange@{GameChange}!new\_assoziation@{new\_assoziation}}
@@ -182,7 +208,11 @@ Definition at line 16 of file gamechange.\+hpp.
 
 
 
-Definition at line 17 of file gamechange.\+hpp.
+the new dot the affected field belongs to 
+
+
+
+Definition at line 25 of file gamechange.\+hpp.
 
 \mbox{\Hypertarget{classGameChange_adbd11b51b0f7f82bc8e1719ea16a7a21}\label{classGameChange_adbd11b51b0f7f82bc8e1719ea16a7a21}} 
 \index{GameChange@{GameChange}!old\_assoziation@{old\_assoziation}}
@@ -192,7 +222,11 @@ Definition at line 17 of file gamechange.\+hpp.
 
 
 
-Definition at line 18 of file gamechange.\+hpp.
+if field was attached to a different dot before this dot gets stored here. 
+
+
+
+Definition at line 30 of file gamechange.\+hpp.
 
 \mbox{\Hypertarget{classGameChange_ae17ad1becbaba1aa7627188fe3f27397}\label{classGameChange_ae17ad1becbaba1aa7627188fe3f27397}} 
 \index{GameChange@{GameChange}!player@{player}}
@@ -202,7 +236,7 @@ Definition at line 18 of file gamechange.\+hpp.
 
 
 
-Definition at line 15 of file gamechange.\+hpp.
+Definition at line 19 of file gamechange.\+hpp.
 
 
 

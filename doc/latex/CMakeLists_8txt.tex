@@ -5,12 +5,16 @@
 \item 
 \mbox{\hyperlink{CMakeLists_8txt_a9ed4fdeba4352491c2916aae58710e57}{cmake\+\_\+minimum\+\_\+required}} (V\+E\+R\+S\+I\+ON 3.\+0) project(galaxy\+\_\+server) find\+\_\+package(Threads) find\+\_\+package(Boost 1.\+55.\+0 R\+E\+Q\+U\+I\+R\+ED C\+O\+M\+P\+O\+N\+E\+N\+TS system filesystem) include\+\_\+directories(\$
 \item 
-\mbox{\hyperlink{CMakeLists_8txt_a5202025afd0c420c9de48e4b124d5222}{add\+\_\+executable}} (galaxy\+\_\+server \$\{src\}) target\+\_\+include\+\_\+directories(galaxy\+\_\+server P\+R\+I\+V\+A\+TE include) link\+\_\+directories(\$
+\mbox{\hyperlink{CMakeLists_8txt_a5f1475b88437e6f89d252088a0711b51}{add\+\_\+executable}} (galaxy\+\_\+server \$\{src\}) add\+\_\+library(galaxy\+\_\+server\+\_\+lib S\+T\+A\+T\+IC \$
+\item 
+\mbox{\hyperlink{CMakeLists_8txt_a57eba4841685e671ac587c05d8e3777d}{target\+\_\+include\+\_\+directories}} (galaxy\+\_\+server P\+R\+I\+V\+A\+TE include) target\+\_\+include\+\_\+directories(galaxy\+\_\+server\+\_\+lib P\+R\+I\+V\+A\+TE include) link\+\_\+directories(\$
+\item 
+\mbox{\hyperlink{CMakeLists_8txt_adf74e2772a92d485f89e3c5e84de766e}{target\+\_\+link\+\_\+libraries}} (galaxy\+\_\+server \$\{C\+M\+A\+K\+E\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+I\+B\+S\+\_\+\+I\+N\+IT\} \$\{Boost\+\_\+\+L\+I\+B\+R\+A\+R\+I\+ES\}) target\+\_\+link\+\_\+libraries(galaxy\+\_\+server\+\_\+lib \$
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{CMakeLists_8txt_a5202025afd0c420c9de48e4b124d5222}\label{CMakeLists_8txt_a5202025afd0c420c9de48e4b124d5222}} 
+\mbox{\Hypertarget{CMakeLists_8txt_a5f1475b88437e6f89d252088a0711b51}\label{CMakeLists_8txt_a5f1475b88437e6f89d252088a0711b51}} 
 \index{CMakeLists.txt@{CMakeLists.txt}!add\_executable@{add\_executable}}
 \index{add\_executable@{add\_executable}!CMakeLists.txt@{CMakeLists.txt}}
 \doxysubsubsection{\texorpdfstring{add\_executable()}{add\_executable()}}
@@ -29,4 +33,24 @@ Definition at line 12 of file C\+Make\+Lists.\+txt.
 
 
 Definition at line 1 of file C\+Make\+Lists.\+txt.
+
+\mbox{\Hypertarget{CMakeLists_8txt_a57eba4841685e671ac587c05d8e3777d}\label{CMakeLists_8txt_a57eba4841685e671ac587c05d8e3777d}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!target\_include\_directories@{target\_include\_directories}}
+\index{target\_include\_directories@{target\_include\_directories}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{target\_include\_directories()}{target\_include\_directories()}}
+{\footnotesize\ttfamily target\+\_\+include\+\_\+directories (\begin{DoxyParamCaption}\item[{galaxy\+\_\+server P\+R\+I\+V\+A\+TE}]{include }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file C\+Make\+Lists.\+txt.
+
+\mbox{\Hypertarget{CMakeLists_8txt_adf74e2772a92d485f89e3c5e84de766e}\label{CMakeLists_8txt_adf74e2772a92d485f89e3c5e84de766e}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!target\_link\_libraries@{target\_link\_libraries}}
+\index{target\_link\_libraries@{target\_link\_libraries}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{target\_link\_libraries()}{target\_link\_libraries()}}
+{\footnotesize\ttfamily target\+\_\+link\+\_\+libraries (\begin{DoxyParamCaption}\item[{galaxy\+\_\+server \$\{C\+M\+A\+K\+E\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+I\+B\+S\+\_\+\+I\+N\+IT\} \$\{Boost\+\_\+\+L\+I\+B\+R\+A\+R\+I\+ES\}}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file C\+Make\+Lists.\+txt.
 

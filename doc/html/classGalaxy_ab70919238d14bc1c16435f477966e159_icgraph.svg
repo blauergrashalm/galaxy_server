@@ -67,7 +67,7 @@ var sectionId = 'dynsection-6';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title="prozesses all incoming messages">
 <polygon fill="white" stroke="black" points="301,-0.5 301,-19.5 451,-19.5 451,-0.5 301,-0.5"/>
 <text text-anchor="middle" x="376" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::processMessages</text>
 </a>
@@ -82,7 +82,7 @@ var sectionId = 'dynsection-6';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="classNetwork.html#a7d9b412cc58237783bd431544374e11a" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classNetwork.html#a7d9b412cc58237783bd431544374e11a" target="_top" xlink:title="starts server and prozessing thread">
 <polygon fill="white" stroke="black" points="185,-0.5 185,-19.5 265,-19.5 265,-0.5 185,-0.5"/>
 <text text-anchor="middle" x="225" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::run</text>
 </a>

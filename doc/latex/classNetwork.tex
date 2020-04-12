@@ -2,6 +2,11 @@
 \label{classNetwork}\index{Network@{Network}}
 
 
+Manages the Websocket connection.  
+
+
+
+
 {\ttfamily \#include $<$network.\+hpp$>$}
 
 
@@ -21,17 +26,17 @@ Collaboration diagram for Network\+:\nopagebreak
 \mbox{\hyperlink{classNetwork_a4b25ebe6a0349a607938c9cd46ab5828}{Network}} (\mbox{\hyperlink{classGalaxy}{Galaxy}} \&)
 \item 
 void \mbox{\hyperlink{classNetwork_a7d9b412cc58237783bd431544374e11a}{run}} (uint16\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em starts server and prozessing thread \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNetwork_a356c8c0ec32e2795bd754b067838fd89}{process\+Messages}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em prozesses all incoming messages \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNetwork_a223d8aca05065fb5a5c80b119c077831}{stop}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em starts the shutdown mechanism of the network operations \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a}{send}} (\mbox{\hyperlink{classPlayer}{Player}} \&p, \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} data)
-\item 
+\begin{DoxyCompactList}\small\item\em send a message to a player \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNetwork_a57f3c2d8b53d214d26822a52b899d69f}{broadcast}} (const std\+::map$<$ websocketpp\+::connection\+\_\+hdl, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classPlayer}{Player}} $>$, std\+::owner\+\_\+less$<$ websocketpp\+::connection\+\_\+hdl $>$$>$ \&players, \mbox{\hyperlink{gamestate_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{nlohmann\+::json}} data)
-\item 
+\begin{DoxyCompactList}\small\item\em broadcast to all players \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classNetwork_a14eee72429fc77613fb20692b2101836}{close\+Con}} (websocketpp\+::connection\+\_\+hdl)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em closes a specific connection \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -52,25 +57,27 @@ void \mbox{\hyperlink{classNetwork_a62eb103c73f18195abcc2f450f1fcebb}{on\+\_\+me
 friend \mbox{\hyperlink{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}{Galaxy}}
 \item 
 \mbox{\hyperlink{classGalaxy}{Galaxy}} \& \mbox{\hyperlink{classNetwork_aa32d15139a5f36308ed2880662294883}{galaxy}}
-\item 
+\begin{DoxyCompactList}\small\item\em knows the galaxy to send it messages \end{DoxyCompactList}\item 
 std\+::queue$<$ \mbox{\hyperlink{structmessage__t}{message\+\_\+t}} $>$ \mbox{\hyperlink{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}{to\+\_\+process}}
-\item 
+\begin{DoxyCompactList}\small\item\em input buffer, gets filled on message receive, gets emptied on another thread \end{DoxyCompactList}\item 
 std\+::thread \mbox{\hyperlink{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}{process\+\_\+thread}}
-\item 
+\begin{DoxyCompactList}\small\item\em dedicated processing thread to eliminate race conditions \end{DoxyCompactList}\item 
 std\+::mutex \mbox{\hyperlink{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}{message\+\_\+mutex}}
-\item 
+\begin{DoxyCompactList}\small\item\em mutex for protecting the to\+\_\+process list. \end{DoxyCompactList}\item 
 std\+::condition\+\_\+variable \mbox{\hyperlink{classNetwork_a63066b7548b5181c71790f3ec50a112f}{messages\+\_\+available}}
-\item 
+\begin{DoxyCompactList}\small\item\em varible to notify prozessing thread \end{DoxyCompactList}\item 
 \mbox{\hyperlink{network_8hpp_ad7f70e29b3b46e1ab8558a0de1d0a917}{server\+\_\+t}} \mbox{\hyperlink{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}{server}}
-\item 
+\begin{DoxyCompactList}\small\item\em the websocket server \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classNetwork_a0036e03d2987b1813026d9b91eb329d2}{shutdown}} = false
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em state variable so all threads know when to stop \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Manages the Websocket connection. 
 
 
-Definition at line 28 of file network.\+hpp.
+
+Definition at line 40 of file network.\+hpp.
 
 
 
@@ -109,10 +116,20 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
+broadcast to all players 
+
+
+\begin{DoxyParams}{Parameters}
+{\em players} & the currently active players \\
+\hline
+{\em data} & to broadcast \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 97 of file network.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -127,10 +144,13 @@ Here is the caller graph for this function\+:
 
 
 
+closes a specific connection 
+
+
+
 Definition at line 105 of file network.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -196,18 +216,20 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
+prozesses all incoming messages 
+
+
+
 Definition at line 14 of file network.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classNetwork_a356c8c0ec32e2795bd754b067838fd89_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -222,18 +244,25 @@ Here is the caller graph for this function\+:
 
 
 
+starts server and prozessing thread 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & T\+CP Port on which server will listen \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 54 of file network.\+cpp.
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classNetwork_a7d9b412cc58237783bd431544374e11a_cgraph}
 \end{center}
 \end{figure}
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -248,10 +277,20 @@ Here is the caller graph for this function\+:
 
 
 
+send a message to a player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & the receiver \\
+\hline
+{\em data} & the data to send \\
+\hline
+\end{DoxyParams}
+
+
 Definition at line 92 of file network.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -266,10 +305,13 @@ Here is the caller graph for this function\+:
 
 
 
+starts the shutdown mechanism of the network operations 
+
+
+
 Definition at line 63 of file network.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -287,7 +329,7 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 55 of file network.\+hpp.
+Definition at line 96 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}\label{classNetwork_a2739cfc3e6f55aa89cfdb613825a3a1e}} 
 \index{Network@{Network}!Galaxy@{Galaxy}}
@@ -297,7 +339,7 @@ Definition at line 55 of file network.\+hpp.
 
 
 
-Definition at line 31 of file network.\+hpp.
+Definition at line 43 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_aa32d15139a5f36308ed2880662294883}\label{classNetwork_aa32d15139a5f36308ed2880662294883}} 
 \index{Network@{Network}!galaxy@{galaxy}}
@@ -307,7 +349,11 @@ Definition at line 31 of file network.\+hpp.
 
 
 
-Definition at line 34 of file network.\+hpp.
+knows the galaxy to send it messages 
+
+
+
+Definition at line 50 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}\label{classNetwork_a7ed34f22c4b99bc2fbf0d1bd632c22a0}} 
 \index{Network@{Network}!message\_mutex@{message\_mutex}}
@@ -317,7 +363,11 @@ Definition at line 34 of file network.\+hpp.
 
 
 
-Definition at line 39 of file network.\+hpp.
+mutex for protecting the to\+\_\+process list. 
+
+
+
+Definition at line 68 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_a63066b7548b5181c71790f3ec50a112f}\label{classNetwork_a63066b7548b5181c71790f3ec50a112f}} 
 \index{Network@{Network}!messages\_available@{messages\_available}}
@@ -327,7 +377,11 @@ Definition at line 39 of file network.\+hpp.
 
 
 
-Definition at line 40 of file network.\+hpp.
+varible to notify prozessing thread 
+
+
+
+Definition at line 73 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}\label{classNetwork_afdf59b5c9d82c92acef5ed1203e59a34}} 
 \index{Network@{Network}!process\_thread@{process\_thread}}
@@ -337,7 +391,11 @@ Definition at line 40 of file network.\+hpp.
 
 
 
-Definition at line 37 of file network.\+hpp.
+dedicated processing thread to eliminate race conditions 
+
+
+
+Definition at line 62 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}\label{classNetwork_ae4c4d11a9dc204b8d3849a938cd982b4}} 
 \index{Network@{Network}!server@{server}}
@@ -347,7 +405,11 @@ Definition at line 37 of file network.\+hpp.
 
 
 
-Definition at line 42 of file network.\+hpp.
+the websocket server 
+
+
+
+Definition at line 79 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_a0036e03d2987b1813026d9b91eb329d2}\label{classNetwork_a0036e03d2987b1813026d9b91eb329d2}} 
 \index{Network@{Network}!shutdown@{shutdown}}
@@ -357,7 +419,11 @@ Definition at line 42 of file network.\+hpp.
 
 
 
-Definition at line 44 of file network.\+hpp.
+state variable so all threads know when to stop 
+
+
+
+Definition at line 85 of file network.\+hpp.
 
 \mbox{\Hypertarget{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}\label{classNetwork_a36153a67b7b16e96d2b53a917ae611f7}} 
 \index{Network@{Network}!to\_process@{to\_process}}
@@ -367,7 +433,11 @@ Definition at line 44 of file network.\+hpp.
 
 
 
-Definition at line 35 of file network.\+hpp.
+input buffer, gets filled on message receive, gets emptied on another thread 
+
+
+
+Definition at line 56 of file network.\+hpp.
 
 
 
