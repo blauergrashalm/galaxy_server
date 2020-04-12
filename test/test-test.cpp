@@ -28,4 +28,5 @@ TEST(GameGen, countEmptySpots)
         space.push_back(DotSpaceColumn{1, 1, 0});
         EXPECT_EQ(game_gen->countEmptySpots(space), 3);
     }
+    delete game_gen;
 }
