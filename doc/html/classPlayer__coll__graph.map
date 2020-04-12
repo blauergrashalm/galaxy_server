@@ -1,5 +1,0 @@
-<map id="Player" name="Player">
-<area shape="rect" id="node1" title="represents a individual player/client" alt="" coords="43,200,106,227"/>
-<area shape="rect" id="node2" title="STL class." alt="" coords="31,96,118,123"/>
-<area shape="rect" id="node3" title="STL class." alt="" coords="5,5,144,47"/>
-</map>

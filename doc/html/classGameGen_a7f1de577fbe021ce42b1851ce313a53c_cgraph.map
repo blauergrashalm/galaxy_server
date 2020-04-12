@@ -1,7 +1,0 @@
-<map id="GameGen::generateGalaxyFromDot" name="GameGen::generateGalaxyFromDot">
-<area shape="rect" id="node1" title=" " alt="" coords="5,97,260,123"/>
-<area shape="rect" id="node2" href="$classGameGen.html#a4d7754bc07fc51f98c7d1855f242cb6d" title=" " alt="" coords="308,71,517,98"/>
-<area shape="rect" id="node4" href="$classGameGen.html#ae65dd677544a65013b8a1e42ea0f6a4f" title=" " alt="" coords="593,122,798,149"/>
-<area shape="rect" id="node3" href="$classGameGen.html#ad685427ae4d27abc31a7ea674dc46767" title=" " alt="" coords="589,5,802,47"/>
-<area shape="rect" id="node5" href="$classGameGen.html#a02490de53b4901bde30c6600dadf33c0" title=" " alt="" coords="565,71,825,98"/>
-</map>

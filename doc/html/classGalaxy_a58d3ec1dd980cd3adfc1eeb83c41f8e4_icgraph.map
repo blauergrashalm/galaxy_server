@@ -1,9 +1,0 @@
-<map id="Galaxy::stop" name="Galaxy::stop">
-<area shape="rect" id="node1" title="starts notifing all components to shutdown." alt="" coords="897,31,1000,57"/>
-<area shape="rect" id="node2" href="$classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" title="central method that manages incomming messages from clients" alt="" coords="655,5,849,32"/>
-<area shape="rect" id="node7" href="$main_8cpp.html#a13848d945610347db87a059fe0b43f35" title=" " alt="" coords="457,56,556,83"/>
-<area shape="rect" id="node3" href="$classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" title="prozesses all incoming messages" alt="" coords="407,5,607,32"/>
-<area shape="rect" id="node4" href="$classNetwork.html#a7d9b412cc58237783bd431544374e11a" title="starts server and prozessing thread" alt="" coords="252,5,359,32"/>
-<area shape="rect" id="node5" href="$classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" title="starts the &quot;game loop&quot;. this blocks the thread until server stops." alt="" coords="108,5,204,32"/>
-<area shape="rect" id="node6" href="$main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627" title=" " alt="" coords="5,31,60,57"/>
-</map>
