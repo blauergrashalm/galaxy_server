@@ -20,11 +20,11 @@ inline void print_log(level l, std::string file, int line, std::string msg)
     std::cout << file << ":" << line << " :\n\t" << msg << std::endl;
 #endif
 #ifdef DEBUG_MEDIUM
-    if (level <= MEDIUM)
+    if (l <= MEDIUM)
         std::cout << file << ":" << line << " :\n\t" << msg << std::endl;
 #endif
 #ifdef DEBUG_LOW
-    if (level == LOW)
+    if (l == LOW)
         std::cout << file << ":" << line << " :\n\t" << msg << std::endl;
 #endif
 }
