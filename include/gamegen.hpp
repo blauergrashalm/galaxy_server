@@ -16,7 +16,6 @@ typedef std::vector<DotPosition> DotPositionList;
 class GameGen
 {
 private:
-    unsigned int countEmptySpots(DotSpace space);
     int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span);
     std::vector<DotSpace> getPatterns();
     DotSpace addBorder(DotSpace space, int filler);
@@ -31,6 +30,8 @@ private:
     void printDotSpaceCandidates(DotSpace space, DotPositionList candidates);
 
 public:
+    unsigned int countEmptySpots(DotSpace space);
+
     DotPositionList generateDots(int x_size, int y_size);
 };
 

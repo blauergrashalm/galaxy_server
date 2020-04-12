@@ -17,3 +17,5 @@ jobs:
         fetch-depth: 1
     - name: Build library
       run: ./build.sh
+    - name: Run tests
+      run: ./run_tests.sh
