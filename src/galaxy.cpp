@@ -1,6 +1,7 @@
 #include "galaxy.hpp"
 #include "network.hpp"
 #include <memory>
+#include "debug_functions.hpp"
 
 Galaxy::Galaxy() : net(*this), current_state(10, 10)
 {
@@ -12,7 +13,7 @@ Galaxy::~Galaxy()
 
 void Galaxy::run()
 {
-    std::cout << "Galaxy wurde gestartet" << std::endl;
+    DBG_LOG(MEDIUM, "Galaxy startet");
     net.run(9000);
 }
 

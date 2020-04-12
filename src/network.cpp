@@ -1,22 +1,22 @@
 #include "network.hpp"
 #include "galaxy.hpp"
+#include "debug_functions.hpp"
 
 Network::Network(Galaxy &g) : galaxy(g)
 {
     server.init_asio();
-
+    server.clear_access_channels(websocketpp::log::alevel::all);
     server.set_open_handler(std::bind(&Network::on_open, this, std::placeholders::_1));
     server.set_close_handler(std::bind(&Network::on_close, this, std::placeholders::_1));
     server.set_message_handler(std::bind(&Network::on_message, this, std::placeholders::_1, std::placeholders::_2));
-    std::cout << "Server gestartet" << std::endl;
 }
 
 void Network::processMessages()
 {
     while (!(shutdown && to_process.empty()))
     {
-        std::cout << "Durchlauf des Prozessieren" << std::endl;
-        std::unique_lock<std::mutex> lock(message_mutex);
+        std::unique_lock<std::mutex>
+            lock(message_mutex);
 
         while (to_process.empty() && !shutdown)
         {
@@ -24,6 +24,7 @@ void Network::processMessages()
         }
         if (shutdown)
             return;
+        DBG_LOG(MEDIUM, "prozessing Message");
         message_t current = to_process.front();
         to_process.pop();
         lock.unlock();
@@ -32,15 +33,16 @@ void Network::processMessages()
         switch (current.type)
         {
         case SUBSCRIBE:
-            std::cout << "Subscribe verarbeiten" << std::endl;
+            DBG_LOG(MEDIUM, "Prozess Subscribe");
             galaxy.registerNewPlayer(current.connection);
             break;
         case MESSAGE:
-            std::cout << "Message verarbeiten: " << current.mesage->get_payload() << std::endl;
+            DBG_LOG(MEDIUM, "Message verarbeiten: " + current.mesage->get_payload());
             msg = json::parse(current.mesage->get_payload());
             galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
             break;
         case UNSUBSCRIBE:
+            DBG_LOG(MEDIUM, "Player unsubscribe");
             galaxy.deletePlayer(current.connection);
             break;
         }
@@ -48,7 +50,7 @@ void Network::processMessages()
         // do processing
         //         galaxy->stop();
     }
-    std::cout << "Prozess-Thread endet" << std::endl;
+    DBG_LOG(MEDIUM, "Prozessing Thread ends");
 }
 
 void Network::run(uint16_t port)
@@ -62,7 +64,6 @@ void Network::run(uint16_t port)
 
 void Network::stop()
 {
-    std::cout << "Netzwerk soll gestoppt werden" << std::endl;
     server.stop_listening();
     shutdown = true;
     messages_available.notify_all();
