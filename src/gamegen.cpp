@@ -409,20 +409,26 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace
                 }
 
                 // Found a matching pattern! Occupy space
-                for (int px = 0; px < px_size; px++)
                 {
-                    for (int py = 0; py < py_size; py++)
+                    auto occupiedSpace = false;
+                    for (int px = 0; px < px_size; px++)
                     {
-                        auto x2 = x - 1 + px;
-                        auto y2 = y - 1 + py;
-                        if (x2 % 2 == 0 && y2 % 2 == 0 &&
-                            x2 >= 0 && y2 >= 0 &&
-                            x2 < x_size - 2 && y2 < y_size - 2 &&
-                            pattern[px][py] > 1)
+                        for (int py = 0; py < py_size; py++)
                         {
-                            space = markAsOccupied(space, DotPosition(x2, y2), 1);
+                            auto x2 = x - 1 + px;
+                            auto y2 = y - 1 + py;
+                            if (x2 % 2 == 0 && y2 % 2 == 0 &&
+                                x2 >= 0 && y2 >= 0 &&
+                                x2 < x_size - 2 && y2 < y_size - 2 &&
+                                pattern[px][py] > 1)
+                            {
+                                space = markAsOccupied(space, DotPosition(x2, y2), 1);
+                                occupiedSpace = true;
+                            }
                         }
                     }
+                    if (!occupiedSpace)
+                        throw "Did not occupy space!";
                 }
                 return std::pair<DotPositionList, DotSpace>(new_dot_list, space);
             nextPattern:;
@@ -489,18 +495,23 @@ DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_r
     for (int i = search_radius; i >= 0; i--)
     {
         candidates = getRandomDotCandidates(space, i);
+
+        printDotSpaceCandidates(space, candidates);
+        std::cout << std::endl;
+
         if (candidates.size() > 0)
         {
             break;
         }
     }
-
-    printDotSpaceCandidates(space, candidates);
-    std::cout << std::endl;
+    if (candidates.size() == 0)
+    {
+        throw "Found no candidates!";
+    }
 
     // Choose one candidate randomly
     // Assert: There MUST be candidates if this function is called
-    std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size());
+    std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
     auto new_dot_index = gen_pos_index(gen);
 
     return candidates[new_dot_index];
@@ -547,7 +558,7 @@ DotSpace GameGen::generateGalaxyFromDot(DotSpace space, DotPosition dot, std::de
 
     // Add fields to galaxy/
     auto field = 0;
-    std::uniform_int_distribution<unsigned int> gen_pos_index(1, 101);
+    std::uniform_int_distribution<unsigned int> gen_pos_index(1, 100);
     int probability;
     unsigned int dice;
     int mid_of_bell = (space.size() * space[0].size()) / 40 - 1;
@@ -631,7 +642,7 @@ std::pair<DotSpace, bool> GameGen::addFieldToGalaxy(DotSpace space, DotPosition 
     // Choose one candidate randomly
     if (candidates.size() > 0)
     {
-        std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size());
+        std::uniform_int_distribution<unsigned int> gen_pos_index(0, candidates.size() - 1);
         auto new_field_index = gen_pos_index(gen);
 
         auto winner = candidates[new_field_index];
