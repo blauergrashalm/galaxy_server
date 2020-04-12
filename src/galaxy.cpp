@@ -62,14 +62,14 @@ void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json pay
 void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
 {
     auto field = current_state[(unsigned int)payload["field"]];
-    GameChange change(p, field);
+    auto change = std::make_shared<GameChange>(p, field);
     if (payload["dot"] != nullptr)
     {
-        change.set_dot(current_state((unsigned int)payload["dot"]));
+        change->set_dot(current_state((unsigned int)payload["dot"]));
     }
-    change.apply();
-    net.broadcast(players, change.toJson());
-    history.push_back(std::move(change));
+    change->apply();
+    net.broadcast(players, change->toJson());
+    history.push_back(change);
     while (history.size() > 5)
         history.pop_front();
 }
