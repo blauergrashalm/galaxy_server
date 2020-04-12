@@ -5,6 +5,7 @@
 Network::Network(Galaxy &g) : galaxy(g)
 {
     server.init_asio();
+    server.set_reuse_addr(true); // seems hacky but works... so nevermind
     server.clear_access_channels(websocketpp::log::alevel::all);
     server.set_open_handler(std::bind(&Network::on_open, this, std::placeholders::_1));
     server.set_close_handler(std::bind(&Network::on_close, this, std::placeholders::_1));
@@ -40,7 +41,6 @@ void Network::processMessages()
             msg = json::parse(current.mesage->get_payload());
             if (msg["command"] == "player_register" || current.entry_time > discarding_time)
             {
-                DBG_LOG(MEDIUM, "Message verarbeiten: " + current.mesage->get_payload());
                 galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
             }
             else
@@ -121,5 +121,6 @@ void Network::broadcast(const std::map<websocketpp::connection_hdl, std::shared_
 
 void Network::closeCon(websocketpp::connection_hdl con)
 {
-    server.close(con, websocketpp::close::status::normal, "server goes to sleep");
+    server.pause_reading(con);
+    server.close(con, websocketpp::close::status::going_away, "server goes to sleep");
 }
