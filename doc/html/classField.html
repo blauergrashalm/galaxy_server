@@ -99,6 +99,9 @@ $(document).ready(function(){initNavTree('classField.html',''); initResizable();
 </div><!--header-->
 <div class="contents">
 
+<p>represents a <a class="el" href="classField.html" title="represents a Field in the game">Field</a> in the game  
+ <a href="classField.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="field_8hpp_source.html">field.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Field:</div>
@@ -111,27 +114,34 @@ $(document).ready(function(){initNavTree('classField.html',''); initResizable();
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a78b0ec4cf2a39d3c6a716943e24fbfa6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#a78b0ec4cf2a39d3c6a716943e24fbfa6">Field</a> (unsigned int x, unsigned int y)</td></tr>
+<tr class="memdesc:a78b0ec4cf2a39d3c6a716943e24fbfa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classField.html" title="represents a Field in the game">Field</a> object at coordinates x, y.  <a href="classField.html#a78b0ec4cf2a39d3c6a716943e24fbfa6">More...</a><br /></td></tr>
 <tr class="separator:a78b0ec4cf2a39d3c6a716943e24fbfa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2737383b799aa6d4875660aef8b8e06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dot_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#ad2737383b799aa6d4875660aef8b8e06">toJson</a> ()</td></tr>
+<tr class="memdesc:ad2737383b799aa6d4875660aef8b8e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">builds the JSON representation of a field  <a href="classField.html#ad2737383b799aa6d4875660aef8b8e06">More...</a><br /></td></tr>
 <tr class="separator:ad2737383b799aa6d4875660aef8b8e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a9aa60630de1a5773401a48b63459e727"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classGameChange.html">GameChange</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#a9aa60630de1a5773401a48b63459e727">last_change</a></td></tr>
+<tr class="memdesc:a9aa60630de1a5773401a48b63459e727"><td class="mdescLeft">&#160;</td><td class="mdescRight">the last change that was made to the field  <a href="classField.html#a9aa60630de1a5773401a48b63459e727">More...</a><br /></td></tr>
 <tr class="separator:a9aa60630de1a5773401a48b63459e727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1368450f4d1203390e2d298a1fd1866"><td class="memItemLeft" align="right" valign="top">std::weak_ptr&lt; <a class="el" href="classDot.html">Dot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#af1368450f4d1203390e2d298a1fd1866">assigned_dot</a></td></tr>
+<tr class="memdesc:af1368450f4d1203390e2d298a1fd1866"><td class="mdescLeft">&#160;</td><td class="mdescRight">the dot that field belongs to  <a href="classField.html#af1368450f4d1203390e2d298a1fd1866">More...</a><br /></td></tr>
 <tr class="separator:af1368450f4d1203390e2d298a1fd1866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5e284bb9e9e413573fcb05680d4a9a6"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#ae5e284bb9e9e413573fcb05680d4a9a6">id</a></td></tr>
+<tr class="memdesc:ae5e284bb9e9e413573fcb05680d4a9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">unique id of this field  <a href="classField.html#ae5e284bb9e9e413573fcb05680d4a9a6">More...</a><br /></td></tr>
 <tr class="separator:ae5e284bb9e9e413573fcb05680d4a9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:acf5ff1962864201a6b8da3a88a19dbe7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structpos__type.html">pos_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classField.html#acf5ff1962864201a6b8da3a88a19dbe7">position</a></td></tr>
+<tr class="memdesc:acf5ff1962864201a6b8da3a88a19dbe7"><td class="mdescLeft">&#160;</td><td class="mdescRight">position of the field in field coordinated  <a href="classField.html#acf5ff1962864201a6b8da3a88a19dbe7">More...</a><br /></td></tr>
 <tr class="separator:acf5ff1962864201a6b8da3a88a19dbe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00017">17</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<div class="textblock"><p>represents a <a class="el" href="classField.html" title="represents a Field in the game">Field</a> in the game </p>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00021">21</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a78b0ec4cf2a39d3c6a716943e24fbfa6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a78b0ec4cf2a39d3c6a716943e24fbfa6">&#9670;&nbsp;</a></span>Field()</h2>
@@ -167,7 +177,16 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00027">27</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<p>Construct a new <a class="el" href="classField.html" title="represents a Field in the game">Field</a> object at coordinates x, y. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramname">y</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00053">53</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 
 </div>
 </div>
@@ -187,6 +206,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>builds the JSON representation of a field </p>
+<dl class="section return"><dt>Returns</dt><dd>json </dd></dl>
+
 <p class="definition">Definition at line <a class="el" href="field_8cpp_source.html#l00004">4</a> of file <a class="el" href="field_8cpp_source.html">field.cpp</a>.</p>
 
 </div>
@@ -204,7 +226,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00024">24</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<p>the dot that field belongs to </p>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00040">40</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +244,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00025">25</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<p>unique id of this field </p>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00045">45</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +262,9 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00023">23</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<p>the last change that was made to the field </p>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00035">35</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 
 </div>
 </div>
@@ -260,7 +288,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00020">20</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
+<p>position of the field in field coordinated </p>
+
+<p class="definition">Definition at line <a class="el" href="field_8hpp_source.html#l00028">28</a> of file <a class="el" href="field_8hpp_source.html">field.hpp</a>.</p>
 
 </div>
 </div>

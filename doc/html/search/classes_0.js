@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dot_133',['Dot',['../classDot.html',1,'']]]
+  ['dot_135',['Dot',['../classDot.html',1,'']]]
 ];

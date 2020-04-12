@@ -17,6 +17,10 @@ typedef std::shared_ptr<Field> field_ptr_t;
 
 static unsigned int dot_id = 0;
 
+/**
+ * @brief Represents the center of the galaxy
+ * 
+ */
 class Dot
 {
 private:

@@ -100,6 +100,9 @@ $(document).ready(function(){initNavTree('classNetwork.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
+<p>Manages the Websocket connection.  
+ <a href="classNetwork.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="network_8hpp_source.html">network.hpp</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Collaboration diagram for Network:</div>
@@ -116,16 +119,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b25ebe6a0349a607938c9cd46ab5828"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a4b25ebe6a0349a607938c9cd46ab5828">Network</a> (<a class="el" href="classGalaxy.html">Galaxy</a> &amp;)</td></tr>
 <tr class="separator:a4b25ebe6a0349a607938c9cd46ab5828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d9b412cc58237783bd431544374e11a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a7d9b412cc58237783bd431544374e11a">run</a> (uint16_t port)</td></tr>
+<tr class="memdesc:a7d9b412cc58237783bd431544374e11a"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts server and prozessing thread  <a href="classNetwork.html#a7d9b412cc58237783bd431544374e11a">More...</a><br /></td></tr>
 <tr class="separator:a7d9b412cc58237783bd431544374e11a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a356c8c0ec32e2795bd754b067838fd89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89">processMessages</a> ()</td></tr>
+<tr class="memdesc:a356c8c0ec32e2795bd754b067838fd89"><td class="mdescLeft">&#160;</td><td class="mdescRight">prozesses all incoming messages  <a href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89">More...</a><br /></td></tr>
 <tr class="separator:a356c8c0ec32e2795bd754b067838fd89"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a223d8aca05065fb5a5c80b119c077831"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831">stop</a> ()</td></tr>
+<tr class="memdesc:a223d8aca05065fb5a5c80b119c077831"><td class="mdescLeft">&#160;</td><td class="mdescRight">starts the shutdown mechanism of the network operations  <a href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831">More...</a><br /></td></tr>
 <tr class="separator:a223d8aca05065fb5a5c80b119c077831"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad25ed6c4d5a404ed6ca66ecec14b569a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a">send</a> (<a class="el" href="classPlayer.html">Player</a> &amp;p, <a class="el" href="gamestate_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> data)</td></tr>
+<tr class="memdesc:ad25ed6c4d5a404ed6ca66ecec14b569a"><td class="mdescLeft">&#160;</td><td class="mdescRight">send a message to a player  <a href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a">More...</a><br /></td></tr>
 <tr class="separator:ad25ed6c4d5a404ed6ca66ecec14b569a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57f3c2d8b53d214d26822a52b899d69f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f">broadcast</a> (const std::map&lt; websocketpp::connection_hdl, std::shared_ptr&lt; <a class="el" href="classPlayer.html">Player</a> &gt;, std::owner_less&lt; websocketpp::connection_hdl &gt;&gt; &amp;players, <a class="el" href="gamestate_8hpp.html#ab701e3ac61a85b337ec5c1abaad6742d">nlohmann::json</a> data)</td></tr>
+<tr class="memdesc:a57f3c2d8b53d214d26822a52b899d69f"><td class="mdescLeft">&#160;</td><td class="mdescRight">broadcast to all players  <a href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f">More...</a><br /></td></tr>
 <tr class="separator:a57f3c2d8b53d214d26822a52b899d69f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14eee72429fc77613fb20692b2101836"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a14eee72429fc77613fb20692b2101836">closeCon</a> (websocketpp::connection_hdl)</td></tr>
+<tr class="memdesc:a14eee72429fc77613fb20692b2101836"><td class="mdescLeft">&#160;</td><td class="mdescRight">closes a specific connection  <a href="classNetwork.html#a14eee72429fc77613fb20692b2101836">More...</a><br /></td></tr>
 <tr class="separator:a14eee72429fc77613fb20692b2101836"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -147,23 +156,31 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a2739cfc3e6f55aa89cfdb613825a3a1e"><td class="memItemLeft" align="right" valign="top">friend&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a2739cfc3e6f55aa89cfdb613825a3a1e">Galaxy</a></td></tr>
 <tr class="separator:a2739cfc3e6f55aa89cfdb613825a3a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa32d15139a5f36308ed2880662294883"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGalaxy.html">Galaxy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#aa32d15139a5f36308ed2880662294883">galaxy</a></td></tr>
+<tr class="memdesc:aa32d15139a5f36308ed2880662294883"><td class="mdescLeft">&#160;</td><td class="mdescRight">knows the galaxy to send it messages  <a href="classNetwork.html#aa32d15139a5f36308ed2880662294883">More...</a><br /></td></tr>
 <tr class="separator:aa32d15139a5f36308ed2880662294883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36153a67b7b16e96d2b53a917ae611f7"><td class="memItemLeft" align="right" valign="top">std::queue&lt; <a class="el" href="structmessage__t.html">message_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a36153a67b7b16e96d2b53a917ae611f7">to_process</a></td></tr>
+<tr class="memdesc:a36153a67b7b16e96d2b53a917ae611f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">input buffer, gets filled on message receive, gets emptied on another thread  <a href="classNetwork.html#a36153a67b7b16e96d2b53a917ae611f7">More...</a><br /></td></tr>
 <tr class="separator:a36153a67b7b16e96d2b53a917ae611f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdf59b5c9d82c92acef5ed1203e59a34"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#afdf59b5c9d82c92acef5ed1203e59a34">process_thread</a></td></tr>
+<tr class="memdesc:afdf59b5c9d82c92acef5ed1203e59a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">dedicated processing thread to eliminate race conditions  <a href="classNetwork.html#afdf59b5c9d82c92acef5ed1203e59a34">More...</a><br /></td></tr>
 <tr class="separator:afdf59b5c9d82c92acef5ed1203e59a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ed34f22c4b99bc2fbf0d1bd632c22a0"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a7ed34f22c4b99bc2fbf0d1bd632c22a0">message_mutex</a></td></tr>
+<tr class="memdesc:a7ed34f22c4b99bc2fbf0d1bd632c22a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">mutex for protecting the to_process list.  <a href="classNetwork.html#a7ed34f22c4b99bc2fbf0d1bd632c22a0">More...</a><br /></td></tr>
 <tr class="separator:a7ed34f22c4b99bc2fbf0d1bd632c22a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63066b7548b5181c71790f3ec50a112f"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a63066b7548b5181c71790f3ec50a112f">messages_available</a></td></tr>
+<tr class="memdesc:a63066b7548b5181c71790f3ec50a112f"><td class="mdescLeft">&#160;</td><td class="mdescRight">varible to notify prozessing thread  <a href="classNetwork.html#a63066b7548b5181c71790f3ec50a112f">More...</a><br /></td></tr>
 <tr class="separator:a63066b7548b5181c71790f3ec50a112f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4c4d11a9dc204b8d3849a938cd982b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="network_8hpp.html#ad7f70e29b3b46e1ab8558a0de1d0a917">server_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#ae4c4d11a9dc204b8d3849a938cd982b4">server</a></td></tr>
+<tr class="memdesc:ae4c4d11a9dc204b8d3849a938cd982b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">the websocket server  <a href="classNetwork.html#ae4c4d11a9dc204b8d3849a938cd982b4">More...</a><br /></td></tr>
 <tr class="separator:ae4c4d11a9dc204b8d3849a938cd982b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0036e03d2987b1813026d9b91eb329d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNetwork.html#a0036e03d2987b1813026d9b91eb329d2">shutdown</a> = false</td></tr>
+<tr class="memdesc:a0036e03d2987b1813026d9b91eb329d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">state variable so all threads know when to stop  <a href="classNetwork.html#a0036e03d2987b1813026d9b91eb329d2">More...</a><br /></td></tr>
 <tr class="separator:a0036e03d2987b1813026d9b91eb329d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00028">28</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<div class="textblock"><p>Manages the Websocket connection. </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00040">40</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af54923029ae7eeeeb576bf26fcbb36b1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af54923029ae7eeeeb576bf26fcbb36b1">&#9670;&nbsp;</a></span>Network() <span class="overload">[1/2]</span></h2>
@@ -244,14 +261,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>broadcast to all players </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">players</td><td>the currently active players </td></tr>
+    <tr><td class="paramname">data</td><td>to broadcast </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00097">97</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-2-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-2-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-2-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a57f3c2d8b53d214d26822a52b899d69f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a57f3c2d8b53d214d26822a52b899d69f_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -272,14 +297,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>closes a specific connection </p>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00105">105</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-3" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-3-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-3-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-3-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a14eee72429fc77613fb20692b2101836_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a14eee72429fc77613fb20692b2101836_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -414,22 +440,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>prozesses all incoming messages </p>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00014">14</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-7" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-7-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-7-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-7-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a356c8c0ec32e2795bd754b067838fd89_cgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a356c8c0ec32e2795bd754b067838fd89_cgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-8-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classNetwork_a356c8c0ec32e2795bd754b067838fd89_icgraph.svg" width="612" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classNetwork_a356c8c0ec32e2795bd754b067838fd89_icgraph.svg" width="612" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -450,22 +476,28 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>starts server and prozessing thread </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>TCP Port on which server will listen </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00054">54</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-9" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-9-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-9-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-9-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a7d9b412cc58237783bd431544374e11a_cgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a7d9b412cc58237783bd431544374e11a_cgraph.svg" width="100%" height="470"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div id="dynsection-10" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-10-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-10-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-10-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="classNetwork_a7d9b412cc58237783bd431544374e11a_icgraph.svg" width="364" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classNetwork_a7d9b412cc58237783bd431544374e11a_icgraph.svg" width="364" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
@@ -496,14 +528,22 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>send a message to a player </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>the receiver </td></tr>
+    <tr><td class="paramname">data</td><td>the data to send </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00092">92</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-11" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-11-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-11-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-11-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_ad25ed6c4d5a404ed6ca66ecec14b569a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -523,14 +563,15 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>starts the shutdown mechanism of the network operations </p>
+
 <p class="definition">Definition at line <a class="el" href="network_8cpp_source.html#l00063">63</a> of file <a class="el" href="network_8cpp_source.html">network.cpp</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-12-content" class="dyncontent" style="display:none;">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a223d8aca05065fb5a5c80b119c077831_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
-</div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="classNetwork_a223d8aca05065fb5a5c80b119c077831_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -548,7 +589,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00055">55</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00096">96</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -572,7 +613,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00031">31</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00043">43</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -596,7 +637,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00034">34</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>knows the galaxy to send it messages </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00050">50</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -620,7 +663,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00039">39</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>mutex for protecting the to_process list. </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00068">68</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -644,7 +689,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00040">40</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>varible to notify prozessing thread </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00073">73</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -668,7 +715,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00037">37</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>dedicated processing thread to eliminate race conditions </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00062">62</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -692,7 +741,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00042">42</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>the websocket server </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00079">79</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -716,7 +767,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00044">44</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>state variable so all threads know when to stop </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00085">85</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>
@@ -740,7 +793,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00035">35</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
+<p>input buffer, gets filled on message receive, gets emptied on another thread </p>
+
+<p class="definition">Definition at line <a class="el" href="network_8hpp_source.html#l00056">56</a> of file <a class="el" href="network_8hpp_source.html">network.hpp</a>.</p>
 
 </div>
 </div>

@@ -5,14 +5,17 @@
 #include <random>
 #include <vector>
 
-// This is type is in dot grid coordinates to simplify the generation algorithm
-// If the place in the grid is a valid place for a new dot to be in, it is marked with 0
-// Otherwise it is marked with 1
 typedef std::vector<int> DotSpaceColumn;
 typedef std::vector<DotSpaceColumn> DotSpace;
 typedef std::pair<unsigned int, unsigned int> DotPosition;
 typedef std::vector<DotPosition> DotPositionList;
 
+/**
+ * @brief Generates a solvable game_state
+ * This type is in dot grid coordinates to simplify the generation algorithm
+ * If the place in the grid is a valid place for a new dot to be in, it is marked with 0
+ * Otherwise it is marked with 1
+ */
 class GameGen
 {
 private:

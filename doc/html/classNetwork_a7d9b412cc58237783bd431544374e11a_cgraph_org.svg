@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="starts server and prozessing thread">
 <polygon fill="#bfbfbf" stroke="black" points="0,-76.5 0,-95.5 80,-95.5 80,-76.5 0,-76.5"/>
 <text text-anchor="middle" x="40" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::run</text>
 </a>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title="prozesses all incoming messages">
 <polygon fill="white" stroke="black" points="116,-76.5 116,-95.5 266,-95.5 266,-76.5 116,-76.5"/>
 <text text-anchor="middle" x="191" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::processMessages</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" target="_top" xlink:title="broadcast to all players">
 <polygon fill="white" stroke="black" points="669,-133.5 669,-152.5 781,-152.5 781,-133.5 669,-133.5"/>
 <text text-anchor="middle" x="725" y="-140.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::broadcast</text>
 </a>
@@ -111,7 +111,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" target="_top" xlink:title="send a message to a player">
 <polygon fill="white" stroke="black" points="515,-76.5 515,-95.5 602,-95.5 602,-76.5 515,-76.5"/>
 <text text-anchor="middle" x="558.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::send</text>
 </a>
@@ -162,7 +162,7 @@
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="classNetwork.html#a14eee72429fc77613fb20692b2101836" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classNetwork.html#a14eee72429fc77613fb20692b2101836" target="_top" xlink:title="closes a specific connection">
 <polygon fill="white" stroke="black" points="671,-76.5 671,-95.5 779,-95.5 779,-76.5 671,-76.5"/>
 <text text-anchor="middle" x="725" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::closeCon</text>
 </a>
@@ -177,7 +177,7 @@
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classNetwork.html#a223d8aca05065fb5a5c80b119c077831" target="_top" xlink:title="starts the shutdown mechanism of the network operations">
 <polygon fill="white" stroke="black" points="682.5,-38.5 682.5,-57.5 767.5,-57.5 767.5,-38.5 682.5,-38.5"/>
 <text text-anchor="middle" x="725" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::stop</text>
 </a>

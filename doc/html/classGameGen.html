@@ -98,17 +98,20 @@ $(document).ready(function(){initNavTree('classGameGen.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 
+<p>Generates a solvable game_state This type is in dot grid coordinates to simplify the generation algorithm If the place in the grid is a valid place for a new dot to be in, it is marked with 0 Otherwise it is marked with 1.  
+ <a href="classGameGen.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="gamegen_8hpp_source.html">gamegen.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a089409f51b983de8bb697d1fe0654f52"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameGen.html#a089409f51b983de8bb697d1fe0654f52">countEmptySpots</a> (<a class="el" href="gamegen_8hpp.html#af0539b41c93f464a0f1bd9cbb6613841">DotSpace</a> space)</td></tr>
+<tr class="separator:a089409f51b983de8bb697d1fe0654f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ce6a9241bfbb198b0ba80ed8ea306eb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="gamegen_8hpp.html#a65ae97213aef39e48f9f71ddf78d313e">DotPositionList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameGen.html#a0ce6a9241bfbb198b0ba80ed8ea306eb">generateDots</a> (int x_size, int y_size)</td></tr>
 <tr class="separator:a0ce6a9241bfbb198b0ba80ed8ea306eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a089409f51b983de8bb697d1fe0654f52"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameGen.html#a089409f51b983de8bb697d1fe0654f52">countEmptySpots</a> (<a class="el" href="gamegen_8hpp.html#af0539b41c93f464a0f1bd9cbb6613841">DotSpace</a> space)</td></tr>
-<tr class="separator:a089409f51b983de8bb697d1fe0654f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad685427ae4d27abc31a7ea674dc46767"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameGen.html#ad685427ae4d27abc31a7ea674dc46767">calculateNeighborPenalty</a> (<a class="el" href="gamegen_8hpp.html#af0539b41c93f464a0f1bd9cbb6613841">DotSpace</a> space, int x, int y, int x_size, int y_size, int neighbor_span)</td></tr>
 <tr class="separator:ad685427ae4d27abc31a7ea674dc46767"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34c1e2fa651f615a03de47e2d51243d9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="gamegen_8hpp.html#af0539b41c93f464a0f1bd9cbb6613841">DotSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameGen.html#a34c1e2fa651f615a03de47e2d51243d9">getPatterns</a> ()</td></tr>
@@ -135,8 +138,9 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:a02490de53b4901bde30c6600dadf33c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="gamegen_8hpp_source.html#l00016">16</a> of file <a class="el" href="gamegen_8hpp_source.html">gamegen.hpp</a>.</p>
+<div class="textblock"><p>Generates a solvable game_state This type is in dot grid coordinates to simplify the generation algorithm If the place in the grid is a valid place for a new dot to be in, it is marked with 0 Otherwise it is marked with 1. </p>
+
+<p class="definition">Definition at line <a class="el" href="gamegen_8hpp_source.html#l00019">19</a> of file <a class="el" href="gamegen_8hpp_source.html">gamegen.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a63a2ff5e0ad3f88436c8ee9584ddeb40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63a2ff5e0ad3f88436c8ee9584ddeb40">&#9670;&nbsp;</a></span>addBorder()</h2>
@@ -225,7 +229,7 @@ Private Member Functions</h2></td></tr>
 <p>Takes a DotSpace with 2s where the current galaxy is generated and the center of the galaxy and tries to add another field to this galaxy.</p>
 <dl class="section return"><dt>Returns</dt><dd>DotSpace after addition of field </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00592">592</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00603">603</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
@@ -317,9 +321,6 @@ Private Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">unsigned int GameGen::countEmptySpots </td>
@@ -329,16 +330,11 @@ Private Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Helper function which counts the empty spots in a DotSpace.</p>
 <dl class="section return"><dt>Returns</dt><dd>number of empty spots </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00514">514</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00525">525</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-4" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-4-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-4-summary" class="dynsummary" style="display:block;">
@@ -377,7 +373,7 @@ Private Member Functions</h2></td></tr>
 <p>Entrypoint into dot generation. Takes the size of the field and generates dots in it which are then returned.</p>
 <dl class="section return"><dt>Returns</dt><dd>List of generated dots </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00762">762</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00773">773</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-5" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-5-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-5-summary" class="dynsummary" style="display:block;">
@@ -430,7 +426,7 @@ Private Member Functions</h2></td></tr>
 <p>Takes a space and a dot and places the dot in the space. For this dot a randomised galaxy is created and the space for that gets occupied.</p>
 <dl class="section return"><dt>Returns</dt><dd>DotSpace after adding dot </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00544">544</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00555">555</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-6" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-6-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-6-summary" class="dynsummary" style="display:block;">
@@ -482,7 +478,7 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00435">435</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00441">441</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-8" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-8-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-8-summary" class="dynsummary" style="display:block;">
@@ -588,7 +584,7 @@ Private Member Functions</h2></td></tr>
 <p>Generates a random dot in the empty spots. Tries to use a weight function to prefer spaces which allow bigger galaxies.</p>
 <dl class="section return"><dt>Returns</dt><dd>generatedDot </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00485">485</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00491">491</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-12" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-12-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-12-summary" class="dynsummary" style="display:block;">
@@ -674,7 +670,7 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00455">455</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00461">461</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-15" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-15-trigger" src="closed.png" alt="+"/> Here is the call graph for this function:</div>
 <div id="dynsection-15-summary" class="dynsummary" style="display:block;">
@@ -734,7 +730,7 @@ Private Member Functions</h2></td></tr>
 <p>Marks a field in DotSpace as occupied and marks all newly not possible spots as occupied as well.</p>
 <dl class="section return"><dt>Returns</dt><dd>DotSpace after occupation </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00659">659</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00670">670</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-17" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-17-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-17-summary" class="dynsummary" style="display:block;">
@@ -770,7 +766,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Helper for debugging purposes. Prints out a DotSpace. </p>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00693">693</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00704">704</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-18" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-18-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-18-summary" class="dynsummary" style="display:block;">
@@ -816,7 +812,7 @@ Private Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Helper for debugging purposes. Prints out a DotSpace and the amount of candidates for a single spot. </p>
 
-<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00722">722</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gamegen_8cpp_source.html#l00733">733</a> of file <a class="el" href="gamegen_8cpp_source.html">gamegen.cpp</a>.</p>
 <div id="dynsection-19" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-19-trigger" src="closed.png" alt="+"/> Here is the caller graph for this function:</div>
 <div id="dynsection-19-summary" class="dynsummary" style="display:block;">

@@ -2,6 +2,11 @@
 \label{classGameState}\index{GameState@{GameState}}
 
 
+Represents the current state of the game.  
+
+
+
+
 {\ttfamily \#include $<$gamestate.\+hpp$>$}
 
 
@@ -21,15 +26,15 @@ Collaboration diagram for Game\+State\+:\nopagebreak
 \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}{to\+Json}} ()
 \item 
 void \mbox{\hyperlink{classGameState_ab62ea98ecd4f9312cbc3d0e8d3d51556}{apply\+Game\+Change}} (const \mbox{\hyperlink{classGameChange}{Game\+Change}} \&change)
-\item 
+\begin{DoxyCompactList}\small\item\em applyies a gamechange \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ \mbox{\hyperlink{classGameState_a417ccae98a77e36911886d9e407e01eb}{operator()}} (const unsigned int \&i)
-\item 
+\begin{DoxyCompactList}\small\item\em gets a dot by id \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ \mbox{\hyperlink{classGameState_af736654ecce8c555c419d6f05c4fee81}{operator()}} (const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&p)
-\item 
+\begin{DoxyCompactList}\small\item\em gets dot by position \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ \mbox{\hyperlink{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}{operator\mbox{[}$\,$\mbox{]}}} (const unsigned int \&i)
-\item 
+\begin{DoxyCompactList}\small\item\em gets a field by id \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ \mbox{\hyperlink{classGameState_aef737a1e7840c48c109d990197ba28df}{operator\mbox{[}$\,$\mbox{]}}} (const \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \&p)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em gets a field by position \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,28 +43,30 @@ void \mbox{\hyperlink{classGameState_aa79c333dbb483a7f4037e3c5c0dab137}{add\+Fie
 void \mbox{\hyperlink{classGameState_aedbbb2e7c5fda5eb2ee9bbb9d6d3e720}{add\+Dot}} (\mbox{\hyperlink{structpos__type}{pos\+\_\+type}} position)
 \item 
 void \mbox{\hyperlink{classGameState_ac2b2496090f728a63032ad0ab30b7194}{generate\+Random\+Dots}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em deprecated, generates unsolvable State most of the times \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 unsigned int \mbox{\hyperlink{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}{x\+\_\+size}}
-\item 
+\begin{DoxyCompactList}\small\item\em dimensions of the game \end{DoxyCompactList}\item 
 unsigned int \mbox{\hyperlink{classGameState_a2031e605826df42da332677df63b28b7}{y\+\_\+size}}
 \item 
 std\+::map$<$ \mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ $>$ \mbox{\hyperlink{classGameState_af137ebbe20ec0c4534a2e6330e889e16}{fields}}
-\item 
+\begin{DoxyCompactList}\small\item\em all fields in the game, ordered by position \end{DoxyCompactList}\item 
 std\+::map$<$ \mbox{\hyperlink{structpos__type}{pos\+\_\+type}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ $>$ \mbox{\hyperlink{classGameState_abdeeaf893bbd9477240a9ede9ae318a8}{dots}}
-\item 
+\begin{DoxyCompactList}\small\item\em all dots in the game, ordered by position \end{DoxyCompactList}\item 
 std\+::map$<$ unsigned int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classDot}{Dot}} $>$ $>$ \mbox{\hyperlink{classGameState_a6dc7d21498cd08c4f5342b16909214bd}{dots\+\_\+by\+\_\+id}}
-\item 
+\begin{DoxyCompactList}\small\item\em all dots in the game, ordered by id \end{DoxyCompactList}\item 
 std\+::map$<$ unsigned int, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classField}{Field}} $>$ $>$ \mbox{\hyperlink{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}{fields\+\_\+by\+\_\+id}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em all fields in the game, ordered by id \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Represents the current state of the game. 
 
 
-Definition at line 16 of file gamestate.\+hpp.
+
+Definition at line 20 of file gamestate.\+hpp.
 
 
 
@@ -110,11 +117,24 @@ Definition at line 64 of file gamestate.\+cpp.
 \doxysubsubsection{\texorpdfstring{applyGameChange()}{applyGameChange()}}
 {\footnotesize\ttfamily void Game\+State\+::apply\+Game\+Change (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classGameChange}{Game\+Change}} \&}]{change }\end{DoxyParamCaption})}
 
+
+
+applyies a gamechange 
+
+
+\begin{DoxyParams}{Parameters}
+{\em change} & the change that should be applied \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classGameState_ac2b2496090f728a63032ad0ab30b7194}\label{classGameState_ac2b2496090f728a63032ad0ab30b7194}} 
 \index{GameState@{GameState}!generateRandomDots@{generateRandomDots}}
 \index{generateRandomDots@{generateRandomDots}!GameState@{GameState}}
 \doxysubsubsection{\texorpdfstring{generateRandomDots()}{generateRandomDots()}}
 {\footnotesize\ttfamily void Game\+State\+::generate\+Random\+Dots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+deprecated, generates unsolvable State most of the times 
 
 
 
@@ -135,7 +155,19 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Definition at line 41 of file gamestate.\+hpp.
+gets dot by position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & position at which the requested dot lives \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Dot$>$ 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_a417ccae98a77e36911886d9e407e01eb}\label{classGameState_a417ccae98a77e36911886d9e407e01eb}} 
 \index{GameState@{GameState}!operator()@{operator()}}
@@ -145,7 +177,19 @@ Definition at line 41 of file gamestate.\+hpp.
 
 
 
-Definition at line 36 of file gamestate.\+hpp.
+gets a dot by id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & id to use \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Dot$>$ dot with requested id 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_aef737a1e7840c48c109d990197ba28df}\label{classGameState_aef737a1e7840c48c109d990197ba28df}} 
 \index{GameState@{GameState}!operator\mbox{[}\mbox{]}@{operator[]}}
@@ -155,7 +199,19 @@ Definition at line 36 of file gamestate.\+hpp.
 
 
 
-Definition at line 51 of file gamestate.\+hpp.
+gets a field by position 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Field$>$ 
+\end{DoxyReturn}
+
+
+Definition at line 109 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}\label{classGameState_ad6fbe8ffc0e3aabe96ca50da731fc07b}} 
 \index{GameState@{GameState}!operator\mbox{[}\mbox{]}@{operator[]}}
@@ -165,7 +221,19 @@ Definition at line 51 of file gamestate.\+hpp.
 
 
 
-Definition at line 46 of file gamestate.\+hpp.
+gets a field by id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::shared\+\_\+ptr$<$\+Field$>$ 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}\label{classGameState_a77597717c0d0b6d4e93c7f299cf3f315}} 
 \index{GameState@{GameState}!toJson@{toJson}}
@@ -177,8 +245,7 @@ Definition at line 46 of file gamestate.\+hpp.
 
 Definition at line 25 of file gamestate.\+cpp.
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -196,7 +263,11 @@ Here is the caller graph for this function\+:
 
 
 
-Definition at line 22 of file gamestate.\+hpp.
+all dots in the game, ordered by position 
+
+
+
+Definition at line 38 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_a6dc7d21498cd08c4f5342b16909214bd}\label{classGameState_a6dc7d21498cd08c4f5342b16909214bd}} 
 \index{GameState@{GameState}!dots\_by\_id@{dots\_by\_id}}
@@ -206,7 +277,11 @@ Definition at line 22 of file gamestate.\+hpp.
 
 
 
-Definition at line 23 of file gamestate.\+hpp.
+all dots in the game, ordered by id 
+
+
+
+Definition at line 43 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_af137ebbe20ec0c4534a2e6330e889e16}\label{classGameState_af137ebbe20ec0c4534a2e6330e889e16}} 
 \index{GameState@{GameState}!fields@{fields}}
@@ -216,7 +291,11 @@ Definition at line 23 of file gamestate.\+hpp.
 
 
 
-Definition at line 21 of file gamestate.\+hpp.
+all fields in the game, ordered by position 
+
+
+
+Definition at line 33 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}\label{classGameState_a76b3ec53c24170507e9d4c911b0fb59a}} 
 \index{GameState@{GameState}!fields\_by\_id@{fields\_by\_id}}
@@ -226,7 +305,11 @@ Definition at line 21 of file gamestate.\+hpp.
 
 
 
-Definition at line 24 of file gamestate.\+hpp.
+all fields in the game, ordered by id 
+
+
+
+Definition at line 48 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}\label{classGameState_aae6fc1d5628ded87d9e48fe463bc57cc}} 
 \index{GameState@{GameState}!x\_size@{x\_size}}
@@ -236,7 +319,11 @@ Definition at line 24 of file gamestate.\+hpp.
 
 
 
-Definition at line 19 of file gamestate.\+hpp.
+dimensions of the game 
+
+
+
+Definition at line 27 of file gamestate.\+hpp.
 
 \mbox{\Hypertarget{classGameState_a2031e605826df42da332677df63b28b7}\label{classGameState_a2031e605826df42da332677df63b28b7}} 
 \index{GameState@{GameState}!y\_size@{y\_size}}
@@ -246,7 +333,7 @@ Definition at line 19 of file gamestate.\+hpp.
 
 
 
-Definition at line 19 of file gamestate.\+hpp.
+Definition at line 27 of file gamestate.\+hpp.
 
 
 

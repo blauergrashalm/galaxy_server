@@ -58,7 +58,7 @@ var sectionId = 'dynsection-0';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Represents the current state of the game.">
 <polygon fill="#bfbfbf" stroke="black" points="1318,-215 1318,-234 1389,-234 1389,-215 1318,-215"/>
 <text text-anchor="middle" x="1353.5" y="-222" font-family="Helvetica,sans-Serif" font-size="10.00">GameState</text>
 </a>
@@ -100,7 +100,7 @@ var sectionId = 'dynsection-0';
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classGameChange.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classGameChange.html" target="_top" xlink:title="Represents an atomic change to the gamestate. Can be reverted, once applied.">
 <polygon fill="white" stroke="black" points="1051,-94 1051,-113 1134,-113 1134,-94 1051,-94"/>
 <text text-anchor="middle" x="1092.5" y="-101" font-family="Helvetica,sans-Serif" font-size="10.00">GameChange</text>
 </a>
@@ -150,7 +150,7 @@ var sectionId = 'dynsection-0';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classField.html" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classField.html" target="_top" xlink:title="represents a Field in the game">
 <polygon fill="white" stroke="black" points="1537,-310 1537,-329 1576,-329 1576,-310 1537,-310"/>
 <text text-anchor="middle" x="1556.5" y="-317" font-family="Helvetica,sans-Serif" font-size="10.00">Field</text>
 </a>
@@ -166,7 +166,7 @@ var sectionId = 'dynsection-0';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="structpos__type.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="structpos__type.html" target="_top" xlink:title="simple position type for 2 dimensions. sortable">
 <polygon fill="white" stroke="black" points="251,-213 251,-232 312,-232 312,-213 251,-213"/>
 <text text-anchor="middle" x="281.5" y="-220" font-family="Helvetica,sans-Serif" font-size="10.00">pos_type</text>
 </a>
@@ -189,7 +189,7 @@ var sectionId = 'dynsection-0';
 <!-- Node10 -->
 <g id="node10" class="node">
 <title>Node10</title>
-<g id="a_node10"><a xlink:href="classDot.html" target="_top" xlink:title=" ">
+<g id="a_node10"><a xlink:href="classDot.html" target="_top" xlink:title="Represents the center of the galaxy.">
 <polygon fill="white" stroke="black" points="552.5,-251 552.5,-270 586.5,-270 586.5,-251 552.5,-251"/>
 <text text-anchor="middle" x="569.5" y="-258" font-family="Helvetica,sans-Serif" font-size="10.00">Dot</text>
 </a>
@@ -349,7 +349,7 @@ var sectionId = 'dynsection-0';
 <!-- Node13 -->
 <g id="node13" class="node">
 <title>Node13</title>
-<g id="a_node13"><a xlink:href="classPlayer.html" target="_top" xlink:title=" ">
+<g id="a_node13"><a xlink:href="classPlayer.html" target="_top" xlink:title="represents a individual player/client">
 <polygon fill="white" stroke="black" points="546,-6 546,-25 593,-25 593,-6 546,-6"/>
 <text text-anchor="middle" x="569.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">Player</text>
 </a>

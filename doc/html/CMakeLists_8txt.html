@@ -100,12 +100,16 @@ $(document).ready(function(){initNavTree('CMakeLists_8txt.html',''); initResizab
 Functions</h2></td></tr>
 <tr class="memitem:a9ed4fdeba4352491c2916aae58710e57"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a9ed4fdeba4352491c2916aae58710e57">cmake_minimum_required</a> (VERSION 3.0) project(galaxy_server) find_package(Threads) find_package(Boost 1.55.0 REQUIRED COMPONENTS system filesystem) include_directories($</td></tr>
 <tr class="separator:a9ed4fdeba4352491c2916aae58710e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5202025afd0c420c9de48e4b124d5222"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a5202025afd0c420c9de48e4b124d5222">add_executable</a> (galaxy_server ${src}) target_include_directories(galaxy_server PRIVATE include) link_directories($</td></tr>
-<tr class="separator:a5202025afd0c420c9de48e4b124d5222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f1475b88437e6f89d252088a0711b51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a5f1475b88437e6f89d252088a0711b51">add_executable</a> (galaxy_server ${src}) add_library(galaxy_server_lib STATIC $</td></tr>
+<tr class="separator:a5f1475b88437e6f89d252088a0711b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57eba4841685e671ac587c05d8e3777d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#a57eba4841685e671ac587c05d8e3777d">target_include_directories</a> (galaxy_server PRIVATE include) target_include_directories(galaxy_server_lib PRIVATE include) link_directories($</td></tr>
+<tr class="separator:a57eba4841685e671ac587c05d8e3777d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf74e2772a92d485f89e3c5e84de766e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="CMakeLists_8txt.html#adf74e2772a92d485f89e3c5e84de766e">target_link_libraries</a> (galaxy_server ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES}) target_link_libraries(galaxy_server_lib $</td></tr>
+<tr class="separator:adf74e2772a92d485f89e3c5e84de766e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a5202025afd0c420c9de48e4b124d5222"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5202025afd0c420c9de48e4b124d5222">&#9670;&nbsp;</a></span>add_executable()</h2>
+<a id="a5f1475b88437e6f89d252088a0711b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f1475b88437e6f89d252088a0711b51">&#9670;&nbsp;</a></span>add_executable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,6 +145,46 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="CMakeLists_8txt_source.html#l00001">1</a> of file <a class="el" href="CMakeLists_8txt_source.html">CMakeLists.txt</a>.</p>
+
+</div>
+</div>
+<a id="a57eba4841685e671ac587c05d8e3777d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57eba4841685e671ac587c05d8e3777d">&#9670;&nbsp;</a></span>target_include_directories()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">target_include_directories </td>
+          <td>(</td>
+          <td class="paramtype">galaxy_server PRIVATE&#160;</td>
+          <td class="paramname"><em>include</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CMakeLists_8txt_source.html#l00015">15</a> of file <a class="el" href="CMakeLists_8txt_source.html">CMakeLists.txt</a>.</p>
+
+</div>
+</div>
+<a id="adf74e2772a92d485f89e3c5e84de766e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf74e2772a92d485f89e3c5e84de766e">&#9670;&nbsp;</a></span>target_link_libraries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">target_link_libraries </td>
+          <td>(</td>
+          <td class="paramtype">galaxy_server ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES}&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="CMakeLists_8txt_source.html#l00019">19</a> of file <a class="el" href="CMakeLists_8txt_source.html">CMakeLists.txt</a>.</p>
 
 </div>
 </div>
