@@ -7,12 +7,12 @@
 #include <unistd.h>
 #include "debug_functions.hpp"
 
-Galaxy g;
+auto g = std::make_shared<Galaxy>();
 
 void my_handler(int s)
 {
     DBG_LOG(LOW, "Signal erhalten");
-    g.stop();
+    g->stop();
 }
 
 int main(int argc, char **argv)
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     sigaction(SIGINT, &sigIntHandler, NULL);
 
     DBG_LOG(MEDIUM, "Starte Galaxie");
-    g.run();
+    g->run();
     DBG_LOG(LOW, "Programm endet");
     return 0;
 }

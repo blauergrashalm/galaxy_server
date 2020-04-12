@@ -3,7 +3,7 @@
 #include <memory>
 #include "debug_functions.hpp"
 
-Galaxy::Galaxy() : net(*this), current_state(10, 10)
+Galaxy::Galaxy() : net(*this), current_state(10, 10), poll(shared_from_this())
 {
 }
 
@@ -50,14 +50,30 @@ void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json pay
     }
     else if (command == "new_game")
     {
-        history.clear();
-        current_state = GameState((int)payload["width"], (int)payload["height"]);
-        net.broadcast(players, toJson());
+        new_height = payload["height"];
+        new_width = payload["width"];
+        poll.reset(p, players.size());
     }
     else
     {
         stop();
     }
+}
+
+void Galaxy::noitifyVoteState(nlohmann::json vote)
+{
+    net.broadcast(players, vote);
+}
+
+void Galaxy::newGame()
+{
+    std::lock_guard<std::mutex> lock(net.message_mutex); // stop adding new messages
+    std::lock_guard<std::mutex> lock2(my_mutex);         // wait until current processing is done
+    net.setDiscardingTime();                             // tell network which messages should get invalidated
+
+    history.clear();
+    current_state = GameState(new_width, new_height);
+    net.broadcast(players, toJson());
 }
 
 void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
