@@ -3,7 +3,7 @@
 
 /**
  * @brief simple position type for 2 dimensions. sortable
- * 
+ *
  */
 struct pos_type
 {

@@ -11,7 +11,7 @@
 static unsigned int p_id = 0;
 /**
  * @brief represents a individual player/client
- * 
+ *
  */
 class Player
 {
@@ -19,12 +19,12 @@ private:
 public:
     /**
      * @brief unique player id
-     * 
+     *
      */
     const unsigned int id;
     /**
      * @brief the network connection the player uses
-     * 
+     *
      */
     websocketpp::connection_hdl websocket_handle;
     /**
