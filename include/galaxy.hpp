@@ -23,6 +23,7 @@ private:
      * 
      */
     std::map<web_con, shared_player, std::owner_less<web_con>> players;
+
     /**
      * @brief History of the latest Game changes, as done from the players
      * 
