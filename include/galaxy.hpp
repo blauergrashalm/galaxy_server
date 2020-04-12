@@ -2,13 +2,14 @@
 #define GALAXY_H
 
 #include <list>
-
+#include <memory>
 #include "nlohmann/json.hpp"
 
 #include "player.hpp"
 #include "gamechange.hpp"
 #include "gamestate.hpp"
 #include "network.hpp"
+#include "newgamepoll.hpp"
 
 typedef websocketpp::connection_hdl web_con;
 typedef std::shared_ptr<Player> shared_player;
@@ -17,10 +18,12 @@ typedef std::shared_ptr<Player> shared_player;
  * @brief Main class of this project. Manages all ressources
  *
  */
-class Galaxy
+class Galaxy : public std::enable_shared_from_this<Galaxy>
 {
 private:
+    friend NewGamePoll;
     Network net;
+    NewGamePoll poll;
 
     /**
      * @brief manages all active players with their websocket connection
@@ -53,6 +56,18 @@ private:
      * @param payload The data representing the change
      */
     void makeGameChange(shared_player p, nlohmann::json payload);
+
+    /**
+     * @brief generates a new Game
+     * 
+     * @param height 
+     * @param width 
+     */
+    void newGame();
+
+    void noitifyVoteState(nlohmann::json);
+
+    unsigned int new_height, new_width;
 
 public:
     /**

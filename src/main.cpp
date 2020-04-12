@@ -6,12 +6,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
-Galaxy g;
+auto g = std::make_shared<Galaxy>();
 
 void my_handler(int s)
 {
     std::cout << "Signal erhalten" << std::endl;
-    g.stop();
+    g->stop();
 }
 
 int main(int argc, char **argv)
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     sigaction(SIGINT, &sigIntHandler, NULL);
 
     std::cout << "Starte Galaxy" << std::endl;
-    g.run();
+    g->run();
     std::cout << "Programm endet" << std::endl;
     return 0;
 }
