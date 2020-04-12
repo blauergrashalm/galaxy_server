@@ -19,7 +19,7 @@ private:
     Network net;
 
     std::map<web_con, shared_player, std::owner_less<web_con>> players;
-    std::list<GameChange> history;
+    std::list<std::shared_ptr<GameChange>> history;
     GameState current_state;
 
     void setPlayerName(std::string name);
