@@ -56,6 +56,11 @@ private:
 
 public:
     /**
+     * @brief is used to lock the class in case voting_timer expires
+     * 
+     */
+    std::mutex my_mutex;
+    /**
      * @brief gets the Player to the corresponding connection
      *
      * @param con an active websocket connection
