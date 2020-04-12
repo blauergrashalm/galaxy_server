@@ -4,6 +4,8 @@ project(galaxy_server)
 
 AUX_SOURCE_DIRECTORY(src src)
 
+add_definitions(-DDEBUG_HIGH)
+
 find_package (Threads)
 find_package(Boost 1.55.0 REQUIRED COMPONENTS system filesystem)
 
