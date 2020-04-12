@@ -1,21 +1,20 @@
 #include "galaxy.hpp"
 #include "newgamepoll.hpp"
-
-void NewGamePoll::reset(const shared_player &p, int amount)
+#include <chrono>
+#include "debug_functions.hpp"
+using namespace std::chrono_literals;
+void NewGamePoll::reset(const shared_player &p, int num_players)
 {
+    if (active)
+        return;
+    amount = num_players;
     positive_votes.insert(p);
     active = true;
-    time_left = 10000;
     std::thread([&]() {
-        for (int i = 0; i < 100; i++)
-        {
-            std::this_thread::sleep_for(millis(100));
-            if (positive_votes.size() + negative_votes.size() == amount)
-                break;
-            time_left -= 100;
-            g->noitifyVoteState(toJSON());
-        }
-        std::lock_guard<std::mutex> l(set_mutex);
+        std::unique_lock<std::mutex> l(set_mutex);
+        DBG_LOG(LOW, "thread startet");
+        cv.wait_for(l, 10s, [&]() { return allVoted(); });
+        DBG_LOG(LOW, "wait ended; all votes? " + std::to_string(allVoted()));
         active = false;
         if (positive_votes.size() > negative_votes.size())
         {
@@ -33,6 +32,29 @@ nlohmann::json NewGamePoll::toJSON()
     result["type"] = "poll";
     result["positives"] = positive_votes.size();
     result["negatives"] = negative_votes.size();
-    result["time_left"] = time_left;
     return result;
 }
+
+void NewGamePoll::registerPositiveVote(const shared_player &p)
+{
+    std::lock_guard<std::mutex> l(set_mutex);
+    if (active)
+    {
+        positive_votes.insert(p);
+        negative_votes.erase(p);
+        g->noitifyVoteState(toJSON());
+        cv.notify_all();
+    }
+};
+
+void NewGamePoll::registerNegativeVote(const shared_player &p)
+{
+    std::lock_guard<std::mutex> l(set_mutex);
+    if (active)
+    {
+        negative_votes.insert(p);
+        positive_votes.erase(p);
+        g->noitifyVoteState(toJSON());
+        cv.notify_all();
+    }
+};

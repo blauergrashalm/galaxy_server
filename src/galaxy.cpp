@@ -3,7 +3,7 @@
 #include <memory>
 #include "debug_functions.hpp"
 
-Galaxy::Galaxy() : net(*this), current_state(10, 10), poll(shared_from_this())
+Galaxy::Galaxy() : net(*this), current_state(10, 10)
 {
 }
 
@@ -13,6 +13,7 @@ Galaxy::~Galaxy()
 
 void Galaxy::run()
 {
+    poll.reset(new NewGamePoll(shared_from_this()));
     DBG_LOG(MEDIUM, "Galaxy startet");
     net.run(9000);
 }
@@ -52,7 +53,7 @@ void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json pay
     {
         new_height = payload["height"];
         new_width = payload["width"];
-        poll.reset(p, players.size());
+        poll->reset(p, players.size());
     }
     else
     {
