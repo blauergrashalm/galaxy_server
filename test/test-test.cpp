@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../include/gamegen.hpp"
+#include "gamegen.hpp"
 
 TEST(GameGen, countEmptySpots)
 {
