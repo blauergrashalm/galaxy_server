@@ -1,14 +1,14 @@
 <map id="Network::run" name="Network::run">
 <area shape="rect" id="node1" title=" " alt="" coords="5,93,112,120"/>
 <area shape="rect" id="node2" href="$classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" title=" " alt="" coords="160,93,360,120"/>
-<area shape="rect" id="node3" href="$classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" title=" " alt="" coords="427,43,584,69"/>
-<area shape="rect" id="node4" href="$classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" title=" " alt="" coords="408,93,603,120"/>
-<area shape="rect" id="node13" href="$classGalaxy.html#ab70919238d14bc1c16435f477966e159" title=" " alt="" coords="408,144,603,171"/>
+<area shape="rect" id="node3" href="$classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" title="needs to be called when Player disconnects from server" alt="" coords="427,43,584,69"/>
+<area shape="rect" id="node4" href="$classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" title="central method that manages incomming messages from clients" alt="" coords="408,93,603,120"/>
+<area shape="rect" id="node13" href="$classGalaxy.html#ab70919238d14bc1c16435f477966e159" title="needs to be called when a new Player connects to the server" alt="" coords="408,144,603,171"/>
 <area shape="rect" id="node5" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title=" " alt="" coords="897,17,1047,44"/>
-<area shape="rect" id="node6" href="$classGalaxy.html#a92134e9c556eca12536abf89edbff577" title=" " alt="" coords="651,43,849,69"/>
+<area shape="rect" id="node6" href="$classGalaxy.html#a92134e9c556eca12536abf89edbff577" title="converts data from the client into a GameChange and applies it" alt="" coords="651,43,849,69"/>
 <area shape="rect" id="node7" href="$classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" title=" " alt="" coords="692,93,808,120"/>
-<area shape="rect" id="node8" href="$classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" title=" " alt="" coords="699,144,801,171"/>
-<area shape="rect" id="node11" href="$classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" title=" " alt="" coords="693,195,807,221"/>
+<area shape="rect" id="node8" href="$classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" title="starts notifing all components to shutdown." alt="" coords="699,144,801,171"/>
+<area shape="rect" id="node11" href="$classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" title="generates a json object of the current state of the galaxy" alt="" coords="693,195,807,221"/>
 <area shape="rect" id="node9" href="$classNetwork.html#a14eee72429fc77613fb20692b2101836" title=" " alt="" coords="900,93,1044,120"/>
 <area shape="rect" id="node10" href="$classNetwork.html#a223d8aca05065fb5a5c80b119c077831" title=" " alt="" coords="915,144,1029,171"/>
 <area shape="rect" id="node12" href="$classGameState.html#a77597717c0d0b6d4e93c7f299cf3f315" title=" " alt="" coords="901,195,1043,221"/>
