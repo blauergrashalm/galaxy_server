@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" target="_top" xlink:title="central method that manages incomming messages from clients">
 <polygon fill="white" stroke="black" points="487,-19.5 487,-38.5 633,-38.5 633,-19.5 487,-19.5"/>
 <text text-anchor="middle" x="560" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::executeCommand</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title="converts data from the client into a GameChange and applies it">
 <polygon fill="white" stroke="black" points="669,-0.5 669,-19.5 818,-19.5 818,-0.5 669,-0.5"/>
 <text text-anchor="middle" x="743.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::makeGameChange</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" target="_top" xlink:title="starts the &quot;game loop&quot;. this blocks the thread until server stops.">
 <polygon fill="white" stroke="black" points="77,-19.5 77,-38.5 149,-38.5 149,-19.5 77,-19.5"/>
 <text text-anchor="middle" x="113" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::run</text>
 </a>

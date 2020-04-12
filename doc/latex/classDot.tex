@@ -6,8 +6,7 @@
 
 
 
-Collaboration diagram for Dot\+:
-\nopagebreak
+Collaboration diagram for Dot\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -18,35 +17,35 @@ Collaboration diagram for Dot\+:
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{classDot_a860c0d6aa0dd496746c733277f038c3b}{Dot}} (unsigned int x, unsigned int y)
-\item 
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classDot}{Dot}} object with its coordinates. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classDot_a1c9b269b0c64d43bed1c818196fd1d9a}{are\+Fields\+Symetrical}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em checks if the assigned fields to this dot are mirrored around the dot \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classDot_a147e628c67949af26e0a91421aaf7217}{is\+Valid}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em checks if the assigned fields are valid (symetrical and connected) \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDot_ab738e2e3211949543fc733645a62fdb2}{register\+Field}} (\mbox{\hyperlink{dot_8hpp_a2f344ab931c7c19e363260821d974807}{field\+\_\+ptr\+\_\+t}} f)
-\item 
+\begin{DoxyCompactList}\small\item\em register a new field to be assigned to this dot \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classDot_adb82717dc701188d834f402885df27a8}{remove\+Field}} (\mbox{\hyperlink{dot_8hpp_a2f344ab931c7c19e363260821d974807}{field\+\_\+ptr\+\_\+t}} f)
-\item 
+\begin{DoxyCompactList}\small\item\em remove a field assoziation from this dot \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} \mbox{\hyperlink{classDot_a24b5b93464b630bb9b80cdb14be7371d}{to\+Json}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em generates a json representation of this dot \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
 const unsigned int \mbox{\hyperlink{classDot_a337f12650fc620f73e09a671cdbc5f2b}{id}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em the id of this dot \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 std\+::set$<$ \mbox{\hyperlink{dot_8hpp_a2f344ab931c7c19e363260821d974807}{field\+\_\+ptr\+\_\+t}} $>$ \mbox{\hyperlink{classDot_a1e2350b143e40aaa2ac24ebdfa8b95e7}{fields}}
-\item 
+\begin{DoxyCompactList}\small\item\em all the fields that are assigned this dot \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structpos__type}{pos\+\_\+type}} \mbox{\hyperlink{classDot_aab0adf43cead3776a725ff2bc5d2961f}{position}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em position of this dot in D\+OT Space \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 
 
-Definition at line 19 of file dot.\+hpp.
+Definition at line 20 of file dot.\+hpp.
 
 
 
@@ -59,7 +58,18 @@ Definition at line 19 of file dot.\+hpp.
 
 
 
-Definition at line 26 of file dot.\+hpp.
+Construct a new \mbox{\hyperlink{classDot}{Dot}} object with its coordinates. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate \\
+\hline
+{\em y} & y coordinate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 41 of file dot.\+hpp.
 
 
 
@@ -70,12 +80,30 @@ Definition at line 26 of file dot.\+hpp.
 \doxysubsubsection{\texorpdfstring{areFieldsSymetrical()}{areFieldsSymetrical()}}
 {\footnotesize\ttfamily bool Dot\+::are\+Fields\+Symetrical (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+checks if the assigned fields to this dot are mirrored around the dot 
+
+\begin{DoxyReturn}{Returns}
+true all fields are symetrical 
+
+false not symetrical 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classDot_a147e628c67949af26e0a91421aaf7217}\label{classDot_a147e628c67949af26e0a91421aaf7217}} 
 \index{Dot@{Dot}!isValid@{isValid}}
 \index{isValid@{isValid}!Dot@{Dot}}
 \doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
 {\footnotesize\ttfamily bool Dot\+::is\+Valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+checks if the assigned fields are valid (symetrical and connected) 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classDot_ab738e2e3211949543fc733645a62fdb2}\label{classDot_ab738e2e3211949543fc733645a62fdb2}} 
 \index{Dot@{Dot}!registerField@{registerField}}
 \index{registerField@{registerField}!Dot@{Dot}}
@@ -84,7 +112,16 @@ Definition at line 26 of file dot.\+hpp.
 
 
 
-Definition at line 31 of file dot.\+hpp.
+register a new field to be assigned to this dot 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & the field to be assigned \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file dot.\+hpp.
 
 \mbox{\Hypertarget{classDot_adb82717dc701188d834f402885df27a8}\label{classDot_adb82717dc701188d834f402885df27a8}} 
 \index{Dot@{Dot}!removeField@{removeField}}
@@ -94,7 +131,16 @@ Definition at line 31 of file dot.\+hpp.
 
 
 
-Definition at line 32 of file dot.\+hpp.
+remove a field assoziation from this dot 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & field to remove \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file dot.\+hpp.
 
 \mbox{\Hypertarget{classDot_a24b5b93464b630bb9b80cdb14be7371d}\label{classDot_a24b5b93464b630bb9b80cdb14be7371d}} 
 \index{Dot@{Dot}!toJson@{toJson}}
@@ -102,6 +148,13 @@ Definition at line 32 of file dot.\+hpp.
 \doxysubsubsection{\texorpdfstring{toJson()}{toJson()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{dot_8hpp_ab701e3ac61a85b337ec5c1abaad6742d}{json}} Dot\+::to\+Json (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+generates a json representation of this dot 
+
+\begin{DoxyReturn}{Returns}
+json 
+\end{DoxyReturn}
 
 
 Definition at line 4 of file dot.\+cpp.
@@ -117,7 +170,11 @@ Definition at line 4 of file dot.\+cpp.
 
 
 
-Definition at line 22 of file dot.\+hpp.
+all the fields that are assigned this dot 
+
+
+
+Definition at line 27 of file dot.\+hpp.
 
 \mbox{\Hypertarget{classDot_a337f12650fc620f73e09a671cdbc5f2b}\label{classDot_a337f12650fc620f73e09a671cdbc5f2b}} 
 \index{Dot@{Dot}!id@{id}}
@@ -127,7 +184,11 @@ Definition at line 22 of file dot.\+hpp.
 
 
 
-Definition at line 32 of file dot.\+hpp.
+the id of this dot 
+
+
+
+Definition at line 69 of file dot.\+hpp.
 
 \mbox{\Hypertarget{classDot_aab0adf43cead3776a725ff2bc5d2961f}\label{classDot_aab0adf43cead3776a725ff2bc5d2961f}} 
 \index{Dot@{Dot}!position@{position}}
@@ -137,7 +198,11 @@ Definition at line 32 of file dot.\+hpp.
 
 
 
-Definition at line 23 of file dot.\+hpp.
+position of this dot in D\+OT Space 
+
+
+
+Definition at line 32 of file dot.\+hpp.
 
 
 

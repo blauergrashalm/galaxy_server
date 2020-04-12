@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="central method that manages incomming messages from clients">
 <polygon fill="#bfbfbf" stroke="black" points="0,-76.5 0,-95.5 146,-95.5 146,-76.5 0,-76.5"/>
 <text text-anchor="middle" x="73" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::executeCommand</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title="converts data from the client into a GameChange and applies it">
 <polygon fill="white" stroke="black" points="182,-114.5 182,-133.5 331,-133.5 331,-114.5 182,-114.5"/>
 <text text-anchor="middle" x="256.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::makeGameChange</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" target="_top" xlink:title="starts notifing all components to shutdown.">
 <polygon fill="white" stroke="black" points="218,-38.5 218,-57.5 295,-57.5 295,-38.5 218,-38.5"/>
 <text text-anchor="middle" x="256.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::stop</text>
 </a>
@@ -81,7 +81,7 @@
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" target="_top" xlink:title=" ">
+<g id="a_node8"><a xlink:href="classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" target="_top" xlink:title="generates a json object of the current state of the galaxy">
 <polygon fill="white" stroke="black" points="213.5,-0.5 213.5,-19.5 299.5,-19.5 299.5,-0.5 213.5,-0.5"/>
 <text text-anchor="middle" x="256.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::toJson</text>
 </a>
