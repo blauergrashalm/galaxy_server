@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include "debug_functions.hpp"
 
 Galaxy g;
 
@@ -26,6 +27,7 @@ int main(int argc, char **argv)
 
     std::cout << "Starte Galaxy" << std::endl;
     g.run();
+    DBG_LOG(HIGH, "HUmba");
     std::cout << "Programm endet" << std::endl;
     return 0;
 }
