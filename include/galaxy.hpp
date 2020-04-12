@@ -23,7 +23,7 @@ class Galaxy : public std::enable_shared_from_this<Galaxy>
 private:
     friend NewGamePoll;
     Network net;
-    NewGamePoll poll;
+    std::unique_ptr<NewGamePoll> poll;
 
     /**
      * @brief manages all active players with their websocket connection
