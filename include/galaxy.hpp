@@ -13,6 +13,10 @@
 typedef websocketpp::connection_hdl web_con;
 typedef std::shared_ptr<Player> shared_player;
 
+/**
+ * @brief Main class of this project. Manages all ressources
+ * 
+ */
 class Galaxy
 {
 private:

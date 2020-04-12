@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['history_62',['history',['../classGalaxy.html#ad1cedc2c43108c40ad8dd4797f1d2491',1,'Galaxy']]]
+  ['history_62',['history',['../classGalaxy.html#afaa77e175aaf4f0221576569a819bb04',1,'Galaxy']]]
 ];

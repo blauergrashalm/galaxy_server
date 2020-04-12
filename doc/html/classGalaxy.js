@@ -15,7 +15,7 @@ var classGalaxy =
     [ "stop", "classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4", null ],
     [ "toJson", "classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1", null ],
     [ "current_state", "classGalaxy.html#a5d10d2543eb98f008d69601543f6d81c", null ],
-    [ "history", "classGalaxy.html#ad1cedc2c43108c40ad8dd4797f1d2491", null ],
+    [ "history", "classGalaxy.html#afaa77e175aaf4f0221576569a819bb04", null ],
     [ "net", "classGalaxy.html#affb6bdfa41aef60d1668ebf3fff765a2", null ],
     [ "players", "classGalaxy.html#acb58fc92122bd1a25677e6bd2c662772", null ]
 ];

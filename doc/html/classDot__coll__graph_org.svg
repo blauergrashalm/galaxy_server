@@ -12,7 +12,7 @@
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="Represents the center of the galaxy.">
 <polygon fill="#bfbfbf" stroke="black" points="307.5,-55.5 307.5,-74.5 341.5,-74.5 341.5,-55.5 307.5,-55.5"/>
 <text text-anchor="middle" x="324.5" y="-62.5" font-family="Helvetica,sans-Serif" font-size="10.00">Dot</text>
 </a>
@@ -53,7 +53,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="structpos__type.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="structpos__type.html" target="_top" xlink:title="simple position type for 2 dimensions. sortable">
 <polygon fill="white" stroke="black" points="143,-15.5 143,-34.5 204,-34.5 204,-15.5 143,-15.5"/>
 <text text-anchor="middle" x="173.5" y="-22.5" font-family="Helvetica,sans-Serif" font-size="10.00">pos_type</text>
 </a>
@@ -69,7 +69,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classField.html" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classField.html" target="_top" xlink:title="represents a Field in the game">
 <polygon fill="white" stroke="black" points="1181,-75.5 1181,-94.5 1220,-94.5 1220,-75.5 1181,-75.5"/>
 <text text-anchor="middle" x="1200.5" y="-82.5" font-family="Helvetica,sans-Serif" font-size="10.00">Field</text>
 </a>
@@ -117,7 +117,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classGameChange.html" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classGameChange.html" target="_top" xlink:title="Represents an atomic change to the gamestate. Can be reverted, once applied.">
 <polygon fill="white" stroke="black" points="716,-151.5 716,-170.5 799,-170.5 799,-151.5 716,-151.5"/>
 <text text-anchor="middle" x="757.5" y="-158.5" font-family="Helvetica,sans-Serif" font-size="10.00">GameChange</text>
 </a>
@@ -203,7 +203,7 @@
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="classPlayer.html" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="classPlayer.html" target="_top" xlink:title="represents a individual player/client">
 <polygon fill="white" stroke="black" points="301,-200.5 301,-219.5 348,-219.5 348,-200.5 301,-200.5"/>
 <text text-anchor="middle" x="324.5" y="-207.5" font-family="Helvetica,sans-Serif" font-size="10.00">Player</text>
 </a>

@@ -2,17 +2,22 @@
 \label{classGameGen}\index{GameGen@{GameGen}}
 
 
+Generates a solvable game\+\_\+state This type is in dot grid coordinates to simplify the generation algorithm If the place in the grid is a valid place for a new dot to be in, it is marked with 0 Otherwise it is marked with 1.  
+
+
+
+
 {\ttfamily \#include $<$gamegen.\+hpp$>$}
 
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+unsigned int \mbox{\hyperlink{classGameGen_a089409f51b983de8bb697d1fe0654f52}{count\+Empty\+Spots}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space)
+\item 
 \mbox{\hyperlink{gamegen_8hpp_a65ae97213aef39e48f9f71ddf78d313e}{Dot\+Position\+List}} \mbox{\hyperlink{classGameGen_a0ce6a9241bfbb198b0ba80ed8ea306eb}{generate\+Dots}} (int x\+\_\+size, int y\+\_\+size)
 \end{DoxyCompactItemize}
 \doxysubsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
-\item 
-unsigned int \mbox{\hyperlink{classGameGen_a089409f51b983de8bb697d1fe0654f52}{count\+Empty\+Spots}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space)
 \item 
 int \mbox{\hyperlink{classGameGen_ad685427ae4d27abc31a7ea674dc46767}{calculate\+Neighbor\+Penalty}} (\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}} space, int x, int y, int x\+\_\+size, int y\+\_\+size, int neighbor\+\_\+span)
 \item 
@@ -41,9 +46,9 @@ void \mbox{\hyperlink{classGameGen_a02490de53b4901bde30c6600dadf33c0}{print\+Dot
 
 
 \doxysubsection{Detailed Description}
+Generates a solvable game\+\_\+state This type is in dot grid coordinates to simplify the generation algorithm If the place in the grid is a valid place for a new dot to be in, it is marked with 0 Otherwise it is marked with 1. 
 
-
-Definition at line 16 of file gamegen.\+hpp.
+Definition at line 19 of file gamegen.\+hpp.
 
 
 
@@ -78,7 +83,7 @@ Dot\+Space after addition of field
 \end{DoxyReturn}
 
 
-Definition at line 592 of file gamegen.\+cpp.
+Definition at line 603 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -115,7 +120,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \index{GameGen@{GameGen}!countEmptySpots@{countEmptySpots}}
 \index{countEmptySpots@{countEmptySpots}!GameGen@{GameGen}}
 \doxysubsubsection{\texorpdfstring{countEmptySpots()}{countEmptySpots()}}
-{\footnotesize\ttfamily unsigned int Game\+Gen\+::count\+Empty\+Spots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily unsigned int Game\+Gen\+::count\+Empty\+Spots (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{gamegen_8hpp_af0539b41c93f464a0f1bd9cbb6613841}{Dot\+Space}}}]{space }\end{DoxyParamCaption})}
 
 Helper function which counts the empty spots in a Dot\+Space.
 
@@ -124,7 +129,7 @@ number of empty spots
 \end{DoxyReturn}
 
 
-Definition at line 514 of file gamegen.\+cpp.
+Definition at line 525 of file gamegen.\+cpp.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -146,7 +151,7 @@ List of generated dots
 \end{DoxyReturn}
 
 
-Definition at line 762 of file gamegen.\+cpp.
+Definition at line 773 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -168,7 +173,7 @@ Dot\+Space after adding dot
 \end{DoxyReturn}
 
 
-Definition at line 544 of file gamegen.\+cpp.
+Definition at line 555 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -192,7 +197,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 435 of file gamegen.\+cpp.
+Definition at line 441 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -245,7 +250,7 @@ generated\+Dot
 \end{DoxyReturn}
 
 
-Definition at line 485 of file gamegen.\+cpp.
+Definition at line 491 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -286,7 +291,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 
 
-Definition at line 455 of file gamegen.\+cpp.
+Definition at line 461 of file gamegen.\+cpp.
 
 Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -315,7 +320,7 @@ Dot\+Space after occupation
 \end{DoxyReturn}
 
 
-Definition at line 659 of file gamegen.\+cpp.
+Definition at line 670 of file gamegen.\+cpp.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -332,7 +337,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Helper for debugging purposes. Prints out a Dot\+Space. 
 
-Definition at line 693 of file gamegen.\+cpp.
+Definition at line 704 of file gamegen.\+cpp.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
@@ -349,7 +354,7 @@ Here is the caller graph for this function\+:\nopagebreak
 
 Helper for debugging purposes. Prints out a Dot\+Space and the amount of candidates for a single spot. 
 
-Definition at line 722 of file gamegen.\+cpp.
+Definition at line 733 of file gamegen.\+cpp.
 
 Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]

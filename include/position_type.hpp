@@ -1,6 +1,10 @@
 #ifndef POS_TYPE_H
 #define POS_TYPE_H
 
+/**
+ * @brief simple position type for 2 dimensions. sortable
+ * 
+ */
 struct pos_type
 {
     unsigned int x;

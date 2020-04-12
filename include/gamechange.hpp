@@ -9,12 +9,24 @@ typedef std::weak_ptr<Player> p_ptr;
 typedef std::shared_ptr<Field> f_ptr;
 typedef std::shared_ptr<Dot> d_ptr;
 
+/**
+ * @brief Represents an atomic change to the gamestate. Can be reverted, once applied
+ * 
+ */
 class GameChange : public std::enable_shared_from_this<GameChange>
 {
 private:
     p_ptr player;
     f_ptr affected_field;
+    /**
+     * @brief the new dot the affected field belongs to
+     * 
+     */
     d_ptr new_assoziation;
+    /**
+     * @brief if field was attached to a different dot before this dot gets stored here.
+     * 
+     */
     d_ptr old_assoziation;
 
 public:
@@ -32,10 +44,27 @@ public:
      */
     ~GameChange();
 
+    /**
+     * @brief Set the new assigned dot
+     * 
+     */
     void set_dot(const d_ptr &);
+    /**
+     * @brief apply this change
+     * 
+     */
     void apply();
+    /**
+     * @brief revert this change
+     * 
+     */
     void revert();
 
+    /**
+     * @brief serialization of the change
+     * 
+     * @return nlohmann::json 
+     */
     nlohmann::json toJson();
 };
 

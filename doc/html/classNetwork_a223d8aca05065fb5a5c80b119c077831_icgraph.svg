@@ -58,7 +58,7 @@ var sectionId = 'dynsection-12';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="starts the shutdown mechanism of the network operations">
 <polygon fill="#bfbfbf" stroke="black" points="782,-19.5 782,-38.5 867,-38.5 867,-19.5 782,-19.5"/>
 <text text-anchor="middle" x="824.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::stop</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-12';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" target="_top" xlink:title="prozesses all incoming messages">
 <polygon fill="white" stroke="black" points="301,-38.5 301,-57.5 451,-57.5 451,-38.5 301,-38.5"/>
 <text text-anchor="middle" x="376" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::processMessages</text>
 </a>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-12';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classNetwork.html#a7d9b412cc58237783bd431544374e11a" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classNetwork.html#a7d9b412cc58237783bd431544374e11a" target="_top" xlink:title="starts server and prozessing thread">
 <polygon fill="white" stroke="black" points="185,-38.5 185,-57.5 265,-57.5 265,-38.5 185,-38.5"/>
 <text text-anchor="middle" x="225" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Network::run</text>
 </a>
