@@ -58,7 +58,7 @@ var sectionId = 'dynsection-7';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="starts the &quot;game loop&quot;. this blocks the thread until server stops.">
 <polygon fill="#bfbfbf" stroke="black" points="0,-76.5 0,-95.5 72,-95.5 72,-76.5 0,-76.5"/>
 <text text-anchor="middle" x="36" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::run</text>
 </a>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-7';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" target="_top" xlink:title="needs to be called when Player disconnects from server">
 <polygon fill="white" stroke="black" points="424,-114.5 424,-133.5 542,-133.5 542,-114.5 424,-114.5"/>
 <text text-anchor="middle" x="483" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::deletePlayer</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-7';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" target="_top" xlink:title="central method that manages incomming messages from clients">
 <polygon fill="white" stroke="black" points="410,-76.5 410,-95.5 556,-95.5 556,-76.5 410,-76.5"/>
 <text text-anchor="middle" x="483" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::executeCommand</text>
 </a>
@@ -127,7 +127,7 @@ var sectionId = 'dynsection-7';
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="classGalaxy.html#ab70919238d14bc1c16435f477966e159" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="classGalaxy.html#ab70919238d14bc1c16435f477966e159" target="_top" xlink:title="needs to be called when a new Player connects to the server">
 <polygon fill="white" stroke="black" points="410,-38.5 410,-57.5 556,-57.5 556,-38.5 410,-38.5"/>
 <text text-anchor="middle" x="483" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::registerNewPlayer</text>
 </a>
@@ -157,7 +157,7 @@ var sectionId = 'dynsection-7';
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title=" ">
+<g id="a_node7"><a xlink:href="classGalaxy.html#a92134e9c556eca12536abf89edbff577" target="_top" xlink:title="converts data from the client into a GameChange and applies it">
 <polygon fill="white" stroke="black" points="592,-114.5 592,-133.5 741,-133.5 741,-114.5 592,-114.5"/>
 <text text-anchor="middle" x="666.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::makeGameChange</text>
 </a>
@@ -187,7 +187,7 @@ var sectionId = 'dynsection-7';
 <!-- Node9 -->
 <g id="node9" class="node">
 <title>Node9</title>
-<g id="a_node9"><a xlink:href="classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" target="_top" xlink:title=" ">
+<g id="a_node9"><a xlink:href="classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" target="_top" xlink:title="starts notifing all components to shutdown.">
 <polygon fill="white" stroke="black" points="628,-38.5 628,-57.5 705,-57.5 705,-38.5 628,-38.5"/>
 <text text-anchor="middle" x="666.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::stop</text>
 </a>
@@ -202,7 +202,7 @@ var sectionId = 'dynsection-7';
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" target="_top" xlink:title="generates a json object of the current state of the galaxy">
 <polygon fill="white" stroke="black" points="623.5,-0.5 623.5,-19.5 709.5,-19.5 709.5,-0.5 623.5,-0.5"/>
 <text text-anchor="middle" x="666.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::toJson</text>
 </a>

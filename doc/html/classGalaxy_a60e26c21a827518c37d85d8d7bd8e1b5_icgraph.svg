@@ -58,7 +58,7 @@ var sectionId = 'dynsection-1';
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
-<g id="a_node1"><a xlink:title=" ">
+<g id="a_node1"><a xlink:title="needs to be called when Player disconnects from server">
 <polygon fill="#bfbfbf" stroke="black" points="487,-0.5 487,-19.5 605,-19.5 605,-0.5 487,-0.5"/>
 <text text-anchor="middle" x="546" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::deletePlayer</text>
 </a>
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-1';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" target="_top" xlink:title="starts the &quot;game loop&quot;. this blocks the thread until server stops.">
 <polygon fill="white" stroke="black" points="77,-0.5 77,-19.5 149,-19.5 149,-0.5 77,-0.5"/>
 <text text-anchor="middle" x="113" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">Galaxy::run</text>
 </a>
