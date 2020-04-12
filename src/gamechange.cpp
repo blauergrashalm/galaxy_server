@@ -1,8 +1,9 @@
 #include "gamechange.hpp"
+#include "debug_functions.hpp"
 
 GameChange::~GameChange()
 {
-    std::cout << "Game Change gelöscht" << std::endl;
+    DBG_LOG(HIGH, "GameChange wurde gelöscht");
 }
 
 GameChange::GameChange(GameChange &&other)

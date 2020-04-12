@@ -1,7 +1,8 @@
 #include "player.hpp"
 #include <iostream>
+#include "debug_functions.hpp"
 
 Player::~Player()
 {
-    std::cout << "Player " << id << " wurde gelöscht" << std::endl;
+    DBG_LOG(LOW, "Player " + std::to_string(id) + " wurde gelöscht");
 }

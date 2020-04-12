@@ -11,7 +11,7 @@ Galaxy g;
 
 void my_handler(int s)
 {
-    std::cout << "Signal erhalten" << std::endl;
+    DBG_LOG(LOW, "Signal erhalten");
     g.stop();
 }
 
@@ -25,9 +25,8 @@ int main(int argc, char **argv)
 
     sigaction(SIGINT, &sigIntHandler, NULL);
 
-    std::cout << "Starte Galaxy" << std::endl;
+    DBG_LOG(MEDIUM, "Starte Galaxie");
     g.run();
-    DBG_LOG(HIGH, "HUmba");
-    std::cout << "Programm endet" << std::endl;
+    DBG_LOG(LOW, "Programm endet");
     return 0;
 }

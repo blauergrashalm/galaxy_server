@@ -1,6 +1,7 @@
 #include "gamegen.hpp"
 #include <iostream>
 #include <iomanip>
+#include "debug_functions.hpp"
 
 // Calculates for a field in DotSpace a weight for the choosing algorithm
 int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span)
@@ -497,7 +498,6 @@ DotPosition GameGen::generateRandomDotInEmptySpot(DotSpace space, std::default_r
         candidates = getRandomDotCandidates(space, i);
 
         printDotSpaceCandidates(space, candidates);
-        std::cout << std::endl;
 
         if (candidates.size() > 0)
         {
@@ -637,7 +637,6 @@ std::pair<DotSpace, bool> GameGen::addFieldToGalaxy(DotSpace space, DotPosition 
     }
 
     printDotSpaceCandidates(space, candidates);
-    std::cout << std::endl;
 
     // Choose one candidate randomly
     if (candidates.size() > 0)
@@ -705,25 +704,26 @@ void GameGen::printDotSpace(DotSpace space)
 {
     auto x_size = space.size();
     auto y_size = space[0].size();
-
+    std::stringstream s;
     // Print Header
-    std::cout << "   ";
+    s << "   ";
     for (int i = 0; i < x_size; i++)
     {
-        std::cout << std::setw(2) << std::setfill('0') << i << " ";
+        s << std::setw(2) << std::setfill('0') << i << " ";
     }
-    std::cout << std::endl;
+    s << std::endl;
 
     // Every place around the dot is not available anymore
     for (auto i = 0; i < y_size; i++)
     {
-        std::cout << std::setw(2) << std::setfill('0') << i << " ";
+        s << std::setw(2) << std::setfill('0') << i << " ";
         for (auto j = 0; j < x_size; j++)
         {
-            std::cout << " " << space[j][i] << " ";
+            s << " " << space[j][i] << " ";
         }
-        std::cout << std::endl;
+        s << std::endl;
     }
+    DBG_LOG(HIGH, s.str());
 }
 
 /**
@@ -734,19 +734,19 @@ void GameGen::printDotSpaceCandidates(DotSpace space, DotPositionList candidates
 {
     auto x_size = space.size();
     auto y_size = space[0].size();
-
+    std::stringstream s;
     // Print Header
-    std::cout << "    ";
+    s << "    ";
     for (int i = 0; i < x_size; i++)
     {
-        std::cout << std::setw(3) << std::setfill('0') << i << " ";
+        s << std::setw(3) << std::setfill('0') << i << " ";
     }
-    std::cout << std::endl;
+    s << std::endl;
 
     // Every place around the dot is not available anymore
     for (auto i = 0; i < y_size; i++)
     {
-        std::cout << std::setw(3) << std::setfill('0') << i << " ";
+        s << std::setw(3) << std::setfill('0') << i << " ";
         for (auto j = 0; j < x_size; j++)
         {
             auto amount = 0;
@@ -758,10 +758,11 @@ void GameGen::printDotSpaceCandidates(DotSpace space, DotPositionList candidates
                     ++amount;
                 }
             }
-            std::cout << std::setw(3) << std::setfill(' ') << amount << " ";
+            s << std::setw(3) << std::setfill(' ') << amount << " ";
         }
-        std::cout << std::endl;
+        s << std::endl;
     }
+    DBG_LOG(HIGH, s.str());
 }
 
 /**
@@ -800,7 +801,6 @@ DotPositionList GameGen::generateDots(int x_size, int y_size)
         empty_spaces = countEmptySpots(space);
         // Debugging statements
         printDotSpace(space);
-        std::cout << std::endl;
     } while (empty_spaces > 0);
 
     return new_dot_list;
