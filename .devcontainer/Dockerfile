@@ -38,7 +38,7 @@ RUN apt-get update \
     && apt-get -y install libwebsocketpp-dev ninja-build libboost-all-dev \
     #
     # Install tools
-    && apt-get -y install nano \
+    && apt-get -y install nano doxygen graphviz \
     #
     # Clean up
     && apt-get autoremove -y \
