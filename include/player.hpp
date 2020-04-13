@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "websocketpp/server.hpp"
+#include "nlohmann/json.hpp"
 
 /**
  * @todo write docs
@@ -49,6 +50,8 @@ public:
     {
         return websocket_handle.use_count() > 0;
     };
+
+    nlohmann::json toJson();
 };
 
 #endif // PLAYER_H
