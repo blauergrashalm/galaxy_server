@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 
 project(galaxy_server)
 
+SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14")
+
 AUX_SOURCE_DIRECTORY(src src)
 
 add_definitions(-DDEBUG_MEDIUM)
