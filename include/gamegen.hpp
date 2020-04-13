@@ -5,26 +5,33 @@
 #include <random>
 #include <vector>
 
+/**
+ * @brief This type is a representation of a column of spots in dot grid coordinates
+ */
 typedef std::vector<int> DotSpaceColumn;
+
+/**
+ * @brief This type is a representation of all spots in dot grid coordinates
+ */
 typedef std::vector<DotSpaceColumn> DotSpace;
 typedef std::pair<unsigned int, unsigned int> DotPosition;
 typedef std::vector<DotPosition> DotPositionList;
 
+typedef DotSpace Pattern;
+typedef std::vector<DotSpace> PatternList;
+
 /**
  * @brief Generates a solvable game_state
- * This type is in dot grid coordinates to simplify the generation algorithm
- * If the place in the grid is a valid place for a new dot to be in, it is marked with 0
- * Otherwise it is marked with 1
  */
 class GameGen
 {
 private:
-    int calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span);
+    int calculateNeighborWeight(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span);
     std::vector<DotSpace> getPatterns();
     DotSpace addBorder(DotSpace space, int filler);
     DotPositionList getRandomDotCandidates(DotSpace space, int min_distance_to_filled);
     std::pair<DotPositionList, DotSpace> generateNextDotsByPattern(DotSpace space, std::vector<DotSpace> pattern_list);
-    std::pair<DotPositionList, DotSpace> generateNextDots(DotSpace space, std::default_random_engine gen);
+    std::pair<DotPositionList, DotSpace> generateNextDots(DotSpace space, PatternList pattern_list, std::default_random_engine gen);
     DotPosition generateRandomDotInEmptySpot(DotSpace space, std::default_random_engine gen);
     DotSpace generateGalaxyFromDot(DotSpace space, DotPosition dot, std::default_random_engine gen);
     std::pair<DotSpace, bool> addFieldToGalaxy(DotSpace space, DotPosition dot, std::default_random_engine gen);

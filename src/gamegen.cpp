@@ -4,8 +4,10 @@
 #include "debug_functions.hpp"
 #include <sstream>
 
-// Calculates for a field in DotSpace a weight for the choosing algorithm
-int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span)
+/**
+ * Calculates for a field in DotSpace a weight for the choosing algorithm
+ */
+int GameGen::calculateNeighborWeight(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span)
 {
     for (int i = 1; i <= neighbor_span; i++)
     {
@@ -36,21 +38,21 @@ int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, 
     return 0;
 }
 
-std::vector<DotSpace> GameGen::getPatterns()
+PatternList GameGen::getPatterns()
 {
     // Patterns
     // 0: content irrelevant
     // 1: occupied
     // 2: free
     // 3: free / center of a new galaxy
-    std::vector<DotSpace> pattern_list;
+    PatternList pattern_list;
 
     // Most important pattern has to be first in pattern list
     // □ □ □
     // □ ▣ □
     // □ □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
@@ -65,7 +67,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ ▣ □
     //   □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 1, 0});
@@ -80,7 +82,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ ▣ □
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 2, 2, 1});
@@ -95,7 +97,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     //   ▣
     // □ □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 1, 0});
@@ -110,7 +112,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ ▣ □
     // □   □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 1, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 2, 1});
@@ -125,7 +127,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
@@ -139,7 +141,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □ □
     // □ □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
@@ -152,7 +154,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     //   ▣
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 1, 1, 0});
@@ -167,7 +169,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     //   ▣
     //   □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 2, 1, 0, 0});
@@ -182,7 +184,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ ▣ □
     //     □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1, 0, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 1, 1, 0});
@@ -197,7 +199,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ ▣ □
     // □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 0, 1, 0});
         pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 1, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 2, 1});
@@ -211,7 +213,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     //   □ □
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 0, 0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{0, 0, 1, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 3, 1, 1, 0});
@@ -223,7 +225,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □
     //   □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1, 0, 0});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 3, 1, 1, 0});
@@ -236,7 +238,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □
     //   □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 0, 0, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1, 1, 0});
@@ -251,7 +253,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □
     // □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 0, 1, 0});
         pattern.push_back(DotSpaceColumn{0, 0, 0, 0, 1, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 2, 1});
@@ -265,7 +267,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □ □
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
@@ -276,7 +278,7 @@ std::vector<DotSpace> GameGen::getPatterns()
 
     // □ ▣ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 2, 3, 2, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 1, 1, 0});
@@ -287,7 +289,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // ▣
     // □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 2, 1});
@@ -300,7 +302,7 @@ std::vector<DotSpace> GameGen::getPatterns()
 
     // □ □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 3, 2, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 1, 1, 0});
@@ -310,7 +312,7 @@ std::vector<DotSpace> GameGen::getPatterns()
     // □
     // □
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 2, 1});
         pattern.push_back(DotSpaceColumn{1, 3, 1});
@@ -321,7 +323,7 @@ std::vector<DotSpace> GameGen::getPatterns()
 
     // ▣
     {
-        DotSpace pattern;
+        Pattern pattern;
         pattern.push_back(DotSpaceColumn{0, 1, 0});
         pattern.push_back(DotSpaceColumn{1, 3, 1});
         pattern.push_back(DotSpaceColumn{0, 1, 0});
@@ -440,17 +442,16 @@ std::pair<DotPositionList, DotSpace> GameGen::generateNextDotsByPattern(DotSpace
     throw "No pattern found :(";
 }
 
-std::pair<DotPositionList, DotSpace> GameGen::generateNextDots(DotSpace space, std::default_random_engine gen)
+std::pair<DotPositionList, DotSpace> GameGen::generateNextDots(DotSpace space, PatternList pattern_list, std::default_random_engine gen)
 {
-    // First try pattern matching
-    auto pattern_list = getPatterns();
-
     try
     {
+        // First try pattern matching
         return generateNextDotsByPattern(space, pattern_list);
     }
     catch (...)
     {
+        // If that doesn't work, generate random dot
         auto new_dot = generateRandomDotInEmptySpot(space, gen);
         space = generateGalaxyFromDot(space, new_dot, gen);
 
@@ -471,7 +472,7 @@ DotPositionList GameGen::getRandomDotCandidates(DotSpace space, int min_distance
         for (int y = 0; y < y_size; y++)
         {
             // Calculate neighbor score
-            auto penalty = calculateNeighborPenalty(space, x, y, x_size, y_size, min_distance_to_filled);
+            auto penalty = calculateNeighborWeight(space, x, y, x_size, y_size, min_distance_to_filled);
             auto neighbor_score = 1 - penalty;
 
             if (space[x][y] == 0 && neighbor_score > 0)
@@ -626,8 +627,8 @@ std::pair<DotSpace, bool> GameGen::addFieldToGalaxy(DotSpace space, DotPosition 
                 if (x2 >= 0 && y2 >= 0 && x2 < x_size && y2 < y_size && space[x2][y2] == 0)
                 {
                     auto dot_pos = DotPosition(x, y);
-                    auto penalty1 = 4 * calculateNeighborPenalty(space, x, y, x_size, y_size, 2) + 1;
-                    auto penalty2 = 4 * calculateNeighborPenalty(space, x2, y2, x_size, y_size, 2) + 1;
+                    auto penalty1 = 4 * calculateNeighborWeight(space, x, y, x_size, y_size, 2) + 1;
+                    auto penalty2 = 4 * calculateNeighborWeight(space, x2, y2, x_size, y_size, 2) + 1;
                     for (int i = 0; i < std::max(penalty1, penalty2); i++)
                     {
                         candidates.push_back(dot_pos);
@@ -787,13 +788,14 @@ DotPositionList GameGen::generateDots(int x_size, int y_size)
     }
 
     // Generate dots in space
+    PatternList pattern_list = getPatterns();
     DotPositionList new_dot_list;
     unsigned int empty_spaces;
     std::random_device rd;
     std::default_random_engine gen(rd());
     do
     {
-        auto result = generateNextDots(space, gen);
+        auto result = generateNextDots(space, pattern_list, gen);
         for (int i = 0; i < result.first.size(); i++)
         {
             new_dot_list.push_back(result.first[i]);

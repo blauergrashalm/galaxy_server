@@ -1,3 +1,3 @@
 #!/bin/bash
-./build.sh
+./compile.sh
 ./start_server.sh
