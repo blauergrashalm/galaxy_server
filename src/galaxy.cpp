@@ -2,6 +2,7 @@
 #include "network.hpp"
 #include <memory>
 #include "debug_functions.hpp"
+#include "json_schemas.hpp"
 
 Galaxy::Galaxy() : net(*this), current_state(10, 10)
 {
@@ -9,10 +10,19 @@ Galaxy::Galaxy() : net(*this), current_state(10, 10)
 
 Galaxy::~Galaxy()
 {
+    for (auto &&c : commands)
+    {
+        delete c.second.my_validator;
+    }
 }
 
 void Galaxy::run()
 {
+    commands = {
+        {"player_register", command_mapping{std::bind(&Galaxy::playerSetup, this, _1, _2), new validator(constants::register_player_schema)}},
+        {"game_change", command_mapping{std::bind(&Galaxy::makeGameChange, this, _1, _2), new validator(constants::game_change_schema)}},
+        {"new_game", command_mapping{std::bind(&Galaxy::makePoll, this, _1, _2), new validator(constants::new_game_schema)}},
+        {"cast_vote", command_mapping{std::bind(&Galaxy::castVote, this, _1, _2), new validator(constants::cast_vote_schema)}}};
     poll.reset(new NewGamePoll(shared_from_this()));
     DBG_LOG(MEDIUM, "Galaxy startet");
     net.run(9000);
@@ -29,7 +39,14 @@ void Galaxy::stop()
 
 void Galaxy::registerNewPlayer(web_con connection)
 {
+
     players.insert(std::pair<web_con, shared_player>(connection, std::make_shared<Player>(connection)));
+}
+
+void Galaxy::playerSetup(shared_player &p, const json &payload)
+{
+    p->name = payload["name"];
+    net.send(*p, toJson());
 }
 
 void Galaxy::deletePlayer(web_con connection)
@@ -40,30 +57,40 @@ void Galaxy::deletePlayer(web_con connection)
 void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json payload)
 {
     auto p = players[con];
-    if (command == "player_register")
+    try
     {
-        p->name = payload["name"];
-        net.send(*p, toJson());
+        auto &to_execute = commands.at(command);
+        to_execute.my_validator->validate(payload);
+        to_execute.call(p, payload);
     }
-    else if (command == "game_change")
+    catch (std::out_of_range)
     {
-        makeGameChange(p, payload);
+        std::cout << "from: " << p->name << ": Kommando unbekannt, sorry" << std::endl;
     }
-    else if (command == "new_game")
+    catch (std::exception &e)
     {
-        new_height = payload["height"];
-        new_width = payload["width"];
-        poll->reset(p, players.size());
-    }
-    else
-    {
-        stop();
+        std::cout << "from: " << p->name << ": Kommando nicht verstanden: " << e.what() << std::endl;
     }
 }
 
 void Galaxy::noitifyVoteState(nlohmann::json vote)
 {
     net.broadcast(players, vote);
+}
+
+void Galaxy::makePoll(shared_player &p, const json &payload)
+{
+    new_height = payload["height"];
+    new_width = payload["width"];
+    poll->reset(p, players.size());
+}
+
+void Galaxy::castVote(shared_player &p, const json &payload)
+{
+    if (payload["vote"] == "positive")
+        poll->registerPositiveVote(p);
+    else
+        poll->registerNegativeVote(p);
 }
 
 void Galaxy::newGame()
@@ -77,7 +104,7 @@ void Galaxy::newGame()
     net.broadcast(players, toJson());
 }
 
-void Galaxy::makeGameChange(std::shared_ptr<Player> p, nlohmann::json payload)
+void Galaxy::makeGameChange(shared_player &p, const json &payload)
 {
     auto field = current_state[(unsigned int)payload["field"]];
     auto change = std::make_shared<GameChange>(p, field);
