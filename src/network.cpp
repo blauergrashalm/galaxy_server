@@ -1,6 +1,7 @@
 #include "network.hpp"
 #include "galaxy.hpp"
 #include "debug_functions.hpp"
+#include "json_schemas.hpp"
 
 Network::Network(Galaxy &g) : galaxy(g)
 {
@@ -18,7 +19,8 @@ void Network::processMessages()
     {
         std::unique_lock<std::mutex>
             lock(message_mutex);
-
+        validator command_valid;
+        command_valid.set_root_schema(basic_command_schema);
         while (to_process.empty() && !shutdown)
         {
             messages_available.wait(lock);
@@ -38,7 +40,22 @@ void Network::processMessages()
             galaxy.registerNewPlayer(current.connection);
             break;
         case MESSAGE:
-            msg = json::parse(current.mesage->get_payload());
+
+            try
+            {
+                msg = json::parse(current.mesage->get_payload());
+                command_valid.validate(msg);
+            }
+            catch (json::parse_error &e)
+            {
+                std::cout << "could not parse message: " << e.what() << std::endl;
+                break;
+            }
+            catch (std::exception &e)
+            {
+                std::cout << "could not validate message: " << e.what() << std::endl;
+                break;
+            }
             if (msg["command"] == "player_register" || current.entry_time > discarding_time)
             {
                 galaxy.executeCommand(current.connection, msg["command"], msg["payload"]);
