@@ -10,9 +10,19 @@
 #include "gamestate.hpp"
 #include "network.hpp"
 #include "newgamepoll.hpp"
-
+#include <nlohmann/json-schema.hpp>
+typedef nlohmann::json json;
+typedef nlohmann::json_schema::json_validator validator;
 typedef websocketpp::connection_hdl web_con;
 typedef std::shared_ptr<Player> shared_player;
+using std::placeholders::_1;
+using std::placeholders::_2;
+
+struct command_mapping
+{
+    std::function<void(shared_player &p, const json &)> call;
+    validator *my_validator;
+};
 
 /**
  * @brief Main class of this project. Manages all ressources
@@ -24,6 +34,7 @@ private:
     friend NewGamePoll;
     Network net;
     std::unique_ptr<NewGamePoll> poll;
+    std::map<std::string, command_mapping> commands;
 
     /**
      * @brief manages all active players with their websocket connection
@@ -55,7 +66,7 @@ private:
      * @param p The Player that sent the Change Request
      * @param payload The data representing the change
      */
-    void makeGameChange(shared_player p, nlohmann::json payload);
+    void makeGameChange(shared_player &p, const json &);
 
     /**
      * @brief generates a new Game
@@ -64,6 +75,10 @@ private:
      * @param width 
      */
     void newGame();
+
+    void makePoll(shared_player &p, const json &);
+
+    void castVote(shared_player &p, const json &);
 
     void noitifyVoteState(nlohmann::json);
 
@@ -107,6 +122,7 @@ public:
      */
     void stop();
 
+    void playerSetup(shared_player &p, const json &);
     /**
      * @brief needs to be called when a new Player connects to the server
      *
