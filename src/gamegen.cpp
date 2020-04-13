@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include "debug_functions.hpp"
+#include <sstream>
 
 // Calculates for a field in DotSpace a weight for the choosing algorithm
 int GameGen::calculateNeighborPenalty(DotSpace space, int x, int y, int x_size, int y_size, int neighbor_span)
