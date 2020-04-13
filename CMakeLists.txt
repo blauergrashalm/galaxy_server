@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(galaxy_server)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=c++14")
+project(galaxy_server)
 
 AUX_SOURCE_DIRECTORY(src src)
 
