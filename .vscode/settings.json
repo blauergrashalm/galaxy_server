@@ -3,6 +3,7 @@
     "[cpp]":{
         "editor.formatOnSave": true
     },
+    "git.rebaseWhenSync": true,
     "files.associations": {
         "cctype": "cpp",
         "clocale": "cpp",
