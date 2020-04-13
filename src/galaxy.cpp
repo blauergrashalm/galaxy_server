@@ -123,6 +123,8 @@ nlohmann::json Galaxy::toJson()
 {
     nlohmann::json galaxy;
     galaxy["state"] = current_state.toJson();
+    for (auto &&p : players)
+        galaxy["players"].push_back(p.second->toJson());
     galaxy["type"] = "galaxy";
     return galaxy;
 }
