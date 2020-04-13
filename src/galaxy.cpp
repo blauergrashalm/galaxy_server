@@ -47,11 +47,14 @@ void Galaxy::playerSetup(shared_player &p, const json &payload)
 {
     p->name = payload["name"];
     net.send(*p, toJson());
+    net.broadcast(players, {{"type", "connect"}, {"player", p->toJson()}});
 }
 
 void Galaxy::deletePlayer(web_con connection)
 {
+    auto p = players[connection];
     players.erase(connection);
+    net.broadcast(players, {{"type", "disconnect"}, {"player", p->toJson()}});
 }
 
 void Galaxy::executeCommand(web_con con, std::string command, nlohmann::json payload)

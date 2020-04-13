@@ -124,6 +124,7 @@ void Network::on_close(websocketpp::connection_hdl con)
 
 void Network::send(Player &p, nlohmann::json data)
 {
+    data["self"] = p.id;
     server.send(p.websocket_handle, data.dump(), websocketpp::frame::opcode::TEXT);
 }
 
