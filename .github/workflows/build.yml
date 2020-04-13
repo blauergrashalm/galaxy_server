@@ -12,9 +12,9 @@ jobs:
       run: sudo add-apt-repository ppa:team-xbmc/xbmc-nightly
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get -y install libboost-all-dev libwebsocketpp-dev ninja-build nlohmann-json3-dev
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        fetch-depth: 1
+        submodules: 'recursive'
     - name: Build library & tests
       run: ./compile_all.sh
     - name: Run tests
