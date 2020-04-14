@@ -4,10 +4,27 @@
 
 typedef nlohmann::json json;
 typedef nlohmann::json_schema::json_validator validator;
-namespace constants
-{
 
-const json register_player_schema = R"(
+struct ValidationSchemas
+{
+    json basic_command_schema = R"(
+    {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Generic Command",
+    "description": "Generic Schema for validating command messages",
+    "type":"object",
+    "properties": {
+        "command":{
+            "type":"string"
+        },
+        "payload":{
+            "type":"object"
+        }
+    },
+    "required": ["command", "payload"]
+}
+)"_json;
+    json register_player_schema = R"(
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Player Register",
@@ -27,7 +44,7 @@ const json register_player_schema = R"(
     "required":["name", "passphrase"]
 }
 )"_json;
-const json game_change_schema = R"(
+    json game_change_schema = R"(
 {"$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Game Change",
     "description": "A Game Change",
@@ -46,7 +63,7 @@ const json game_change_schema = R"(
 }
 )"_json;
 
-const json new_game_schema = R"(
+    json new_game_schema = R"(
 {"$schema": "http://json-schema.org/draft-07/schema#",
     "title": "New Game",
     "description": "Beschreibt wie ein neues Spiel aussehen soll",
@@ -66,7 +83,7 @@ const json new_game_schema = R"(
     "required": ["height", "width"]
 }
 )"_json;
-const json cast_vote_schema = R"(
+    json cast_vote_schema = R"(
 {"$schema": "http://json-schema.org/draft-07/schema#",
     "title": "Casting a vote",
     "description": "Gibt eine Stimme ab",
@@ -80,5 +97,6 @@ const json cast_vote_schema = R"(
     "required": ["vote"]
 }
 )"_json;
-} // namespace constants
+};
+
 #endif

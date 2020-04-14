@@ -21,13 +21,14 @@ private:
     std::mutex set_mutex;
     std::condition_variable cv;
 
-    std::shared_ptr<Galaxy> g;
+    Galaxy &g;
     int amount;
+    nlohmann::json toJSON();
 
 public:
     bool active = false;
 
-    NewGamePoll(const std::shared_ptr<Galaxy> &g) : g{g} {};
+    NewGamePoll(Galaxy &g) : g{g} {};
 
     void reset(const shared_player &, int);
 
@@ -39,7 +40,5 @@ public:
     void registerPositiveVote(const shared_player &p);
 
     void registerNegativeVote(const shared_player &p);
-
-    nlohmann::json toJSON();
 };
 #endif

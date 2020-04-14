@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include "debug_functions.hpp"
 
-auto g = std::make_shared<Galaxy>();
+Galaxy *g;
 
 void my_handler(int s)
 {
@@ -17,16 +17,11 @@ void my_handler(int s)
 
 int main(int argc, char **argv)
 {
-    struct sigaction sigIntHandler;
-
-    sigIntHandler.sa_handler = my_handler;
-    sigemptyset(&sigIntHandler.sa_mask);
-    sigIntHandler.sa_flags = 0;
-
-    sigaction(SIGINT, &sigIntHandler, NULL);
-
+    g = new Galaxy();
+    std::signal(SIGINT, my_handler);
     DBG_LOG(MEDIUM, "Starte Galaxie");
     g->run();
     DBG_LOG(LOW, "Programm endet");
+    delete g;
     return 0;
 }

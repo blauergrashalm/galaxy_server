@@ -5,26 +5,11 @@
 
 #include "websocketpp/server.hpp"
 #include "player.hpp"
+#include "json_schemas.hpp"
 
 #include <list>
 typedef websocketpp::server<websocketpp::config::asio> server_t;
-const nlohmann::json basic_command_schema = R"(
-    {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Generic Command",
-    "description": "Generic Schema for validating command messages",
-    "type":"object",
-    "properties": {
-        "command":{
-            "type":"string"
-        },
-        "payload":{
-            "type":"object"
-        }
-    },
-    "required": ["command", "payload"]
-}
-)"_json;
+
 /**
  * @brief the possible types of actions that can occour on the socket
  *

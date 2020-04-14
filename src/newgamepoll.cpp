@@ -8,8 +8,8 @@ void NewGamePoll::reset(const shared_player &p, int num_players)
     if (active)
         return;
     amount = num_players;
-    positive_votes.insert(p);
     active = true;
+    registerPositiveVote(p);
     std::thread([&]() {
         std::unique_lock<std::mutex> l(set_mutex);
         DBG_LOG(LOW, "thread startet");
@@ -18,7 +18,7 @@ void NewGamePoll::reset(const shared_player &p, int num_players)
         active = false;
         if (positive_votes.size() > negative_votes.size())
         {
-            g->newGame();
+            g.newGame();
         }
         positive_votes.clear();
         negative_votes.clear();
@@ -27,7 +27,6 @@ void NewGamePoll::reset(const shared_player &p, int num_players)
 
 nlohmann::json NewGamePoll::toJSON()
 {
-    std::lock_guard<std::mutex> l(set_mutex);
     nlohmann::json result;
     result["type"] = "poll";
     result["positives"] = positive_votes.size();
@@ -42,7 +41,7 @@ void NewGamePoll::registerPositiveVote(const shared_player &p)
     {
         positive_votes.insert(p);
         negative_votes.erase(p);
-        g->noitifyVoteState(toJSON());
+        g.noitifyVoteState(toJSON());
         cv.notify_all();
     }
 };
@@ -54,7 +53,7 @@ void NewGamePoll::registerNegativeVote(const shared_player &p)
     {
         negative_votes.insert(p);
         positive_votes.erase(p);
-        g->noitifyVoteState(toJSON());
+        g.noitifyVoteState(toJSON());
         cv.notify_all();
     }
 };

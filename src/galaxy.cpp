@@ -6,6 +6,13 @@
 
 Galaxy::Galaxy() : net(*this), current_state(10, 10)
 {
+    ValidationSchemas schemas;
+    commands = {
+        {"player_register", command_mapping{std::bind(&Galaxy::playerSetup, this, _1, _2), new validator(schemas.register_player_schema)}},
+        {"game_change", command_mapping{std::bind(&Galaxy::makeGameChange, this, _1, _2), new validator(schemas.game_change_schema)}},
+        {"new_game", command_mapping{std::bind(&Galaxy::makePoll, this, _1, _2), new validator(schemas.new_game_schema)}},
+        {"cast_vote", command_mapping{std::bind(&Galaxy::castVote, this, _1, _2), new validator(schemas.cast_vote_schema)}}};
+    poll.reset(new NewGamePoll(*this));
 }
 
 Galaxy::~Galaxy()
@@ -18,12 +25,6 @@ Galaxy::~Galaxy()
 
 void Galaxy::run()
 {
-    commands = {
-        {"player_register", command_mapping{std::bind(&Galaxy::playerSetup, this, _1, _2), new validator(constants::register_player_schema)}},
-        {"game_change", command_mapping{std::bind(&Galaxy::makeGameChange, this, _1, _2), new validator(constants::game_change_schema)}},
-        {"new_game", command_mapping{std::bind(&Galaxy::makePoll, this, _1, _2), new validator(constants::new_game_schema)}},
-        {"cast_vote", command_mapping{std::bind(&Galaxy::castVote, this, _1, _2), new validator(constants::cast_vote_schema)}}};
-    poll.reset(new NewGamePoll(shared_from_this()));
     DBG_LOG(MEDIUM, "Galaxy startet");
     net.run(9000);
 }

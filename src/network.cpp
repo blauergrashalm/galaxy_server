@@ -19,7 +19,7 @@ void Network::processMessages()
         std::unique_lock<std::mutex>
             lock(message_mutex);
         validator command_valid;
-        command_valid.set_root_schema(basic_command_schema);
+        command_valid.set_root_schema(ValidationSchemas().basic_command_schema);
         while (to_process.empty() && !shutdown)
         {
             messages_available.wait(lock);
