@@ -1,3 +1,3 @@
 #!/bin/bash
 ./compile.sh
-./start_server.sh
+./out/release/galaxy_server
