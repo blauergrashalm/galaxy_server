@@ -7,3 +7,5 @@ build/
 !.vscode/launch.json
 
 doc/
+include/nlohmann
+include/websocketpp
