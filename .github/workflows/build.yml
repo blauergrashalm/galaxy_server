@@ -5,15 +5,11 @@ on: [push, pull_request]
 jobs:
   build:
     name: Test building
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
-    - name: Download deb package for nlohmann-json3
-      run: wget -O nlohmann-json3.deb http://archive.ubuntu.com/ubuntu/pool/universe/n/nlohmann-json3/nlohmann-json3-dev_3.7.3-1_all.deb
-    - name: Install deb package for nlohmann-json3
-      run: sudo dpkg -i nlohmann-json3.deb
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get -y install libboost-all-dev libwebsocketpp-dev ninja-build
+      run: sudo apt-get update && sudo apt-get -y install libboost-all-dev libwebsocketpp-dev ninja-build nlohmann-json3-dev
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
