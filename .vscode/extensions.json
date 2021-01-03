@@ -1,11 +1,5 @@
 {
     "recommendations": [
         "ms-vscode-remote.remote-containers",
-		"ms-vscode.cpptools",
-		"ms-vscode.cmake-tools",
-		"editorconfig.editorconfig",
-		"ybaumes.highlight-trailing-white-spaces",
-		"aaron-bond.better-comments",
-		"coenraads.bracket-pair-colorizer-2",
     ]
 }
