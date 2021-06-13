@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get -y install libboost-all-dev libwebsocketpp-dev ninja-build nlohmann-json3-dev
+    - name: Show versions
+      run: cmake --version && ninja --version
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
