@@ -2,8 +2,10 @@
 	"name": "Galaxy Dev Container",
 	"build": {
 		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick an Debian / Ubuntu OS version: debian-10, debian-9, ubuntu-20.04, ubuntu-18.04
-		"args": { "VARIANT": "ubuntu-20.04" }
+		"args": {
+			"VARIANT": "ubuntu-20.04",
+			"VERSION": "0.201.6"
+		}
 	},
 	"runArgs": [
 		"--cap-add=SYS_PTRACE",
@@ -13,7 +15,12 @@
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.profiles.linux": {
+			"bash": {
+				"path": "bash"
+			},
+		},
+		"terminal.integrated.defaultProfile.linux": "bash"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created in the array below.
