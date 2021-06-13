@@ -1,0 +1,5 @@
+<map id="Network::send" name="Network::send">
+<area shape="rect" id="node1" title="send a message to a player" alt="" coords="376,5,492,32"/>
+<area shape="rect" id="node2" href="$classGalaxy.html#a4a3100bfbe43c0ac7243decec3753a35" title=" " alt="" coords="175,5,328,32"/>
+<area shape="rect" id="node3" href="$classGalaxy.html#aac431eec66d158f5f82cdbc3eec39586" title="Construct a new Galaxy object with a default GameState of 10 x 10 Fields." alt="" coords="5,5,127,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="Galaxy::toJson" name="Galaxy::toJson">
+<area shape="rect" id="node1" title="generates a json object of the current state of the galaxy" alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$classGameState.html#a77597717c0d0b6d4e93c7f299cf3f315" title=" " alt="" coords="168,5,311,32"/>
+</map>

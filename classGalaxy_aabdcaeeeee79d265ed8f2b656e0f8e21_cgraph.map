@@ -1,0 +1,7 @@
+<map id="Galaxy::newGame" name="Galaxy::newGame">
+<area shape="rect" id="node1" title="generates a new Game" alt="" coords="5,56,147,83"/>
+<area shape="rect" id="node2" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="223,5,373,32"/>
+<area shape="rect" id="node3" href="$classNetwork.html#af8150cee690f9b4db4de02ac403c2f86" title="set time before which messages should be discarded" alt="" coords="195,56,401,83"/>
+<area shape="rect" id="node4" href="$classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" title="generates a json object of the current state of the galaxy" alt="" coords="241,107,355,133"/>
+<area shape="rect" id="node5" href="$classGameState.html#a77597717c0d0b6d4e93c7f299cf3f315" title=" " alt="" coords="449,107,592,133"/>
+</map>

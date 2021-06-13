@@ -1,0 +1,14 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,60,108"/>
+<area shape="rect" id="node2" href="$main_8cpp.html#a13848d945610347db87a059fe0b43f35" title=" " alt="" coords="108,56,207,83"/>
+<area shape="rect" id="node6" href="$classGalaxy.html#a06c64a89d3bd684797c725c8419c10ca" title="starts the &quot;game loop&quot;. this blocks the thread until server stops." alt="" coords="109,107,205,133"/>
+<area shape="rect" id="node3" href="$classGalaxy.html#a58d3ec1dd980cd3adfc1eeb83c41f8e4" title="starts notifing all components to shutdown." alt="" coords="257,56,359,83"/>
+<area shape="rect" id="node4" href="$classNetwork.html#a14eee72429fc77613fb20692b2101836" title="closes a specific connection" alt="" coords="437,5,581,32"/>
+<area shape="rect" id="node5" href="$classNetwork.html#a223d8aca05065fb5a5c80b119c077831" title="starts the shutdown mechanism of the network operations" alt="" coords="453,56,566,83"/>
+<area shape="rect" id="node7" href="$classNetwork.html#a7d9b412cc58237783bd431544374e11a" title="starts server and prozessing thread" alt="" coords="255,107,361,133"/>
+<area shape="rect" id="node8" href="$classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" title="prozesses all incoming messages" alt="" coords="409,107,609,133"/>
+<area shape="rect" id="node9" href="$classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" title="needs to be called when Player disconnects from server" alt="" coords="676,56,833,83"/>
+<area shape="rect" id="node11" href="$classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" title="central method that manages incomming messages from clients" alt="" coords="658,107,851,133"/>
+<area shape="rect" id="node12" href="$classGalaxy.html#ab70919238d14bc1c16435f477966e159" title="needs to be called when a new Player connects to the server" alt="" coords="657,157,852,184"/>
+<area shape="rect" id="node10" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="900,56,1049,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Galaxy::playerSetup" name="Galaxy::playerSetup">
+<area shape="rect" id="node1" title=" " alt="" coords="5,56,159,83"/>
+<area shape="rect" id="node2" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="207,5,356,32"/>
+<area shape="rect" id="node3" href="$classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" title="send a message to a player" alt="" coords="223,56,339,83"/>
+<area shape="rect" id="node4" href="$classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" title="generates a json object of the current state of the galaxy" alt="" coords="224,107,339,133"/>
+<area shape="rect" id="node5" href="$classGameState.html#a77597717c0d0b6d4e93c7f299cf3f315" title=" " alt="" coords="404,107,547,133"/>
+</map>

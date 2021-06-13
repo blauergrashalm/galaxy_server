@@ -1,0 +1,4 @@
+<map id="Galaxy::deletePlayer" name="Galaxy::deletePlayer">
+<area shape="rect" id="node1" title="needs to be called when Player disconnects from server" alt="" coords="5,5,163,32"/>
+<area shape="rect" id="node2" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="211,5,360,32"/>
+</map>

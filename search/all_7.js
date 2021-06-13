@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['g_54',['g',['../classNewGamePoll.html#af364fcfd971b304f5a60c743484fe31d',1,'NewGamePoll::g()'],['../main_8cpp.html#a5129b022c8032447b24e623f2eb5f82d',1,'g():&#160;main.cpp']]],
+  ['galaxy_55',['Galaxy',['../classGalaxy.html',1,'Galaxy'],['../classNetwork.html#a2739cfc3e6f55aa89cfdb613825a3a1e',1,'Network::Galaxy()'],['../classGalaxy.html#aac431eec66d158f5f82cdbc3eec39586',1,'Galaxy::Galaxy()'],['../classGalaxy.html#a585392ac46fd0c294061ed6b2c7ceab8',1,'Galaxy::Galaxy(const Galaxy &amp;)=delete'],['../classGalaxy.html#aef2e5a15958ad7afc93429f1669a4dfd',1,'Galaxy::Galaxy(Galaxy &amp;&amp;)=delete'],['../classNetwork.html#aa32d15139a5f36308ed2880662294883',1,'Network::galaxy()']]],
+  ['galaxy_2ecpp_56',['galaxy.cpp',['../galaxy_8cpp.html',1,'']]],
+  ['galaxy_2ehpp_57',['galaxy.hpp',['../galaxy_8hpp.html',1,'']]],
+  ['game_5fchange_5fschema_58',['game_change_schema',['../json__schemas_8hpp.html#a598490972cea7ca98ffc918ffd4066c7',1,'json_schemas.hpp']]],
+  ['gamechange_59',['GameChange',['../classGameChange.html',1,'GameChange'],['../classGameChange.html#add3a5aff235954ef9bc04923091f92dd',1,'GameChange::GameChange(p_ptr p, f_ptr f)'],['../classGameChange.html#af1cc224bb709200d0c5ef3fc4e701230',1,'GameChange::GameChange(const GameChange &amp;)=delete'],['../classGameChange.html#ae15b723f6fb03b8b2a91153b6f8c3e60',1,'GameChange::GameChange(GameChange &amp;&amp;)']]],
+  ['gamechange_2ecpp_60',['gamechange.cpp',['../gamechange_8cpp.html',1,'']]],
+  ['gamechange_2ehpp_61',['gamechange.hpp',['../gamechange_8hpp.html',1,'']]],
+  ['gamegen_62',['GameGen',['../classGameGen.html',1,'']]],
+  ['gamegen_2ecpp_63',['gamegen.cpp',['../gamegen_8cpp.html',1,'']]],
+  ['gamegen_2ehpp_64',['gamegen.hpp',['../gamegen_8hpp.html',1,'']]],
+  ['gamestate_65',['GameState',['../classGameState.html',1,'GameState'],['../classGameState.html#a2b1db52798480692adbd6658fc9128f6',1,'GameState::GameState()']]],
+  ['gamestate_2ecpp_66',['gamestate.cpp',['../gamestate_8cpp.html',1,'']]],
+  ['gamestate_2ehpp_67',['gamestate.hpp',['../gamestate_8hpp.html',1,'']]],
+  ['generatedots_68',['generateDots',['../classGameGen.html#a0ce6a9241bfbb198b0ba80ed8ea306eb',1,'GameGen']]],
+  ['generategalaxyfromdot_69',['generateGalaxyFromDot',['../classGameGen.html#a7f1de577fbe021ce42b1851ce313a53c',1,'GameGen']]],
+  ['generatenextdots_70',['generateNextDots',['../classGameGen.html#a9c5f9fb6e374bcb13bbba2497f8d30cb',1,'GameGen']]],
+  ['generatenextdotsbypattern_71',['generateNextDotsByPattern',['../classGameGen.html#a0ac01e2e7044e85842deff2d1925138f',1,'GameGen']]],
+  ['generaterandomdotinemptyspot_72',['generateRandomDotInEmptySpot',['../classGameGen.html#a79ecced48a44e20cb7ebfb96b8d89648',1,'GameGen']]],
+  ['generaterandomdots_73',['generateRandomDots',['../classGameState.html#ac2b2496090f728a63032ad0ab30b7194',1,'GameState']]],
+  ['getpatterns_74',['getPatterns',['../classGameGen.html#adf0f3f49cf25c9d3af2f66928bc059d3',1,'GameGen']]],
+  ['getrandomdotcandidates_75',['getRandomDotCandidates',['../classGameGen.html#aadd8ef21319cbd62abfb20303783641a',1,'GameGen']]],
+  ['galaxy_5fserver_76',['galaxy_server',['../md_README.html',1,'']]]
+];

@@ -1,0 +1,16 @@
+<map id="include/position_type.hpp" name="include/position_type.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="433,5,623,32"/>
+<area shape="rect" id="node2" href="$dot_8hpp.html" title=" " alt="" coords="316,80,439,107"/>
+<area shape="rect" id="node9" href="$gamestate_8hpp.html" title=" " alt="" coords="328,229,499,256"/>
+<area shape="rect" id="node14" href="$field_8hpp.html" title=" " alt="" coords="463,80,593,107"/>
+<area shape="rect" id="node3" href="$gamechange_8hpp.html" title=" " alt="" coords="95,155,281,181"/>
+<area shape="rect" id="node12" href="$dot_8cpp.html" title=" " alt="" coords="481,155,575,181"/>
+<area shape="rect" id="node13" href="$field_8cpp.html" title=" " alt="" coords="357,155,457,181"/>
+<area shape="rect" id="node4" href="$galaxy_8hpp.html" title=" " alt="" coords="175,304,318,331"/>
+<area shape="rect" id="node11" href="$gamechange_8cpp.html" title=" " alt="" coords="53,229,209,256"/>
+<area shape="rect" id="node5" href="$main_8cpp.html" title=" " alt="" coords="480,379,563,405"/>
+<area shape="rect" id="node6" href="$galaxy_8cpp.html" title=" " alt="" coords="189,379,304,405"/>
+<area shape="rect" id="node7" href="$network_8cpp.html" title=" " alt="" coords="328,379,453,405"/>
+<area shape="rect" id="node8" href="$newgamepoll_8cpp.html" title=" " alt="" coords="5,379,165,405"/>
+<area shape="rect" id="node10" href="$gamestate_8cpp.html" title=" " alt="" coords="342,304,485,331"/>
+</map>

@@ -1,0 +1,11 @@
+<map id="Galaxy::Galaxy" name="Galaxy::Galaxy">
+<area shape="rect" id="node1" title="Construct a new Galaxy object with a default GameState of 10 x 10 Fields." alt="" coords="5,81,127,108"/>
+<area shape="rect" id="node2" href="$classGalaxy.html#a2e2b85249f4321c2e365e6800cea2a7f" title=" " alt="" coords="209,5,339,32"/>
+<area shape="rect" id="node3" href="$classGalaxy.html#aabe9c4c5e1f5db027b2296b10d3da11e" title="converts data from the client into a GameChange and applies it" alt="" coords="175,56,373,83"/>
+<area shape="rect" id="node5" href="$classGalaxy.html#a0b74cf01c87755dac2f6b545f0871530" title=" " alt="" coords="207,107,341,133"/>
+<area shape="rect" id="node6" href="$classGalaxy.html#a4a3100bfbe43c0ac7243decec3753a35" title=" " alt="" coords="197,157,351,184"/>
+<area shape="rect" id="node4" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="421,69,571,96"/>
+<area shape="rect" id="node7" href="$classNetwork.html#ad25ed6c4d5a404ed6ca66ecec14b569a" title="send a message to a player" alt="" coords="438,132,554,159"/>
+<area shape="rect" id="node8" href="$classGalaxy.html#ad74f8049b46bdd7c1aafbc0225eaaae1" title="generates a json object of the current state of the galaxy" alt="" coords="439,183,553,209"/>
+<area shape="rect" id="node9" href="$classGameState.html#a77597717c0d0b6d4e93c7f299cf3f315" title=" " alt="" coords="619,183,761,209"/>
+</map>

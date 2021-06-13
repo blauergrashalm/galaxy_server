@@ -1,0 +1,9 @@
+<map id="Galaxy::run" name="Galaxy::run">
+<area shape="rect" id="node1" title="starts the &quot;game loop&quot;. this blocks the thread until server stops." alt="" coords="5,56,101,83"/>
+<area shape="rect" id="node2" href="$classNetwork.html#a7d9b412cc58237783bd431544374e11a" title="starts server and prozessing thread" alt="" coords="149,56,256,83"/>
+<area shape="rect" id="node3" href="$classNetwork.html#a356c8c0ec32e2795bd754b067838fd89" title="prozesses all incoming messages" alt="" coords="304,56,504,83"/>
+<area shape="rect" id="node4" href="$classGalaxy.html#a60e26c21a827518c37d85d8d7bd8e1b5" title="needs to be called when Player disconnects from server" alt="" coords="571,5,728,32"/>
+<area shape="rect" id="node6" href="$classGalaxy.html#a13dbcec35a2b7615acb153d7ca33bce3" title="central method that manages incomming messages from clients" alt="" coords="553,56,746,83"/>
+<area shape="rect" id="node7" href="$classGalaxy.html#ab70919238d14bc1c16435f477966e159" title="needs to be called when a new Player connects to the server" alt="" coords="552,107,747,133"/>
+<area shape="rect" id="node5" href="$classNetwork.html#a57f3c2d8b53d214d26822a52b899d69f" title="broadcast to all players" alt="" coords="795,5,944,32"/>
+</map>

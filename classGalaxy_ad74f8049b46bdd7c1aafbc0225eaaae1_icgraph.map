@@ -1,0 +1,7 @@
+<map id="Galaxy::toJson" name="Galaxy::toJson">
+<area shape="rect" id="node1" title="generates a json object of the current state of the galaxy" alt="" coords="409,31,524,57"/>
+<area shape="rect" id="node2" href="$classGalaxy.html#aabdcaeeeee79d265ed8f2b656e0f8e21" title="generates a new Game" alt="" coords="214,5,355,32"/>
+<area shape="rect" id="node4" href="$classGalaxy.html#a4a3100bfbe43c0ac7243decec3753a35" title=" " alt="" coords="208,56,361,83"/>
+<area shape="rect" id="node3" href="$classNewGamePoll.html#a21cbd2f6e503256b0f57010b4b63f6a6" title=" " alt="" coords="5,5,160,32"/>
+<area shape="rect" id="node5" href="$classGalaxy.html#aac431eec66d158f5f82cdbc3eec39586" title="Construct a new Galaxy object with a default GameState of 10 x 10 Fields." alt="" coords="22,56,143,83"/>
+</map>

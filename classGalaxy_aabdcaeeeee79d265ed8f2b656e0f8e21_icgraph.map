@@ -1,0 +1,4 @@
+<map id="Galaxy::newGame" name="Galaxy::newGame">
+<area shape="rect" id="node1" title="generates a new Game" alt="" coords="208,5,349,32"/>
+<area shape="rect" id="node2" href="$classNewGamePoll.html#a21cbd2f6e503256b0f57010b4b63f6a6" title=" " alt="" coords="5,5,160,32"/>
+</map>

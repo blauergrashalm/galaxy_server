@@ -1,0 +1,4 @@
+<map id="Galaxy::makeGameChange" name="Galaxy::makeGameChange">
+<area shape="rect" id="node1" title="converts data from the client into a GameChange and applies it" alt="" coords="175,5,373,32"/>
+<area shape="rect" id="node2" href="$classGalaxy.html#aac431eec66d158f5f82cdbc3eec39586" title="Construct a new Galaxy object with a default GameState of 10 x 10 Fields." alt="" coords="5,5,127,32"/>
+</map>
